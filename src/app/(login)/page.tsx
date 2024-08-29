@@ -25,6 +25,7 @@ export default function LoginPage() {
                 id="email"
                 type="email"
                 placeholder="Enter your email"
+                value="admin@gmail.com"
                 required
               />
             </div>
@@ -34,6 +35,7 @@ export default function LoginPage() {
                 id="password"
                 type="password"
                 placeholder="Enter your password"
+                value="admin"
                 required
               />
             </div>

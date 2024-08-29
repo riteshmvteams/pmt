@@ -67,3 +67,58 @@ export const NAVIGATION_MENUS = [
     icon: Star,
   },
 ];
+
+export const PERSONAL_SETTINGS = [
+  {
+    id: 1,
+    title: "My Profile",
+    href: "/users/profile",
+  },
+  {
+    id: 2,
+    title: "Timelogs",
+    href: "/timelogs",
+  },
+  {
+    id: 3,
+    title: "Notifications",
+    href: "/email-notifications",
+  },
+  {
+    id: 4,
+    title: "Email Reports",
+    href: "/email-reports",
+  },
+  {
+    id: 5,
+    title: "Announcements",
+    href: "/announcements",
+  },
+  {
+    id: 6,
+    title: "Sign Out",
+  },
+];
+
+export const COMPANY_SETTINGS = [
+  {
+    id: 1,
+    title: "My Company",
+    href: "/my-company",
+  },
+  {
+    id: 2,
+    title: "Imports & Exports",
+    href: "/imports-exports",
+  },
+  {
+    id: 3,
+    title: "Task Type",
+    href: "/task-type",
+  },
+  {
+    id: 4,
+    title: "Take Backup",
+    href: "/notes-backup",
+  },
+];
