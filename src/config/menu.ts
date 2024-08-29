@@ -1,4 +1,6 @@
 import {
+  ArchiveRestore,
+  ChartNoAxesCombined,
   FileCheck2,
   FolderOpenDot,
   Home,
@@ -42,6 +44,24 @@ export const NAVIGATION_MENUS = [
   },
   {
     id: 6,
+    title: "More",
+    children: [
+      {
+        id: 1,
+        title: "Analytics",
+        href: "/analytics",
+        icon: ChartNoAxesCombined,
+      },
+      {
+        id: 2,
+        title: "Archives",
+        href: "/archive",
+        icon: ArchiveRestore,
+      },
+    ],
+  },
+  {
+    id: 7,
     title: "Starred",
     href: "/projects/manage?filter=starred",
     icon: Star,
