@@ -5,3 +5,7 @@ import { redirect } from "next/navigation";
 export async function login() {
   redirect("/projects/manage");
 }
+
+export async function logout() {
+  redirect("/");
+}

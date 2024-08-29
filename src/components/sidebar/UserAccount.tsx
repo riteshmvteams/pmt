@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/popover";
 import { COMPANY_SETTINGS, PERSONAL_SETTINGS } from "@/config/menu";
 import Link from "next/link";
+import SignOut from "./SignOut";
 
 export default function UserAccount() {
   return (
@@ -48,17 +49,12 @@ export default function UserAccount() {
                   <Link
                     key={menu?.id}
                     href={menu?.href}
-                    className="py-2 px-4 rounded-md text-muted-foreground hover:bg-muted hover:text-primary"
+                    className="py-2 px-4 rounded-md text-muted-foreground hover:bg-muted hover:text-primary text-sm tracking-wide"
                   >
                     {menu.title}
                   </Link>
                 ) : (
-                  <button
-                    key={menu?.id}
-                    className="py-2 px-4 rounded-md text-muted-foreground hover:bg-muted hover:text-primary"
-                  >
-                    {menu.title}
-                  </button>
+                  <SignOut key={menu?.id} title={menu.title} />
                 );
               })}
             </div>
@@ -72,14 +68,14 @@ export default function UserAccount() {
                   <Link
                     key={menu?.id}
                     href={menu?.href}
-                    className="py-2 px-4 rounded-md text-muted-foreground hover:bg-muted hover:text-primary"
+                    className="py-2 px-4 rounded-md text-muted-foreground hover:bg-muted hover:text-primary text-sm tracking-wide"
                   >
                     {menu.title}
                   </Link>
                 ) : (
                   <button
                     key={menu?.id}
-                    className="py-2 px-4 rounded-md text-muted-foreground hover:bg-muted hover:text-primary"
+                    className="py-2 px-4 rounded-md text-muted-foreground hover:bg-muted hover:text-primary text-sm tracking-wide"
                   >
                     {menu.title}
                   </button>
