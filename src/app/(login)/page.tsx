@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -6,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { login } from "@/actions/login";
+import Logo from "@/components/shared/Logo";
 
 export default function LoginPage() {
   return (
@@ -13,15 +13,7 @@ export default function LoginPage() {
       <div className="flex items-center justify-center py-12">
         <div className="mx-auto grid max-w-[500px] w-full gap-20">
           <div className="grid text-left">
-            <figure className="w-28 h-14">
-              <Image
-                src="/images/companyLogo.png"
-                alt="Image"
-                width="1920"
-                height="1080"
-                className="h-full w-full object-contain dark:brightness-[0.2] dark:grayscale"
-              />
-            </figure>
+            <Logo url="/" />
             <h1 className="text-3xl font-bold font-lexend">
               Welcome back! Please Log in to continue.
             </h1>
