@@ -24,24 +24,24 @@ export default function ThemeToggle() {
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent align="end" className="w-36 text-muted-foreground">
         <DropdownMenuItem
           onClick={() => setTheme("light")}
-          className="flex gap-2 items-center cursor-pointer"
+          className="flex gap-2.5 items-center cursor-pointer py-2.5"
         >
-          <Sun className="h-4 w-4" /> Light
+          <Sun className="h-5 w-5" /> Light
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => setTheme("dark")}
-          className="flex gap-2 items-center cursor-pointer"
+          className="flex gap-2.5 items-center cursor-pointer py-2.5"
         >
-          <Moon className="w-4 h-4" /> Dark
+          <Moon className="h-5 w-5" /> Dark
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => setTheme("system")}
-          className="flex gap-2 items-center cursor-pointer"
+          className="flex gap-2.5 items-center cursor-pointer py-2.5"
         >
-          <MonitorCog className="w-4 h-4" /> System
+          <MonitorCog className="h-5 w-5" /> System
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

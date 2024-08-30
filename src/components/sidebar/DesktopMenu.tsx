@@ -46,7 +46,7 @@ export default function DesktopMenu() {
                   )}
                 >
                   <div className="flex gap-3 items-center">
-                    <ListCollapse className="h-4 w-4" />
+                    <ListCollapse className="h-[18px] w-[18px]" />
                     {menu.title}
                   </div>
                 </AccordionTrigger>
@@ -88,7 +88,7 @@ const NavigationLink = ({
           "text-primary bg-transparent"
       )}
     >
-      <menu.icon className="h-4 w-4" />
+      <menu.icon className="h-[18px] w-[18px]" />
       {menu.title}
       {menu?.badge && (
         <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">

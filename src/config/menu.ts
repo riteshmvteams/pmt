@@ -19,7 +19,7 @@ export const NAVIGATION_MENUS = [
   {
     id: 2,
     title: "Projects",
-    href: "/projects/manage",
+    href: "/projects",
     icon: FolderOpenDot,
   },
   {
@@ -63,7 +63,7 @@ export const NAVIGATION_MENUS = [
   {
     id: 7,
     title: "Starred",
-    href: "/projects/manage?filter=starred",
+    href: "/projects?filter=starred",
     icon: Star,
   },
 ];
