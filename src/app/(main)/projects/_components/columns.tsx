@@ -80,7 +80,7 @@ export const getColumns = ({
               onClick={() => setParams("star", "true")}
             >
               <StarIcon className={cn("h-5 w-5 fill-primary text-primary")} />
-              <span>Starred (1)</span>
+              <span>Starred (2)</span>
             </button>
           </div>
         );
