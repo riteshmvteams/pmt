@@ -8,37 +8,38 @@ import {
   Star,
   Users,
 } from "lucide-react";
+import { routes } from "./routes";
 
 export const NAVIGATION_MENUS = [
   {
     id: 1,
     title: "Dashboard",
-    href: "/dashboard",
+    href: routes.dashboard,
     icon: Home,
   },
   {
     id: 2,
     title: "Projects",
-    href: "/projects",
+    href: routes.projects,
     icon: FolderOpenDot,
   },
   {
     id: 3,
     title: "Users",
-    href: "/users",
+    href: routes.users,
     icon: Users,
   },
   {
     id: 4,
     title: "Tasks",
-    href: "/tasks",
+    href: routes.tasks,
     icon: FileCheck2,
     badge: 25,
   },
   {
     id: 5,
     title: "Milestones",
-    href: "/milestones",
+    href: routes.milestones,
     icon: Milestone,
     badge: 11,
   },
@@ -49,13 +50,13 @@ export const NAVIGATION_MENUS = [
       {
         id: 1,
         title: "Analytics",
-        href: "/analytics",
+        href: routes.analytics,
         icon: ChartNoAxesCombined,
       },
       {
         id: 2,
         title: "Archives",
-        href: "/archive",
+        href: routes.archive,
         icon: ArchiveRestore,
       },
     ],
@@ -63,7 +64,7 @@ export const NAVIGATION_MENUS = [
   {
     id: 7,
     title: "Starred",
-    href: "/projects?filter=starred",
+    href: `${routes.projects}?filter=starred`,
     icon: Star,
   },
 ];
@@ -72,27 +73,27 @@ export const PERSONAL_SETTINGS = [
   {
     id: 1,
     title: "My Profile",
-    href: "/users/profile",
+    href: routes.personalSettings.profile,
   },
   {
     id: 2,
     title: "Timelogs",
-    href: "/timelogs",
+    href: routes.personalSettings.timelogs,
   },
   {
     id: 3,
     title: "Notifications",
-    href: "/email-notifications",
+    href: routes.personalSettings.notifications,
   },
   {
     id: 4,
     title: "Email Reports",
-    href: "/email-reports",
+    href: routes.personalSettings.emailReports,
   },
   {
     id: 5,
     title: "Announcements",
-    href: "/announcements",
+    href: routes.personalSettings.announcements,
   },
   {
     id: 6,
@@ -104,21 +105,21 @@ export const COMPANY_SETTINGS = [
   {
     id: 1,
     title: "My Company",
-    href: "/my-company",
+    href: routes.companySettings.myCompany,
   },
   {
     id: 2,
     title: "Imports & Exports",
-    href: "/imports-exports",
+    href: routes.companySettings.importsExports,
   },
   {
     id: 3,
     title: "Task Type",
-    href: "/task-type",
+    href: routes.companySettings.taskType,
   },
   {
     id: 4,
     title: "Take Backup",
-    href: "/notes-backup",
+    href: routes.companySettings.takeBackup,
   },
 ];

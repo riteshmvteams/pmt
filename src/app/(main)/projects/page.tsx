@@ -35,39 +35,18 @@ const ProjectTabs = () => {
       <TabsList className="grid w-full grid-cols-2 max-w-[400px]">
         <TabsTrigger
           value="account"
-          className="data-[state=active]:text-secondAccent"
+          className="data-[state=active]:text-primary"
         >
           Active (20)
         </TabsTrigger>
         <TabsTrigger
           value="password"
-          className="data-[state=active]:text-secondAccent"
+          className="data-[state=active]:text-primary"
         >
           Inactive (5)
         </TabsTrigger>
       </TabsList>
       <TabsContent value="account">
-        {/* <Card>
-          <CardHeader>
-            <CardTitle>Account</CardTitle>
-            <CardDescription>
-              Make changes to your account here.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-2">
-            <div className="space-y-1">
-              <Label htmlFor="name">Name</Label>
-              <Input id="name" defaultValue="Pedro Duarte" />
-            </div>
-            <div className="space-y-1">
-              <Label htmlFor="username">Username</Label>
-              <Input id="username" defaultValue="@peduarte" />
-            </div>
-          </CardContent>
-          <CardFooter>
-            <Button>Save changes</Button>
-          </CardFooter>
-        </Card> */}
         <Table />
       </TabsContent>
       <TabsContent value="password">

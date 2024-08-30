@@ -10,19 +10,23 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { DataTablePagination } from "./DataTablePagination";
+import { DataTableViewOptions } from "./DataTableViewOptions";
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
   table: Table<TData>;
+  viewOptions?: boolean;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
   table,
+  viewOptions = true,
 }: DataTableProps<TData, TValue>) {
   return (
     <div>
+      {viewOptions && <DataTableViewOptions table={table} />}
       <div className="rounded-md border">
         <ReactTable>
           <TableHeader>
@@ -51,7 +55,7 @@ export function DataTable<TData, TValue>({
                   data-state={row.getIsSelected() && "selected"}
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
+                    <TableCell key={cell.id} className="py-1">
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()
@@ -73,10 +77,7 @@ export function DataTable<TData, TValue>({
           </TableBody>
         </ReactTable>
       </div>
-
-      <div className="flex items-center justify-end space-x-2 py-4">
-        <DataTablePagination table={table} />
-      </div>
+      <DataTablePagination table={table} />
     </div>
   );
 }
