@@ -32,27 +32,27 @@ export default function Projects() {
 
 const ProjectTabs = () => {
   return (
-    <Tabs defaultValue="account" className="">
+    <Tabs defaultValue="active" className="">
       <TabsList className="grid w-full grid-cols-2 max-w-[400px]">
         <TabsTrigger
-          value="account"
+          value="active"
           className="data-[state=active]:text-primary"
         >
           Active (20)
         </TabsTrigger>
         <TabsTrigger
-          value="password"
+          value="inactive"
           className="data-[state=active]:text-primary"
         >
           Inactive (5)
         </TabsTrigger>
       </TabsList>
-      <TabsContent value="account">
+      <TabsContent value="active">
         <Suspense fallback="Loading...">
           <Table />
         </Suspense>
       </TabsContent>
-      <TabsContent value="password">
+      <TabsContent value="inactive">
         <Suspense fallback="Loading...">
           <Table />
         </Suspense>
