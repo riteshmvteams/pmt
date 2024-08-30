@@ -31,33 +31,36 @@ export default function DesktopMenu() {
           return menu.href ? (
             <NavigationLink key={menu.id} menu={menu} isChild={false} />
           ) : (
-            <div>
-              <Accordion type="single" collapsible className="w-full">
-                <AccordionItem value="item-1" className="border-b-0 ">
-                  <AccordionTrigger
-                    className={cn(
-                      "flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary hover:no-underline",
-                      (pathname === "/analytics" || pathname === "/archive") &&
-                        "bg-muted"
-                    )}
-                  >
-                    <div className="flex gap-3 items-center">
-                      <ListCollapse className="h-4 w-4" />
-                      {menu.title}
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent className="pb-0">
-                    {menu.children?.map((child) => (
-                      <NavigationLink
-                        key={child.id}
-                        menu={child}
-                        isChild={true}
-                      />
-                    ))}
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
-            </div>
+            <Accordion
+              type="single"
+              collapsible
+              className="w-full"
+              key={menu.id}
+            >
+              <AccordionItem value="item-1" className="border-b-0 ">
+                <AccordionTrigger
+                  className={cn(
+                    "flex items-center gap-3 rounded-lg px-3 py-2.5 text-muted-foreground transition-all hover:text-primary hover:no-underline",
+                    (pathname === "/analytics" || pathname === "/archive") &&
+                      "bg-muted"
+                  )}
+                >
+                  <div className="flex gap-3 items-center">
+                    <ListCollapse className="h-4 w-4" />
+                    {menu.title}
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="pb-0">
+                  {menu.children?.map((child) => (
+                    <NavigationLink
+                      key={child.id}
+                      menu={child}
+                      isChild={true}
+                    />
+                  ))}
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           );
         })}
       </nav>
@@ -77,7 +80,7 @@ const NavigationLink = ({
     <Link
       href={menu.href}
       className={cn(
-        "flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary",
+        "flex items-center gap-3 rounded-lg px-3 py-2.5 text-muted-foreground transition-all hover:text-primary",
         pathname === menu.href && "bg-muted",
         isChild && "pl-8",
         isChild &&
