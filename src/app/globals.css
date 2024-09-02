@@ -30,6 +30,12 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --second-accent: 0 88% 68%;
+    --red: 0 84.2% 60.2%;
+    --redlight: 0 85.7% 97.3%;
+    --green: 142.1 70.6% 45.3%;
+    --greenlight: 138.5 76.5% 96.7%;
+    --yellow: 40.6 96.1% 40.4%;
+    --yellowlight: 54.5 91.7% 95.3%;
   }
 
   .dark {
@@ -58,6 +64,12 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
     --second-accent: 0 88% 68%;
+    --red: 0 85.7% 97.3%;
+    --redlight: 0 84.2% 60.2%;
+    --green: 138.5 76.5% 96.7%;
+    --greenlight: 142.1 76.2% 36.3%;
+    --yellow: 54.5 91.7% 95.3%;
+    --yellowlight: 40.6 96.1% 40.4%;
   }
 }
 
@@ -71,5 +83,10 @@
 }
 
 html {
+  scrollbar-width: thin;
+}
+
+.scrollbar > div,
+.scrollbar {
   scrollbar-width: thin;
 }

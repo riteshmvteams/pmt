@@ -2,14 +2,13 @@
 
 import { DataTable } from "@/components/shared/DataTable/DataTable";
 import { useMemo } from "react";
-import { getColumns, TTask } from "./columns";
+import { getColumns } from "./columns";
 import {
   getCoreRowModel,
   getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-
-const data: TTask[] = [];
+import { TASKS_DATA as data } from "@/lib/constants";
 
 export default function Table() {
   // get the columns data

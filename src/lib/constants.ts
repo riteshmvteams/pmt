@@ -1,3 +1,37 @@
+import { TTask } from "@/app/(main)/tasks/_components/columns";
+import { faker } from "@faker-js/faker";
+
+const tags = [
+  "Development",
+  "R & D",
+  "Testing",
+  "Bug",
+  "Frontend",
+  "Backend",
+  "QA",
+  "CSS",
+];
+
+const status = ["Open", "In Progress", "Resolved"];
+
+export function createRandomUser(): TTask {
+  return {
+    id: faker.number.int({ min: 1, max: 100 }),
+    tag: tags[faker.number.int({ min: 0, max: 7 })],
+    title: faker.commerce.productName(),
+    project_name: "Project Management",
+    created_at: faker.date.anytime(),
+    updated_at: faker.date.anytime(),
+    due_date: faker.date.future(),
+    status: status[faker.number.int({ min: 0, max: 2 })],
+    assign: [],
+  };
+}
+
+export const TASKS_DATA: TTask[] = faker.helpers.multiple(createRandomUser, {
+  count: 50,
+});
+
 export const projectData = [
   {
     id: 1,
@@ -247,3 +281,330 @@ export const projectData = [
     activity: new Date(Date.now()),
   },
 ];
+
+// export const TASKS_DATA = [
+//   {
+//     id: 1,
+//     tag: "Development",
+//     title: "Testing Project Management",
+//     project_name: "Project Management",
+//     created_at: new Date(Date.now()),
+//     updated_at: new Date(Date.now()),
+//     status: "Open",
+//     assign: [
+//       {
+//         id: 1,
+//         profile: "",
+//         name: "Ritesh",
+//       },
+//       {
+//         id: 2,
+//         profile: "",
+//         name: "user 1",
+//       },
+//       {
+//         id: 3,
+//         profile: "",
+//         name: "user 2",
+//       },
+//     ],
+//     due_date: new Date(Date.now()),
+//   },
+//   {
+//     id: 2,
+//     tag: "Check",
+//     title: "Testing Project Management",
+//     project_name: "Project Management",
+//     created_at: new Date(Date.now()),
+//     updated_at: new Date(Date.now()),
+//     status: "In Progress",
+//     assign: [
+//       {
+//         id: 1,
+//         profile: "",
+//         name: "Ritesh",
+//       },
+//       {
+//         id: 2,
+//         profile: "",
+//         name: "user 1",
+//       },
+//       {
+//         id: 3,
+//         profile: "",
+//         name: "user 2",
+//       },
+//     ],
+//     due_date: new Date(Date.now()),
+//   },
+//   {
+//     id: 3,
+//     tag: "Bug",
+//     title: "Create About page",
+//     project_name: "Project Management",
+//     created_at: new Date(Date.now()),
+//     updated_at: new Date(Date.now()),
+//     status: "Resolved",
+//     assign: [
+//       {
+//         id: 1,
+//         profile: "",
+//         name: "Ritesh",
+//       },
+//       {
+//         id: 2,
+//         profile: "",
+//         name: "user 1",
+//       },
+//       {
+//         id: 3,
+//         profile: "",
+//         name: "user 2",
+//       },
+//     ],
+//     due_date: new Date(Date.now()),
+//   },
+//   {
+//     id: 4,
+//     tag: "Backend",
+//     title: "Testing Project Management",
+//     project_name: "Project Management",
+//     created_at: new Date(Date.now()),
+//     updated_at: new Date(Date.now()),
+//     status: "In Progress",
+//     assign: [
+//       {
+//         id: 1,
+//         profile: "",
+//         name: "Ritesh",
+//       },
+//       {
+//         id: 2,
+//         profile: "",
+//         name: "user 1",
+//       },
+//       {
+//         id: 3,
+//         profile: "",
+//         name: "user 2",
+//       },
+//     ],
+//     due_date: new Date(Date.now()),
+//   },
+//   {
+//     id: 5,
+//     tag: "Frontend",
+//     title: "Testing Project Management",
+//     project_name: "Project Management",
+//     created_at: new Date(Date.now()),
+//     updated_at: new Date(Date.now()),
+//     status: "Resolved",
+//     assign: [
+//       {
+//         id: 1,
+//         profile: "",
+//         name: "Ritesh",
+//       },
+//       {
+//         id: 2,
+//         profile: "",
+//         name: "user 1",
+//       },
+//       {
+//         id: 3,
+//         profile: "",
+//         name: "user 2",
+//       },
+//     ],
+//     due_date: new Date(Date.now()),
+//   },
+//   {
+//     id: 6,
+//     tag: "R & D",
+//     title: "Testing Project Management",
+//     project_name: "Project Management",
+//     created_at: new Date(Date.now()),
+//     updated_at: new Date(Date.now()),
+//     status: "Open",
+//     assign: [
+//       {
+//         id: 1,
+//         profile: "",
+//         name: "Ritesh",
+//       },
+//       {
+//         id: 2,
+//         profile: "",
+//         name: "user 1",
+//       },
+//       {
+//         id: 3,
+//         profile: "",
+//         name: "user 2",
+//       },
+//     ],
+//     due_date: new Date(Date.now()),
+//   },
+//   {
+//     id: 7,
+//     tag: "Development",
+//     title: "Testing Project Management",
+//     project_name: "Project Management",
+//     created_at: new Date(Date.now()),
+//     updated_at: new Date(Date.now()),
+//     status: "Open",
+//     assign: [
+//       {
+//         id: 1,
+//         profile: "",
+//         name: "Ritesh",
+//       },
+//       {
+//         id: 2,
+//         profile: "",
+//         name: "user 1",
+//       },
+//       {
+//         id: 3,
+//         profile: "",
+//         name: "user 2",
+//       },
+//     ],
+//     due_date: new Date(Date.now()),
+//   },
+//   {
+//     id: 8,
+//     tag: "Check",
+//     title: "Testing Project Management",
+//     project_name: "Project Management",
+//     created_at: new Date(Date.now()),
+//     updated_at: new Date(Date.now()),
+//     status: "In Progress",
+//     assign: [
+//       {
+//         id: 1,
+//         profile: "",
+//         name: "Ritesh",
+//       },
+//       {
+//         id: 2,
+//         profile: "",
+//         name: "user 1",
+//       },
+//       {
+//         id: 3,
+//         profile: "",
+//         name: "user 2",
+//       },
+//     ],
+//     due_date: new Date(Date.now()),
+//   },
+//   {
+//     id: 9,
+//     tag: "Bug",
+//     title: "Create About page",
+//     project_name: "Project Management",
+//     created_at: new Date(Date.now()),
+//     updated_at: new Date(Date.now()),
+//     status: "Resolved",
+//     assign: [
+//       {
+//         id: 1,
+//         profile: "",
+//         name: "Ritesh",
+//       },
+//       {
+//         id: 2,
+//         profile: "",
+//         name: "user 1",
+//       },
+//       {
+//         id: 3,
+//         profile: "",
+//         name: "user 2",
+//       },
+//     ],
+//     due_date: new Date(Date.now()),
+//   },
+//   {
+//     id: 10,
+//     tag: "Backend",
+//     title: "Testing Project Management",
+//     project_name: "Project Management",
+//     created_at: new Date(Date.now()),
+//     updated_at: new Date(Date.now()),
+//     status: "In Progress",
+//     assign: [
+//       {
+//         id: 1,
+//         profile: "",
+//         name: "Ritesh",
+//       },
+//       {
+//         id: 2,
+//         profile: "",
+//         name: "user 1",
+//       },
+//       {
+//         id: 3,
+//         profile: "",
+//         name: "user 2",
+//       },
+//     ],
+//     due_date: new Date(Date.now()),
+//   },
+//   {
+//     id: 11,
+//     tag: "Frontend",
+//     title: "Testing Project Management",
+//     project_name: "Project Management",
+//     created_at: new Date(Date.now()),
+//     updated_at: new Date(Date.now()),
+//     status: "Resolved",
+//     assign: [
+//       {
+//         id: 1,
+//         profile: "",
+//         name: "Ritesh",
+//       },
+//       {
+//         id: 2,
+//         profile: "",
+//         name: "user 1",
+//       },
+//       {
+//         id: 3,
+//         profile: "",
+//         name: "user 2",
+//       },
+//     ],
+//     due_date: new Date(Date.now()),
+//   },
+//   {
+//     id: 12,
+//     tag: "R & D",
+//     title: "Testing Project Management",
+//     project_name: "Project Management",
+//     created_at: new Date(Date.now()),
+//     updated_at: new Date(Date.now()),
+//     status: "Open",
+//     assign: [
+//       {
+//         id: 1,
+//         profile: "",
+//         name: "Ritesh",
+//       },
+//       {
+//         id: 2,
+//         profile: "",
+//         name: "user 1",
+//       },
+//       {
+//         id: 3,
+//         profile: "",
+//         name: "user 2",
+//       },
+//     ],
+//     due_date: new Date(Date.now()),
+//   },
+// ];

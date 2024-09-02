@@ -18,9 +18,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 import { routes } from "@/config/routes";
 import { formatDate } from "@/lib/helpers";
+import Text from "@/components/shared/Text";
 
 export type TProject = {
   id: number;
@@ -97,44 +97,32 @@ export const getColumns = ({
                 )}
               />
             </button>
-            <Link
-              href={routes.projectDetail(id)}
-              className="text-sm tracking-wide font-lexend font-light hover:underline underline-offset-2"
-            >
+            <Text as="link" href={routes.projectDetail(id)}>
               {title}
-            </Link>
+            </Text>
           </div>
         );
       },
     },
     {
       accessorKey: "users",
-      header: "No. of Users",
+      header: () => <Text variant="title">No. of Users</Text>,
       cell: ({ row }) => {
         const { users } = row.original;
-        return (
-          <span className="text-sm tracking-wide font-lexend font-light">
-            {users}
-          </span>
-        );
+        return <Text>{users}</Text>;
       },
     },
     {
       accessorKey: "activity",
-      header: "Recent Activity",
+      header: () => <Text variant="title">Recent Activity</Text>,
       cell: ({ row }) => {
         const { activity } = row.original;
-        return (
-          <span className="text-sm tracking-wide font-lexend font-light">
-            {formatDate(activity)}
-          </span>
-        );
+        return <Text>{formatDate(activity)}</Text>;
       },
     },
     {
       id: "actions",
-      cell: ({ row }) => {
-        const project = row.original;
+      cell: () => {
         return (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>

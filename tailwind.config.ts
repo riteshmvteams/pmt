@@ -58,6 +58,14 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        status: {
+          destructive: "hsl(var(--red))",
+          destructiveBg: "hsl(var(--redlight))",
+          success: "hsl(var(--green))",
+          successBg: "hsl(var(--greenlight))",
+          pending: "hsl(var(--yellow))",
+          pendingBg: "hsl(var(--yellowlight))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
