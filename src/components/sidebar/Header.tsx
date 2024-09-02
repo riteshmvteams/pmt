@@ -2,9 +2,9 @@ import { Search } from "lucide-react";
 
 import MobileMenu from "./MobileMenu";
 import { Input } from "../ui/input";
-import ThemeToggle from "../shared/ThemeToggle";
 import UserAccount from "./UserAccount";
 import CreateNew from "./CreateNew";
+import ThemeSettings from "./ThemeSettings";
 
 export default function Header() {
   return (
@@ -23,7 +23,7 @@ export default function Header() {
         </form>
       </div>
       <CreateNew />
-      <ThemeToggle />
+      <ThemeSettings />
       <UserAccount />
     </header>
   );
