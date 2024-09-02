@@ -23,6 +23,7 @@ import {
   Trash2,
   Undo,
 } from "lucide-react";
+import { routes } from "@/config/routes";
 
 type User = {
   id: number;
@@ -151,13 +152,25 @@ export const getColumns = (): ColumnDef<TTask>[] => {
         );
       },
       cell: ({ row }) => {
-        const { tag, title } = row.original;
+        const { tag, title, created_at, updated_at, id } = row.original;
         return (
           <div className="flex items-center gap-1 p-1">
             <Badge variant="outline" className="rounded-sm font-normal">
               {tag}
             </Badge>
-            <Text className="text-[13px]">{trimText(title, 30)}</Text>
+            <div className="group">
+              <Text
+                className="text-sm group-hover:underline"
+                as="link"
+                href={routes.taskDetail(id)}
+              >
+                {trimText(title, 30)}{" "}
+              </Text>
+              <span className="text-xs text-muted-foreground no-underline">
+                {updated_at > created_at ? "updated" : "Created"} By Ritesh on{" "}
+                {formatDate(updated_at > created_at ? updated_at : created_at)}
+              </span>
+            </div>
           </div>
         );
       },

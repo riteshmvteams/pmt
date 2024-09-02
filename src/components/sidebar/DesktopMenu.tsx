@@ -91,7 +91,7 @@ const NavigationLink = ({
       <menu.icon className="h-[18px] w-[18px]" />
       {menu.title}
       {menu?.badge && (
-        <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
+        <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full font-lexend font-normal">
           {menu?.badge}
         </Badge>
       )}

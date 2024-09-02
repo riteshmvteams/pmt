@@ -2,7 +2,7 @@ import CustomBreadcrumb from "@/components/shared/CustomBreadcrumb";
 import { routes } from "@/config/routes";
 import { House } from "lucide-react";
 
-export default function page({ params }: { params: { id: string } }) {
+export default function TaskDetail({ params }: { params: { id: string } }) {
   const path = [
     {
       id: 1,
@@ -12,8 +12,8 @@ export default function page({ params }: { params: { id: string } }) {
     },
     {
       id: 2,
-      title: "Projects",
-      href: routes.projects,
+      title: "Tasks",
+      href: routes.tasks,
     },
     {
       id: 3,
