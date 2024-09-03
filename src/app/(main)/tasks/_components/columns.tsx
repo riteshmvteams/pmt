@@ -26,6 +26,7 @@ import {
 import { routes } from "@/config/routes";
 import Title from "@/components/shared/Title";
 import CustomTooltip from "@/components/shared/CustomTooltip";
+import { Checkbox } from "@/components/ui/checkbox";
 
 type User = {
   id: number;
@@ -129,6 +130,30 @@ export const getStatusBadge = (status: string) => {
 
 export const getColumns = (): ColumnDef<TTask>[] => {
   return [
+    {
+      id: "select",
+      header: ({ table }) => (
+        <Checkbox
+          checked={
+            table.getIsAllPageRowsSelected() ||
+            (table.getIsSomePageRowsSelected() && "indeterminate")
+          }
+          onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+          aria-label="Select all"
+          className="mt-1.5"
+        />
+      ),
+      cell: ({ row }) => (
+        <Checkbox
+          checked={row.getIsSelected()}
+          onCheckedChange={(value) => row.toggleSelected(!!value)}
+          aria-label="Select row"
+          className="mt-1"
+        />
+      ),
+      enableSorting: false,
+      enableHiding: false,
+    },
     {
       accessorKey: "id",
       header: () => {

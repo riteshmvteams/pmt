@@ -23,6 +23,12 @@ export default function MileStoneTable() {
     getPaginationRowModel: getPaginationRowModel(),
   });
 
+  // Get the selected rows
+  const selectedRows = table
+    .getSelectedRowModel()
+    .rows.map((row) => row.original);
+  console.log(selectedRows, "Selected Rows");
+
   return (
     <div>
       <DataTable

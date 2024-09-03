@@ -22,6 +22,9 @@ import { routes } from "@/config/routes";
 import { formatDate } from "@/lib/helpers";
 import Text from "@/components/shared/Text";
 import Title from "@/components/shared/Title";
+import React, { HTMLProps } from "react";
+import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export type TProject = {
   id: number;
@@ -57,9 +60,35 @@ const tableActions = [
 export const getColumns = (): ColumnDef<TProject>[] => {
   return [
     {
+      id: "select",
+      header: ({ table }) => (
+        <Checkbox
+          checked={
+            table.getIsAllPageRowsSelected() ||
+            (table.getIsSomePageRowsSelected() && "indeterminate")
+          }
+          onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+          aria-label="Select all"
+        />
+      ),
+      cell: ({ row }) => (
+        <Checkbox
+          checked={row.getIsSelected()}
+          onCheckedChange={(value) => row.toggleSelected(!!value)}
+          aria-label="Select row"
+        />
+      ),
+      enableSorting: false,
+      enableHiding: false,
+    },
+    {
       accessorKey: "id",
       header: () => {
-        return <Title className="w-[50px]">ID</Title>;
+        return (
+          <div>
+            <Title className="w-[50px]">ID</Title>
+          </div>
+        );
       },
       cell: ({ row }) => {
         return <Text>{row.original.id}</Text>;
