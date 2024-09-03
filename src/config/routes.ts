@@ -4,6 +4,7 @@ export const routes = {
   projects: "/projects",
   projectDetail: (id: number) => `/projects/${id}`,
   users: "/users",
+  userDetail: (id: number) => `/users/${id}`,
   tasks: "/tasks",
   taskDetail: (id: number) => `/tasks/${id}`,
   milestones: "/milestones",

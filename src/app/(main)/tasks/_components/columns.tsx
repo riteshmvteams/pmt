@@ -36,11 +36,11 @@ export type TTask = {
   tag: string;
   title: string;
   project_name: string;
-  created_at: Date;
-  updated_at: Date;
+  created_at: string;
+  updated_at: string;
   status: string;
   assign: User[];
-  due_date: Date;
+  due_date: string;
 };
 
 const tableActions = [

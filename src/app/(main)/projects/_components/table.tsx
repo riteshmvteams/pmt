@@ -10,7 +10,7 @@ import {
 import { useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import { useSetParams } from "@/hooks/useSetParams";
-import { projectData } from "@/lib/constants";
+import { PROJECTS_DATA } from "@/lib/constants";
 
 export default function Table() {
   const searchParams = useSearchParams();
@@ -18,7 +18,7 @@ export default function Table() {
   const star = searchParams.get("star");
 
   const starredData = useMemo(() => {
-    return projectData.filter((project) => project.isStarred);
+    return PROJECTS_DATA.filter((project) => project.isStarred);
   }, []);
 
   // get the columns data
@@ -27,7 +27,7 @@ export default function Table() {
   }, [star, setParams]);
 
   const table = useReactTable({
-    data: star === "true" ? starredData : projectData,
+    data: star === "true" ? starredData : PROJECTS_DATA,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
@@ -37,7 +37,7 @@ export default function Table() {
     <div>
       <DataTable
         columns={columns}
-        data={projectData}
+        data={PROJECTS_DATA}
         table={table}
         viewOptions={false}
       />

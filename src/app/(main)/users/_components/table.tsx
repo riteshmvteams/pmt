@@ -1,16 +1,16 @@
 "use client";
 
-import { DataTable } from "@/components/shared/DataTable/DataTable";
 import { useMemo } from "react";
-import { getColumns } from "./columns";
 import {
   getCoreRowModel,
   getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { TASKS_DATA as data } from "@/lib/constants";
 
-export default function TaskTable() {
+import { DataTable } from "@/components/shared/DataTable/DataTable";
+import { getColumns, TUser } from "./columns";
+
+export default function UserTable({ data }: { data: TUser[] }) {
   // get the columns data
   const columns = useMemo(() => {
     return getColumns();

@@ -1,8 +1,9 @@
-import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { Suspense } from "react";
-import Table from "./table";
+
+import { Tabs, TabsContent } from "@/components/ui/tabs";
 import CustomTabTrigger from "@/components/shared/CustomTabTrigger";
 import { Button } from "@/components/ui/button";
+import TaskTable from "./table";
 
 const tabList = [
   {
@@ -27,7 +28,7 @@ const TaskTabs = () => {
       <TabsContent value="overview">Overview</TabsContent>
       <TabsContent value="tasks">
         <Suspense fallback="Loading...">
-          <Table />
+          <TaskTable />
         </Suspense>
       </TabsContent>
     </Tabs>

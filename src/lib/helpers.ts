@@ -1,4 +1,4 @@
-export const formatDate = (date: Date, withTime = true) => {
+export const formatDate = (date: Date | string, withTime = true) => {
   const options: Intl.DateTimeFormatOptions = {
     year: "numeric",
     month: "short",

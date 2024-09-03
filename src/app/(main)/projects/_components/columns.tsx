@@ -27,7 +27,7 @@ export type TProject = {
   isStarred: boolean;
   title: string;
   users: number;
-  activity: Date;
+  activity: string;
 };
 
 const tableActions = [

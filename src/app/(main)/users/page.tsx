@@ -1,19 +1,28 @@
-import React from "react";
+import { House } from "lucide-react";
+
+import UserTabs from "./_components/UserTabs";
+import CustomBreadcrumb from "@/components/shared/CustomBreadcrumb";
+
+const path = [
+  {
+    id: 1,
+    title: "Dashboard",
+    href: "/dashboard",
+    icon: <House className="w-4 h-4" />,
+  },
+  {
+    id: 2,
+    title: "Users",
+  },
+];
 
 export default function Users() {
   return (
     <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
       <div className="flex items-center">
-        <h1 className="text-lg font-semibold md:text-2xl">Users</h1>
+        <CustomBreadcrumb paths={path} />
       </div>
-      <div
-        className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm"
-        x-chunk="dashboard-02-chunk-1"
-      >
-        <div className="flex flex-col items-center gap-1 text-center">
-          <h3 className="text-2xl font-bold tracking-tight">No Users</h3>
-        </div>
-      </div>
+      <UserTabs />
     </main>
   );
 }
