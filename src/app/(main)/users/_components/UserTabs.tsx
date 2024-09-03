@@ -5,6 +5,8 @@ import CustomTabTrigger from "@/components/shared/CustomTabTrigger";
 import { Button } from "@/components/ui/button";
 import UserTable from "./table";
 import { Users_DATA } from "@/lib/constants";
+import ViewSetting from "@/components/shared/ViewSetting";
+import UsersSort from "./UsersSort";
 
 const activeUsers = Users_DATA.filter((user) => user.user_status === "active");
 const invitedUsers = Users_DATA.filter(
@@ -39,7 +41,9 @@ const UserTabs = () => {
   return (
     <Tabs defaultValue="active">
       <CustomTabTrigger tabs={tabList} className="grid-cols-3 max-w-[500px]">
-        <Button>Invite User</Button>
+        <Button>Invite Users</Button>
+        <UsersSort />
+        <ViewSetting />
       </CustomTabTrigger>
       <TabsContent value="active">
         <Suspense fallback="Loading...">
