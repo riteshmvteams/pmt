@@ -11,9 +11,12 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { TASKS_DATA as data } from "@/lib/constants";
+import { useTable } from "@/hooks/useTable";
 
 export default function TaskTable() {
   const [sorting, setSorting] = React.useState<SortingState>([]);
+  const [rowSelection, setRowSelection] = React.useState({});
+
   // get the columns data
   const columns = useMemo(() => {
     return getColumns();
@@ -26,10 +29,13 @@ export default function TaskTable() {
     getPaginationRowModel: getPaginationRowModel(),
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
+    onRowSelectionChange: setRowSelection,
     state: {
       sorting,
+      rowSelection,
     },
   });
+  const { getRowId } = useTable({ table });
 
   return (
     <div>
@@ -39,6 +45,7 @@ export default function TaskTable() {
         table={table}
         viewOptions={false}
       />
+      {Object.keys(rowSelection).length ? <div>Update</div> : null}
     </div>
   );
 }
