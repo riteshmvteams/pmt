@@ -21,6 +21,7 @@ import { cn } from "@/lib/utils";
 import { routes } from "@/config/routes";
 import { formatDate } from "@/lib/helpers";
 import Text from "@/components/shared/Text";
+import Title from "@/components/shared/Title";
 
 export type TProject = {
   id: number;
@@ -58,11 +59,7 @@ export const getColumns = (): ColumnDef<TProject>[] => {
     {
       accessorKey: "id",
       header: () => {
-        return (
-          <Text variant="title" className="text-xs">
-            ID
-          </Text>
-        );
+        return <Title className="w-[50px]">ID</Title>;
       },
       cell: ({ row }) => {
         return <Text>{row.original.id}</Text>;
@@ -71,11 +68,7 @@ export const getColumns = (): ColumnDef<TProject>[] => {
     {
       accessorKey: "title",
       header: () => {
-        return (
-          <Text variant="title" className="text-xs">
-            Milestone Title
-          </Text>
-        );
+        return <Title className="w-[200px]">Milestone Title</Title>;
       },
       cell: ({ row }) => {
         return (
@@ -90,16 +83,12 @@ export const getColumns = (): ColumnDef<TProject>[] => {
       },
     },
     {
-      accessorKey: "title",
+      accessorKey: "users",
       header: () => {
-        return (
-          <Text variant="title" className="text-xs">
-            Taks Count
-          </Text>
-        );
+        return <Title className="w-[100px]">Taks Count</Title>;
       },
       cell: ({ row }) => {
-        return <Text className="p-1.5">{row.original.id}</Text>;
+        return <Text className="p-1.5">{row.original.users}</Text>;
       },
     },
   ];

@@ -19,8 +19,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import { routes } from "@/config/routes";
-import { formatDate } from "@/lib/helpers";
+import { formatDate, trimText } from "@/lib/helpers";
 import Text from "@/components/shared/Text";
+import Title from "@/components/shared/Title";
 
 export type TProject = {
   id: number;
@@ -65,7 +66,7 @@ export const getColumns = ({
       accessorKey: "title",
       header: () => {
         return (
-          <div className="flex gap-6 items-center font-lexend">
+          <div className="flex gap-6 items-center font-lexend w-[400px]">
             <button
               className={cn("font-bold", star === "true" ? "" : "text-primary")}
               onClick={() => setParams("star", "delete")}
@@ -98,7 +99,7 @@ export const getColumns = ({
               />
             </button>
             <Text as="link" href={routes.projectDetail(id)}>
-              {title}
+              {trimText(title, 30)}
             </Text>
           </div>
         );
@@ -106,7 +107,7 @@ export const getColumns = ({
     },
     {
       accessorKey: "users",
-      header: () => <Text variant="title">No. of Users</Text>,
+      header: () => <Title className="w-[150px]">No. of Users</Title>,
       cell: ({ row }) => {
         const { users } = row.original;
         return <Text>{users}</Text>;
@@ -114,10 +115,10 @@ export const getColumns = ({
     },
     {
       accessorKey: "activity",
-      header: () => <Text variant="title">Recent Activity</Text>,
+      header: () => <Title className="w-[150px]">Recent Activity</Title>,
       cell: ({ row }) => {
         const { activity } = row.original;
-        return <Text>{formatDate(activity)}</Text>;
+        return <Text className="text-[13px]">{formatDate(activity)}</Text>;
       },
     },
     {

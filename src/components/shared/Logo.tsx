@@ -9,6 +9,7 @@ export default function Logo({ url }: { url: string }) {
         alt="Image"
         width="1920"
         height="1080"
+        priority
         className="h-full w-full object-contain dark:brightness-[0.2] dark:grayscale"
       />
     </Link>

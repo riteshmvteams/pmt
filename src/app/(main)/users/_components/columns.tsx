@@ -22,6 +22,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
+import Title from "@/components/shared/Title";
 
 export type TUser = {
   id: number;
@@ -113,18 +114,14 @@ export const getColumns = (): ColumnDef<TUser>[] => {
     {
       accessorKey: "username",
       header: () => {
-        return (
-          <Text variant="title" className="text-xs">
-            Users Name
-          </Text>
-        );
+        return <Title className="w-[180px]">Users Name</Title>;
       },
       cell: ({ row }) => {
         return (
           <Text
             as="link"
             href={routes.userDetail(row.original.id)}
-            className="block p-1.5 text-[13px]"
+            className="block p-1.5"
           >
             {row.original.username}
           </Text>
@@ -134,22 +131,14 @@ export const getColumns = (): ColumnDef<TUser>[] => {
     {
       accessorKey: "role",
       header: () => {
-        return (
-          <Text variant="title" className="text-xs">
-            Role
-          </Text>
-        );
+        return <Title className="w-[120px]">Role</Title>;
       },
       cell: ({ row }) => getRoleBadge(row.original.role),
     },
     {
       accessorKey: "email",
       header: () => {
-        return (
-          <Text variant="title" className="text-xs">
-            Email
-          </Text>
-        );
+        return <Title className="w-[150px]">Email</Title>;
       },
       cell: ({ row }) => {
         return <Text className="text-[13px]">{row.original.email}</Text>;
@@ -158,11 +147,7 @@ export const getColumns = (): ColumnDef<TUser>[] => {
     {
       accessorKey: "projects",
       header: () => {
-        return (
-          <Text variant="title" className="text-xs">
-            Project Assigned
-          </Text>
-        );
+        return <Title className="w-[120px]">Project Assigned</Title>;
       },
       cell: ({ row }) => {
         return <Text className="text-[13px]">{row.original.projects}</Text>;
@@ -171,11 +156,7 @@ export const getColumns = (): ColumnDef<TUser>[] => {
     {
       accessorKey: "created_at",
       header: () => {
-        return (
-          <Text variant="title" className="text-xs">
-            Last Activity
-          </Text>
-        );
+        return <Title className="w-[150px]">Last Activity</Title>;
       },
       cell: ({ row }) => {
         return (

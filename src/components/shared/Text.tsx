@@ -21,8 +21,8 @@ export default function Text({
       <Link
         href={href!}
         className={cn(
-          "text-sm tracking-wide font-lexend font-light hover:underline underline-offset-2",
-          variant === "title" ? "font-semibold" : "font-light",
+          "text-sm tracking-wide hover:underline underline-offset-2",
+          variant === "title" ? "font-semibold" : "font-normal",
           className
         )}
       >
@@ -34,8 +34,8 @@ export default function Text({
   return (
     <p
       className={cn(
-        "text-sm tracking-normal font-lexend",
-        variant === "title" ? "font-semibold" : "font-light",
+        "text-sm tracking-normal",
+        variant === "title" ? "font-semibold" : "font-normal",
         className
       )}
     >

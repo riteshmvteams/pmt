@@ -2,11 +2,11 @@
 
 import { cn } from "@/lib/utils";
 import { LayoutGrid, List } from "lucide-react";
-import { useState } from "react";
 import CustomTooltip from "./CustomTooltip";
+import { useView } from "@/store/dataView";
 
 export default function ViewSetting() {
-  const [isGrid, setIsGrid] = useState(false);
+  const { isGrid, updateView } = useView((state) => state);
 
   return (
     <div className="flex text-muted-foreground border rounded-md">
@@ -16,7 +16,7 @@ export default function ViewSetting() {
             "px-3 h-10 rounded-md",
             isGrid ? "text-primary-foreground bg-primary" : ""
           )}
-          onClick={() => setIsGrid(true)}
+          onClick={() => updateView(true)}
         >
           <LayoutGrid className="h-5 w-5" />
         </button>
@@ -27,7 +27,7 @@ export default function ViewSetting() {
             "px-3 h-10 rounded-md",
             isGrid ? "" : "text-primary-foreground bg-primary"
           )}
-          onClick={() => setIsGrid(false)}
+          onClick={() => updateView(false)}
         >
           <List className="h-5 w-5" />
         </button>

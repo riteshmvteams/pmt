@@ -24,6 +24,8 @@ import {
   Undo,
 } from "lucide-react";
 import { routes } from "@/config/routes";
+import Title from "@/components/shared/Title";
+import CustomTooltip from "@/components/shared/CustomTooltip";
 
 type User = {
   id: number;
@@ -130,14 +132,10 @@ export const getColumns = (): ColumnDef<TTask>[] => {
     {
       accessorKey: "id",
       header: () => {
-        return (
-          <Text variant="title" className="text-xs w-[50px]">
-            Task
-          </Text>
-        );
+        return <Title className="w-[50px]">Task</Title>;
       },
       cell: ({ row }) => {
-        return <Text>{row.original.id}</Text>;
+        return <Text className="text-[13px]">{row.original.id}</Text>;
       },
     },
     {
@@ -147,7 +145,7 @@ export const getColumns = (): ColumnDef<TTask>[] => {
           <DataTableColumnHeader
             column={column}
             title="Title"
-            className="font-lexend text-xs w-[500px]"
+            className="font-lexend w-[550px]"
           />
         );
       },
@@ -155,22 +153,26 @@ export const getColumns = (): ColumnDef<TTask>[] => {
         const { tag, title, created_at, updated_at, id } = row.original;
         return (
           <div className="flex items-center gap-1 p-1">
-            <Badge variant="outline" className="rounded-sm font-normal">
+            <Badge variant="outline" className="rounded-sm">
               {tag}
             </Badge>
-            <div className="group">
-              <Text
-                className="text-sm group-hover:underline"
-                as="link"
-                href={routes.taskDetail(id)}
-              >
-                {trimText(title, 30)}{" "}
-              </Text>
-              <span className="text-xs text-muted-foreground no-underline">
-                {updated_at > created_at ? "updated" : "Created"} By Ritesh on{" "}
-                {formatDate(updated_at > created_at ? updated_at : created_at)}
-              </span>
-            </div>
+            <CustomTooltip title={title}>
+              <div className="group">
+                <Text
+                  className="text-sm group-hover:underline"
+                  as="link"
+                  href={routes.taskDetail(id)}
+                >
+                  {trimText(title, 20)}{" "}
+                </Text>
+                <span className="text-xs text-muted-foreground no-underline">
+                  {updated_at > created_at ? "updated" : "Created"} By Ritesh on{" "}
+                  {formatDate(
+                    updated_at > created_at ? updated_at : created_at
+                  )}
+                </span>
+              </div>
+            </CustomTooltip>
           </div>
         );
       },
@@ -178,11 +180,7 @@ export const getColumns = (): ColumnDef<TTask>[] => {
     {
       accessorKey: "status",
       header: () => {
-        return (
-          <Text variant="title" className="text-xs w-[150px]">
-            Status
-          </Text>
-        );
+        return <Title className="w-[150px]">Status</Title>;
       },
       cell: ({ row }) => {
         return getStatusBadge(row.original.status);
@@ -191,11 +189,7 @@ export const getColumns = (): ColumnDef<TTask>[] => {
     {
       accessorKey: "created_at",
       header: () => {
-        return (
-          <Text variant="title" className="text-xs w-[100px]">
-            Created At
-          </Text>
-        );
+        return <Title className="w-[100px]">Created At</Title>;
       },
       cell: ({ row }) => {
         return (
@@ -208,11 +202,7 @@ export const getColumns = (): ColumnDef<TTask>[] => {
     {
       accessorKey: "updated_at",
       header: () => {
-        return (
-          <Text variant="title" className="text-xs w-[100px]">
-            Updated At
-          </Text>
-        );
+        return <Title className="w-[100px]">Updated At</Title>;
       },
       cell: ({ row }) => {
         return (
