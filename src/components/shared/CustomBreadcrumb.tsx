@@ -6,6 +6,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import Link from "next/link";
 import React from "react";
 
 type Props = {
@@ -25,12 +26,11 @@ export default function CustomBreadcrumb({ paths }: Props) {
           return path?.href ? (
             <React.Fragment key={path?.id}>
               <BreadcrumbItem>
-                <BreadcrumbLink
-                  href={path?.href}
-                  className="flex items-center gap-1"
-                >
-                  {path?.icon ? path?.icon : null}
-                  {path?.title}
+                <BreadcrumbLink asChild className="flex items-center gap-1">
+                  <Link href={path?.href}>
+                    {path?.icon ? path?.icon : null}
+                    {path?.title}
+                  </Link>
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
@@ -41,28 +41,6 @@ export default function CustomBreadcrumb({ paths }: Props) {
             </BreadcrumbItem>
           );
         })}
-        {/* <BreadcrumbItem>
-          <BreadcrumbLink href="/">Home</BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1">
-              <BreadcrumbEllipsis className="h-4 w-4" />
-              <span className="sr-only">Toggle menu</span>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="start">
-              <DropdownMenuItem>Documentation</DropdownMenuItem>
-              <DropdownMenuItem>Themes</DropdownMenuItem>
-              <DropdownMenuItem>GitHub</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          <BreadcrumbLink href="/docs/components">Components</BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator /> */}
       </BreadcrumbList>
     </Breadcrumb>
   );
