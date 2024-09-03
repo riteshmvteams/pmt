@@ -8,6 +8,7 @@ export const routes = {
   tasks: "/tasks",
   taskDetail: (id: number) => `/tasks/${id}`,
   milestones: "/milestones",
+  milestoneDetail: (id: number) => `/milestones/${id}`,
   analytics: "/analytics",
   archive: "/archive",
 
