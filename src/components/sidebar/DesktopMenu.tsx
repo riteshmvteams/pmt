@@ -68,7 +68,7 @@ export default function DesktopMenu() {
   );
 }
 
-const NavigationLink = ({
+export const NavigationLink = ({
   menu,
   isChild,
 }: {

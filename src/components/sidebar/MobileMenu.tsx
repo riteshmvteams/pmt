@@ -1,19 +1,22 @@
-import Link from "next/link";
+"use client";
 
-import {
-  Home,
-  LineChart,
-  Menu,
-  Package,
-  Package2,
-  ShoppingCart,
-  Users,
-} from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { usePathname } from "next/navigation";
+import { ListCollapse, Menu } from "lucide-react";
+
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { NAVIGATION_MENUS } from "@/config/menu";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { NavigationLink } from "./DesktopMenu";
 
 export default function MobileMenu() {
+  const pathname = usePathname();
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -23,53 +26,42 @@ export default function MobileMenu() {
         </Button>
       </SheetTrigger>
       <SheetContent side="left" className="flex flex-col">
-        <nav className="grid gap-2 text-lg font-medium">
-          <Link
-            href="#"
-            className="flex items-center gap-2 text-lg font-semibold"
-          >
-            <Package2 className="h-6 w-6" />
-            <span className="sr-only">Acme Inc</span>
-          </Link>
-          <Link
-            href="#"
-            className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-          >
-            <Home className="h-5 w-5" />
-            Dashboard
-          </Link>
-          <Link
-            href="#"
-            className="mx-[-0.65rem] flex items-center gap-4 rounded-xl bg-muted px-3 py-2 text-foreground hover:text-foreground"
-          >
-            <ShoppingCart className="h-5 w-5" />
-            Orders
-            <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-              6
-            </Badge>
-          </Link>
-          <Link
-            href="#"
-            className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-          >
-            <Package className="h-5 w-5" />
-            Products
-          </Link>
-          <Link
-            href="#"
-            className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-          >
-            <Users className="h-5 w-5" />
-            Customers
-          </Link>
-          <Link
-            href="#"
-            className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-          >
-            <LineChart className="h-5 w-5" />
-            Analytics
-          </Link>
-        </nav>
+        {NAVIGATION_MENUS?.map((menu) => {
+          return menu.href ? (
+            <NavigationLink key={menu.id} menu={menu} isChild={false} />
+          ) : (
+            <Accordion
+              type="single"
+              collapsible
+              className="w-full"
+              key={menu.id}
+            >
+              <AccordionItem value="item-1" className="border-b-0 ">
+                <AccordionTrigger
+                  className={cn(
+                    "flex items-center gap-3 rounded-lg px-3 py-2.5 text-muted-foreground transition-all hover:text-primary hover:no-underline",
+                    (pathname === "/analytics" || pathname === "/archive") &&
+                      "bg-muted"
+                  )}
+                >
+                  <div className="flex gap-3 items-center">
+                    <ListCollapse className="h-[18px] w-[18px]" />
+                    {menu.title}
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="pb-0">
+                  {menu.children?.map((child) => (
+                    <NavigationLink
+                      key={child.id}
+                      menu={child}
+                      isChild={true}
+                    />
+                  ))}
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          );
+        })}
       </SheetContent>
     </Sheet>
   );
