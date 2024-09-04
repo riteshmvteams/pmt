@@ -1,9 +1,11 @@
 "use client";
 
-import { useMemo } from "react";
+import React, { useMemo } from "react";
 import {
   getCoreRowModel,
   getPaginationRowModel,
+  getSortedRowModel,
+  SortingState,
   useReactTable,
 } from "@tanstack/react-table";
 
@@ -11,6 +13,7 @@ import { DataTable } from "@/components/shared/DataTable/DataTable";
 import { getColumns, TUser } from "./columns";
 
 export default function UserTable({ data }: { data: TUser[] }) {
+  const [sorting, setSorting] = React.useState<SortingState>([]);
   // get the columns data
   const columns = useMemo(() => {
     return getColumns();
@@ -21,6 +24,11 @@ export default function UserTable({ data }: { data: TUser[] }) {
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    onSortingChange: setSorting,
+    getSortedRowModel: getSortedRowModel(),
+    state: {
+      sorting,
+    },
   });
 
   return (

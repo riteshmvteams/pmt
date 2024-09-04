@@ -1,6 +1,6 @@
 import { TProject } from "@/app/(main)/projects/_components/columns";
 import { TTask } from "@/app/(main)/tasks/_components/columns";
-import { TUser } from "@/app/(main)/users/_components/columns";
+import { TUser } from "@/components/shared/userTable/columns";
 import { faker } from "@faker-js/faker";
 
 // ========= Tasks data

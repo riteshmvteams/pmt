@@ -1,8 +1,21 @@
+import CheckInButton from "@/components/shared/CheckInButton";
 import CustomBreadcrumb from "@/components/shared/CustomBreadcrumb";
 import { routes } from "@/config/routes";
+import { PROJECTS_DATA } from "@/lib/constants";
 import { House } from "lucide-react";
+import ProjectDetailTabs from "./_components/ProjectDetailTabs";
 
-export default function page({ params }: { params: { id: string } }) {
+export default function ProjectDetail({
+  params,
+  searchParams,
+}: {
+  params: { id: string };
+  searchParams: { tab: string };
+}) {
+  const data = PROJECTS_DATA.filter(
+    (project) => project.id === Number(params.id)
+  );
+
   const path = [
     {
       id: 1,
@@ -17,21 +30,23 @@ export default function page({ params }: { params: { id: string } }) {
     },
     {
       id: 3,
-      title: params?.id,
+      title: data?.length ? data[0]?.title : params.id,
     },
   ];
 
   return (
     <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
-      <div className="flex items-center">
+      <div className="flex items-center justify-between">
         <CustomBreadcrumb paths={path} />
+        <CheckInButton />
       </div>
-      <div
+      <ProjectDetailTabs tab={searchParams?.tab} />
+      {/* <div
         className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm"
         x-chunk="dashboard-02-chunk-1"
       >
         <div className="flex flex-col items-center gap-1 text-center"></div>
-      </div>
+      </div> */}
     </main>
   );
 }

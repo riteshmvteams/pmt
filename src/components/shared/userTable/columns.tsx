@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import Title from "@/components/shared/Title";
+import DataTableColumnHeader from "../DataTable/DataTableColumnHeader";
 
 export type TUser = {
   id: number;
@@ -114,8 +115,8 @@ export const getColumns = (): ColumnDef<TUser>[] => {
   return [
     {
       accessorKey: "username",
-      header: () => {
-        return <Title className="w-[180px]">Users Name</Title>;
+      header: ({ column }) => {
+        return <DataTableColumnHeader column={column} title="User Name" />;
       },
       cell: ({ row }) => {
         return (
@@ -165,8 +166,14 @@ export const getColumns = (): ColumnDef<TUser>[] => {
     },
     {
       accessorKey: "created_at",
-      header: () => {
-        return <Title className="w-[150px]">Last Activity</Title>;
+      header: ({ column }) => {
+        return (
+          <DataTableColumnHeader
+            column={column}
+            title="Last Activity"
+            className="w-[150px]"
+          />
+        );
       },
       cell: ({ row }) => {
         return (
@@ -178,8 +185,14 @@ export const getColumns = (): ColumnDef<TUser>[] => {
     },
     {
       accessorKey: "last_activity_at",
-      header: () => {
-        return <Title className="w-[150px]">Created At</Title>;
+      header: ({ column }) => {
+        return (
+          <DataTableColumnHeader
+            column={column}
+            title="Created At"
+            className="w-[150px]"
+          />
+        );
       },
       cell: ({ row }) => {
         return (

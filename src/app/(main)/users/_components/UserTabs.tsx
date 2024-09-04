@@ -3,10 +3,10 @@ import { Suspense } from "react";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
 import CustomTabTrigger from "@/components/shared/CustomTabTrigger";
 import { Button } from "@/components/ui/button";
-import UserTable from "./table";
 import { Users_DATA } from "@/lib/constants";
 import ViewSetting from "@/components/shared/ViewSetting";
 import UsersSort from "./UsersSort";
+import UserTable from "@/components/shared/userTable/table";
 
 const activeUsers = Users_DATA.filter((user) => user.user_status === "active");
 const invitedUsers = Users_DATA.filter(

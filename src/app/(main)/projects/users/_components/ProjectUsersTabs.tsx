@@ -1,12 +1,10 @@
 import { Suspense } from "react";
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import Table from "./table";
-import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
 import ViewSetting from "@/components/shared/ViewSetting";
 import CustomTabTrigger from "@/components/shared/CustomTabTrigger";
-import ProjectUserTable from "./table";
 import { Users_DATA } from "@/lib/constants";
+import UserTable from "@/components/shared/userTable/table";
 
 const tabList = [
   {
@@ -25,7 +23,7 @@ const ProjectUsersTabs = () => {
       </CustomTabTrigger>
       <TabsContent value="users">
         <Suspense fallback="Loading...">
-          <ProjectUserTable data={Users_DATA?.slice(0, 6)} />
+          <UserTable data={Users_DATA?.slice(0, 6)} />
         </Suspense>
       </TabsContent>
     </Tabs>
