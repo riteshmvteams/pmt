@@ -4,6 +4,7 @@ import { Tabs, TabsContent } from "@/components/ui/tabs";
 import CustomTabTrigger from "@/components/shared/CustomTabTrigger";
 import { Button } from "@/components/ui/button";
 import TaskTable from "./table";
+import TaskKanban from "./kanban";
 
 const tabList = [
   {
@@ -28,7 +29,8 @@ const TaskTabs = () => {
       <TabsContent value="overview">Overview</TabsContent>
       <TabsContent value="tasks">
         <Suspense fallback="Loading...">
-          <TaskTable />
+          {/* <TaskTable /> */}
+          <TaskKanban />
         </Suspense>
       </TabsContent>
     </Tabs>

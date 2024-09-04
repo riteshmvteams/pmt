@@ -1,8 +1,8 @@
-"use state";
+"use client";
 
 import { useState } from "react";
 
-// DnD
+// DnD imports
 import {
   DndContext,
   DragEndEvent,
@@ -24,11 +24,11 @@ import {
 
 // Components
 import { Button } from "@/components/ui/button";
-import Container from "./Container";
-import Items from "./Items";
 
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import Container from "@/app/(main)/tasks/_components/kanban/Container";
+import Items from "@/app/(main)/tasks/_components/kanban/Items";
 
 type DNDType = {
   id: UniqueIdentifier;
@@ -40,7 +40,29 @@ type DNDType = {
 };
 
 export default function TaskKanban() {
-  const [containers, setContainers] = useState<DNDType[]>([]);
+  const [containers, setContainers] = useState<DNDType[]>([
+    {
+      id: `container-1`,
+      title: "To Do",
+      items: [
+        { id: `item-1`, title: "Task 1" },
+        { id: `item-2`, title: "Task 2" },
+      ],
+    },
+    {
+      id: `container-2`,
+      title: "In Progress",
+      items: [
+        { id: `item-3`, title: "Task 3" },
+        { id: `item-4`, title: "Task 4" },
+      ],
+    },
+    {
+      id: `container-3`,
+      title: "Done",
+      items: [{ id: `item-5`, title: "Task 5" }],
+    },
+  ]);
   const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
   const [currentContainerId, setCurrentContainerId] =
     useState<UniqueIdentifier>();
@@ -78,7 +100,6 @@ export default function TaskKanban() {
     setShowAddItemModal(false);
   };
 
-  // Find the value of the items
   function findValueOfItems(id: UniqueIdentifier | undefined, type: string) {
     if (type === "container") {
       return containers.find((item) => item.id === id);
@@ -110,7 +131,6 @@ export default function TaskKanban() {
     return container.items;
   };
 
-  // DND Handlers
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
@@ -127,7 +147,6 @@ export default function TaskKanban() {
   const handleDragMove = (event: DragMoveEvent) => {
     const { active, over } = event;
 
-    // Handle Items Sorting
     if (
       active.id.toString().includes("item") &&
       over?.id.toString().includes("item") &&
@@ -135,14 +154,11 @@ export default function TaskKanban() {
       over &&
       active.id !== over.id
     ) {
-      // Find the active container and over container
       const activeContainer = findValueOfItems(active.id, "item");
       const overContainer = findValueOfItems(over.id, "item");
 
-      // If the active or over container is not found, return
       if (!activeContainer || !overContainer) return;
 
-      // Find the index of the active and over container
       const activeContainerIndex = containers.findIndex(
         (container) => container.id === activeContainer.id
       );
@@ -150,14 +166,13 @@ export default function TaskKanban() {
         (container) => container.id === overContainer.id
       );
 
-      // Find the index of the active and over item
       const activeitemIndex = activeContainer.items.findIndex(
         (item) => item.id === active.id
       );
       const overitemIndex = overContainer.items.findIndex(
         (item) => item.id === over.id
       );
-      // In the same container
+
       if (activeContainerIndex === overContainerIndex) {
         let newItems = [...containers];
         newItems[activeContainerIndex].items = arrayMove(
@@ -168,7 +183,6 @@ export default function TaskKanban() {
 
         setContainers(newItems);
       } else {
-        // In different containers
         let newItems = [...containers];
         const [removeditem] = newItems[activeContainerIndex].items.splice(
           activeitemIndex,
@@ -183,7 +197,6 @@ export default function TaskKanban() {
       }
     }
 
-    // Handling Item Drop Into a Container
     if (
       active.id.toString().includes("item") &&
       over?.id.toString().includes("container") &&
@@ -191,14 +204,11 @@ export default function TaskKanban() {
       over &&
       active.id !== over.id
     ) {
-      // Find the active and over container
       const activeContainer = findValueOfItems(active.id, "item");
       const overContainer = findValueOfItems(over.id, "container");
 
-      // If the active or over container is not found, return
       if (!activeContainer || !overContainer) return;
 
-      // Find the index of the active and over container
       const activeContainerIndex = containers.findIndex(
         (container) => container.id === activeContainer.id
       );
@@ -206,12 +216,10 @@ export default function TaskKanban() {
         (container) => container.id === overContainer.id
       );
 
-      // Find the index of the active and over item
       const activeitemIndex = activeContainer.items.findIndex(
         (item) => item.id === active.id
       );
 
-      // Remove the active item from the active container and add it to the over container
       let newItems = [...containers];
       const [removeditem] = newItems[activeContainerIndex].items.splice(
         activeitemIndex,
@@ -222,11 +230,9 @@ export default function TaskKanban() {
     }
   };
 
-  // This is the function that handles the sorting of the containers and items when the user is done dragging.
   function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event;
 
-    // Handling Container Sorting
     if (
       active.id.toString().includes("container") &&
       over?.id.toString().includes("container") &&
@@ -234,20 +240,18 @@ export default function TaskKanban() {
       over &&
       active.id !== over.id
     ) {
-      // Find the index of the active and over container
       const activeContainerIndex = containers.findIndex(
         (container) => container.id === active.id
       );
       const overContainerIndex = containers.findIndex(
         (container) => container.id === over.id
       );
-      // Swap the active and over container
+
       let newItems = [...containers];
       newItems = arrayMove(newItems, activeContainerIndex, overContainerIndex);
       setContainers(newItems);
     }
 
-    // Handling item Sorting
     if (
       active.id.toString().includes("item") &&
       over?.id.toString().includes("item") &&
@@ -255,20 +259,18 @@ export default function TaskKanban() {
       over &&
       active.id !== over.id
     ) {
-      // Find the active and over container
       const activeContainer = findValueOfItems(active.id, "item");
       const overContainer = findValueOfItems(over.id, "item");
 
-      // If the active or over container is not found, return
       if (!activeContainer || !overContainer) return;
-      // Find the index of the active and over container
+
       const activeContainerIndex = containers.findIndex(
         (container) => container.id === activeContainer.id
       );
       const overContainerIndex = containers.findIndex(
         (container) => container.id === overContainer.id
       );
-      // Find the index of the active and over item
+
       const activeitemIndex = activeContainer.items.findIndex(
         (item) => item.id === active.id
       );
@@ -276,7 +278,6 @@ export default function TaskKanban() {
         (item) => item.id === over.id
       );
 
-      // In the same container
       if (activeContainerIndex === overContainerIndex) {
         let newItems = [...containers];
         newItems[activeContainerIndex].items = arrayMove(
@@ -284,9 +285,9 @@ export default function TaskKanban() {
           activeitemIndex,
           overitemIndex
         );
+
         setContainers(newItems);
       } else {
-        // In different containers
         let newItems = [...containers];
         const [removeditem] = newItems[activeContainerIndex].items.splice(
           activeitemIndex,
@@ -300,134 +301,74 @@ export default function TaskKanban() {
         setContainers(newItems);
       }
     }
-    // Handling item dropping into Container
-    if (
-      active.id.toString().includes("item") &&
-      over?.id.toString().includes("container") &&
-      active &&
-      over &&
-      active.id !== over.id
-    ) {
-      // Find the active and over container
-      const activeContainer = findValueOfItems(active.id, "item");
-      const overContainer = findValueOfItems(over.id, "container");
 
-      // If the active or over container is not found, return
-      if (!activeContainer || !overContainer) return;
-      // Find the index of the active and over container
-      const activeContainerIndex = containers.findIndex(
-        (container) => container.id === activeContainer.id
-      );
-      const overContainerIndex = containers.findIndex(
-        (container) => container.id === overContainer.id
-      );
-      // Find the index of the active and over item
-      const activeitemIndex = activeContainer.items.findIndex(
-        (item) => item.id === active.id
-      );
-
-      let newItems = [...containers];
-      const [removeditem] = newItems[activeContainerIndex].items.splice(
-        activeitemIndex,
-        1
-      );
-      newItems[overContainerIndex].items.push(removeditem);
-      setContainers(newItems);
-    }
     setActiveId(null);
   }
 
   return (
-    <div className="mx-auto max-w-7xl py-10">
-      {/* Add Items */}
-      <Dialog open={showAddItemModal} onOpenChange={setShowAddItemModal}>
-        <DialogContent className="sm:max-w-[425px]">
-          <div className="flex flex-col w-full items-start gap-y-4">
-            <h1 className="text-gray-800 text-3xl font-bold">Add Item</h1>
-            <Input
-              type="text"
-              placeholder="Item Title"
-              name="itemname"
-              value={itemName}
-              onChange={(e) => setItemName(e.target.value)}
-            />
-            <Button onClick={onAddItem}>Add Item</Button>
-          </div>
+    <div className="flex h-screen w-full justify-center overflow-x-scroll px-4 py-6">
+      <DndContext
+        sensors={sensors}
+        collisionDetection={closestCorners}
+        onDragStart={handleDragStart}
+        onDragMove={handleDragMove}
+        onDragEnd={handleDragEnd}
+      >
+        <SortableContext items={containers.map((i) => i.id)}>
+          {containers.map((container) => (
+            <Container
+              id={container.id}
+              title={container.title}
+              key={container.id}
+              onAddItem={() => {
+                setShowAddItemModal(true);
+                setCurrentContainerId(container.id);
+              }}
+            >
+              <SortableContext items={container.items.map((i) => i.id)}>
+                <div className="flex items-start flex-col gap-y-4">
+                  {container.items.map((i) => (
+                    <Items title={i.title} id={i.id} key={i.id} />
+                  ))}
+                </div>
+              </SortableContext>
+            </Container>
+          ))}
+        </SortableContext>
+        <DragOverlay adjustScale={false}>
+          {/* Drag Overlay For item Item */}
+          {activeId && activeId.toString().includes("item") && (
+            <Items id={activeId} title={findItemTitle(activeId)} />
+          )}
+          {/* Drag Overlay For Container */}
+          {activeId && activeId.toString().includes("container") && (
+            <Container id={activeId} title={findContainerTitle(activeId)}>
+              {findContainerItems(activeId).map((i) => (
+                <Items key={i.id} title={i.title} id={i.id} />
+              ))}
+            </Container>
+          )}
+        </DragOverlay>
+      </DndContext>
+
+      {/* Add Item Modal */}
+      <Dialog
+        open={showAddItemModal}
+        onOpenChange={(open) => setShowAddItemModal(open)}
+      >
+        <DialogContent>
+          <h2 className="text-lg">Add Item</h2>
+          <Input
+            value={itemName}
+            onChange={(e) => setItemName(e.target.value)}
+            placeholder="Item Name"
+            className="mt-4"
+          />
+          <Button className="mt-4" onClick={onAddItem}>
+            Add Item
+          </Button>
         </DialogContent>
       </Dialog>
-      <div className="flex items-center justify-between gap-y-2">
-        <h1 className="text-gray-800 text-3xl font-bold">Dnd-kit Guide</h1>
-        {/* Add Container */}
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button onClick={() => setShowAddContainerModal(true)}>
-              Add Container
-            </Button>
-          </DialogTrigger>
-          <DialogContent className="sm:max-w-[425px]">
-            <div className="flex flex-col w-full items-start gap-y-4">
-              <h1 className="text-gray-800 text-3xl font-bold">
-                Add Container
-              </h1>
-              <Input
-                type="text"
-                placeholder="Container Title"
-                name="containername"
-                value={containerName}
-                onChange={(e) => setContainerName(e.target.value)}
-              />
-              <Button onClick={onAddContainer}>Add container</Button>
-            </div>
-          </DialogContent>
-        </Dialog>
-      </div>
-      <div className="mt-10">
-        <div className="grid grid-cols-3 gap-6">
-          <DndContext
-            sensors={sensors}
-            collisionDetection={closestCorners}
-            onDragStart={handleDragStart}
-            onDragMove={handleDragMove}
-            onDragEnd={handleDragEnd}
-          >
-            <SortableContext items={containers.map((i) => i.id)}>
-              {containers.map((container) => (
-                <Container
-                  id={container.id}
-                  title={container.title}
-                  key={container.id}
-                  onAddItem={() => {
-                    setShowAddItemModal(true);
-                    setCurrentContainerId(container.id);
-                  }}
-                >
-                  <SortableContext items={container.items.map((i) => i.id)}>
-                    <div className="flex items-start flex-col gap-y-4">
-                      {container.items.map((i) => (
-                        <Items title={i.title} id={i.id} key={i.id} />
-                      ))}
-                    </div>
-                  </SortableContext>
-                </Container>
-              ))}
-            </SortableContext>
-            <DragOverlay adjustScale={false}>
-              {/* Drag Overlay For item Item */}
-              {activeId && activeId.toString().includes("item") && (
-                <Items id={activeId} title={findItemTitle(activeId)} />
-              )}
-              {/* Drag Overlay For Container */}
-              {activeId && activeId.toString().includes("container") && (
-                <Container id={activeId} title={findContainerTitle(activeId)}>
-                  {findContainerItems(activeId).map((i) => (
-                    <Items key={i.id} title={i.title} id={i.id} />
-                  ))}
-                </Container>
-              )}
-            </DragOverlay>
-          </DndContext>
-        </div>
-      </div>
     </div>
   );
 }
