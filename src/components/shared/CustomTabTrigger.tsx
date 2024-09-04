@@ -17,7 +17,7 @@ export default function CustomTabTrigger({ children, tabs, className }: Props) {
     <TabsList className="flex justify-between bg-transparent">
       <div
         className={cn(
-          "grid w-full grid-cols-2 max-w-[400px] bg-muted p-1 rounded-md",
+          "grid w-full grid-cols-2 max-w-[400px] p-1 rounded-md bg-muted",
           className
         )}
       >

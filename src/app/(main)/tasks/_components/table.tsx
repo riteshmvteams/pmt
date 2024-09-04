@@ -45,7 +45,7 @@ export default function TaskTable() {
         table={table}
         viewOptions={false}
       />
-      {Object.keys(rowSelection).length ? <div>Update</div> : null}
+      {getRowId()?.length ? <div>Update</div> : null}
     </div>
   );
 }
