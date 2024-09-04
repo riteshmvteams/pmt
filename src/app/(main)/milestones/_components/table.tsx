@@ -9,8 +9,12 @@ import {
 } from "@tanstack/react-table";
 import React, { useMemo } from "react";
 import { getColumns } from "./columns";
+import { useView } from "@/store/dataView";
+import DataGridView from "./DataGridView";
 
 export default function MileStoneTable() {
+  const isGrid = useView((state) => state?.isGrid);
+
   // get the columns data
   const columns = useMemo(() => {
     return getColumns();
@@ -31,12 +35,16 @@ export default function MileStoneTable() {
 
   return (
     <div>
-      <DataTable
-        columns={columns}
-        data={PROJECTS_DATA}
-        table={table}
-        viewOptions={false}
-      />
+      {isGrid ? (
+        <DataGridView data={PROJECTS_DATA} />
+      ) : (
+        <DataTable
+          columns={columns}
+          data={PROJECTS_DATA}
+          table={table}
+          viewOptions={false}
+        />
+      )}
     </div>
   );
 }

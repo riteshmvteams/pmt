@@ -8,6 +8,7 @@ import {
   StarIcon,
   UserMinus,
   UserPlus,
+  UserRound,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -110,7 +111,16 @@ export const getColumns = ({
       header: () => <Title className="w-[150px]">No. of Users</Title>,
       cell: ({ row }) => {
         const { users } = row.original;
-        return <Text>{users}</Text>;
+        return (
+          <Text
+            as="link"
+            href={routes.showProjectUsers(row.original.id)}
+            className="text-[13px] flex items-center gap-2"
+          >
+            <UserRound className="h-4 w-4" />
+            {users}
+          </Text>
+        );
       },
     },
     {
@@ -137,10 +147,10 @@ export const getColumns = ({
                 return (
                   <DropdownMenuItem
                     key={action.target}
-                    className="py-2 cursor-pointer"
+                    className="py-1.5 cursor-pointer"
                   >
                     <action.icon className="mr-3 h-[14px] w-[14px]" />
-                    <span className="text-xs">{action.title}</span>
+                    <span className="text-[13px]">{action.title}</span>
                   </DropdownMenuItem>
                 );
               })}

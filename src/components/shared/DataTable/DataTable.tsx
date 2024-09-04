@@ -27,7 +27,7 @@ export function DataTable<TData, TValue>({
   return (
     <div>
       {viewOptions && <DataTableViewOptions table={table} />}
-      <div className="rounded-md border w-[calc(100vw-48px)] md:w-[calc(100vw-280px)] lg:w-[calc(100vw-350px)] scrollbar">
+      <div className="rounded-md border w-[calc(100vw-48px)] md:w-[calc(100vw-280px)] lg:w-[calc(100vw-335px)] scrollbar">
         <ReactTable>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

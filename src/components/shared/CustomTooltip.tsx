@@ -10,15 +10,19 @@ import {
 export default function CustomTooltip({
   children,
   title,
+  align = "center",
 }: {
   children: React.ReactNode;
   title: string;
+  align?: "start" | "center" | "end";
 }) {
   return (
     <TooltipProvider delayDuration={0}>
       <Tooltip>
-        <TooltipTrigger asChild>{children}</TooltipTrigger>
-        <TooltipContent>{title}</TooltipContent>
+        <TooltipTrigger asChild>
+          <div>{children}</div>
+        </TooltipTrigger>
+        <TooltipContent align={align}>{title}</TooltipContent>
       </Tooltip>
     </TooltipProvider>
   );

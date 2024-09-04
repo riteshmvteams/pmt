@@ -177,6 +177,19 @@ export const getColumns = (): ColumnDef<TUser>[] => {
       },
     },
     {
+      accessorKey: "last_activity_at",
+      header: () => {
+        return <Title className="w-[150px]">Created At</Title>;
+      },
+      cell: ({ row }) => {
+        return (
+          <Text className="text-[13px]">
+            {formatDate(row.original.created_at, true)}
+          </Text>
+        );
+      },
+    },
+    {
       id: "actions",
       cell: () => {
         return (

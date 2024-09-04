@@ -131,37 +131,38 @@ export const getStatusBadge = (status: string) => {
 export const getColumns = (): ColumnDef<TTask>[] => {
   return [
     {
-      id: "select",
-      header: ({ table }) => (
-        <Checkbox
-          checked={
-            table.getIsAllPageRowsSelected() ||
-            (table.getIsSomePageRowsSelected() && "indeterminate")
-          }
-          onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-          aria-label="Select all"
-          className="mt-1.5"
-        />
-      ),
-      cell: ({ row }) => (
-        <Checkbox
-          checked={row.getIsSelected()}
-          onCheckedChange={(value) => row.toggleSelected(!!value)}
-          aria-label="Select row"
-          className="mt-1"
-        />
-      ),
-      enableSorting: false,
-      enableHiding: false,
-    },
-    {
       accessorKey: "id",
-      header: () => {
-        return <Title className="w-[50px]">Task</Title>;
+      header: ({ table }) => {
+        return (
+          <div className="flex items-center gap-2 w-[60px]">
+            <Checkbox
+              checked={
+                table.getIsAllPageRowsSelected() ||
+                (table.getIsSomePageRowsSelected() && "indeterminate")
+              }
+              onCheckedChange={(value) =>
+                table.toggleAllPageRowsSelected(!!value)
+              }
+              aria-label="Select all"
+            />
+            <Title className="w-[50px]">Task</Title>
+          </div>
+        );
       },
       cell: ({ row }) => {
-        return <Text className="text-[13px]">{row.original.id}</Text>;
+        return (
+          <div className="flex items-center gap-2 w-[60px]">
+            <Checkbox
+              checked={row.getIsSelected()}
+              onCheckedChange={(value) => row.toggleSelected(!!value)}
+              aria-label="Select row"
+            />
+            <Text className="text-[13px]">{row.original.id}</Text>
+          </div>
+        );
       },
+      enableSorting: false,
+      enableHiding: false,
     },
     {
       accessorKey: "title",
@@ -251,9 +252,12 @@ export const getColumns = (): ColumnDef<TTask>[] => {
             <DropdownMenuContent align="start" side="left" className="w-56">
               {tableActions?.map((action, index) => {
                 return action.icon ? (
-                  <DropdownMenuItem key={index} className="py-2 cursor-pointer">
+                  <DropdownMenuItem
+                    key={index}
+                    className="py-1.5 cursor-pointer"
+                  >
                     <action.icon className="mr-3 h-[14px] w-[14px]" />
-                    <span className="text-xs">{action.title}</span>
+                    <span className="text-[13px]">{action.title}</span>
                   </DropdownMenuItem>
                 ) : (
                   <DropdownMenuSeparator

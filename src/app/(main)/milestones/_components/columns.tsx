@@ -1,29 +1,20 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import {
-  Ban,
-  Edit,
-  EllipsisVertical,
-  StarIcon,
-  UserMinus,
-  UserPlus,
-} from "lucide-react";
+import { Ban, Edit, EllipsisVertical, UserMinus, UserPlus } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { cn } from "@/lib/utils";
 import { routes } from "@/config/routes";
-import { formatDate } from "@/lib/helpers";
 import Text from "@/components/shared/Text";
 import Title from "@/components/shared/Title";
-import React, { HTMLProps } from "react";
-import { Input } from "@/components/ui/input";
+import React from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 
 export type TProject = {
@@ -36,13 +27,13 @@ export type TProject = {
 
 const tableActions = [
   {
-    title: "Add User",
-    target: "add-user",
+    title: "Create New Task",
+    target: "create-task",
     icon: UserPlus,
   },
   {
-    title: "Remove User",
-    target: "remove-user",
+    title: "Add Task",
+    target: "add-task",
     icon: UserMinus,
   },
   {
@@ -51,8 +42,13 @@ const tableActions = [
     icon: Edit,
   },
   {
-    title: "Disable",
-    target: "disable",
+    title: "Delete",
+    target: "delete",
+    icon: Ban,
+  },
+  {
+    title: "Complete",
+    target: "complete",
     icon: Ban,
   },
 ];
@@ -60,39 +56,38 @@ const tableActions = [
 export const getColumns = (): ColumnDef<TProject>[] => {
   return [
     {
-      id: "select",
-      header: ({ table }) => (
-        <Checkbox
-          checked={
-            table.getIsAllPageRowsSelected() ||
-            (table.getIsSomePageRowsSelected() && "indeterminate")
-          }
-          onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-          aria-label="Select all"
-        />
-      ),
-      cell: ({ row }) => (
-        <Checkbox
-          checked={row.getIsSelected()}
-          onCheckedChange={(value) => row.toggleSelected(!!value)}
-          aria-label="Select row"
-        />
-      ),
-      enableSorting: false,
-      enableHiding: false,
-    },
-    {
       accessorKey: "id",
-      header: () => {
+      header: ({ table }) => {
         return (
-          <div>
-            <Title className="w-[50px]">ID</Title>
+          <div className="flex items-center gap-3 w-[50px]">
+            <Checkbox
+              checked={
+                table.getIsAllPageRowsSelected() ||
+                (table.getIsSomePageRowsSelected() && "indeterminate")
+              }
+              onCheckedChange={(value) =>
+                table.toggleAllPageRowsSelected(!!value)
+              }
+              aria-label="Select all"
+            />
+            <Title>ID</Title>
           </div>
         );
       },
       cell: ({ row }) => {
-        return <Text>{row.original.id}</Text>;
+        return (
+          <div className="flex items-center gap-3 w-[50px]">
+            <Checkbox
+              checked={row.getIsSelected()}
+              onCheckedChange={(value) => row.toggleSelected(!!value)}
+              aria-label="Select row"
+            />
+            <Text>{row.original.id}</Text>
+          </div>
+        );
       },
+      enableSorting: false,
+      enableHiding: false,
     },
     {
       accessorKey: "title",
@@ -118,6 +113,39 @@ export const getColumns = (): ColumnDef<TProject>[] => {
       },
       cell: ({ row }) => {
         return <Text className="p-1.5">{row.original.users}</Text>;
+      },
+    },
+    {
+      id: "actions",
+      cell: () => {
+        return (
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="h-8 w-8 p-0">
+                <span className="sr-only">Open menu</span>
+                <EllipsisVertical className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" side="left" className="w-48">
+              {tableActions?.map((action, index) => {
+                return action.icon ? (
+                  <DropdownMenuItem
+                    key={index}
+                    className="py-1.5 cursor-pointer"
+                  >
+                    <action.icon className="mr-3 h-[14px] w-[14px]" />
+                    <span className="text-[13px]">{action.title}</span>
+                  </DropdownMenuItem>
+                ) : (
+                  <DropdownMenuSeparator
+                    className="my-1 bg-primary/20"
+                    key={index}
+                  />
+                );
+              })}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        );
       },
     },
   ];

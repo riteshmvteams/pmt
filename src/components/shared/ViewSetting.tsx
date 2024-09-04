@@ -9,7 +9,7 @@ export default function ViewSetting() {
   const { isGrid, updateView } = useView((state) => state);
 
   return (
-    <div className="flex text-muted-foreground border rounded-md">
+    <div className="flex text-muted-foreground border rounded-md self-start h-10">
       <CustomTooltip title="Grid View">
         <button
           className={cn(
