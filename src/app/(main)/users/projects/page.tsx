@@ -3,6 +3,7 @@ import { House } from "lucide-react";
 import CheckInButton from "@/components/shared/CheckInButton";
 import CustomBreadcrumb from "@/components/shared/CustomBreadcrumb";
 import { routes } from "@/config/routes";
+import UsersProjectTabs from "./_components/UsersProjectTabs";
 
 const path = [
   {
@@ -29,6 +30,7 @@ export default function Projects() {
         <CustomBreadcrumb paths={path} />
         <CheckInButton />
       </div>
+      <UsersProjectTabs />
     </main>
   );
 }

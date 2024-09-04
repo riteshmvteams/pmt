@@ -1,12 +1,12 @@
 import { Suspense } from "react";
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import Table from "./table";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import ProjectFilters from "./ProjectFilters";
-import ProjectSort from "./ProjectSort";
 import ViewSetting from "@/components/shared/ViewSetting";
 import CustomTabTrigger from "@/components/shared/CustomTabTrigger";
+import Table from "./table";
+import ProjectFilters from "./ProjectFilters";
+import ProjectSort from "./ProjectSort";
 
 const tabList = [
   {
