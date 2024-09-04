@@ -1,10 +1,15 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-interface DataTableProps<TData> {
-  data: TData[];
+type TMilestone = {
+  id: number;
+  title: string;
+};
+
+interface Props {
+  data: TMilestone[];
 }
 
-export default function DataGridView<TData>({ data }: DataTableProps<TData>) {
+export default function DataGridView({ data }: Props) {
   console.log(data, "data==>");
 
   return (
