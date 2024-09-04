@@ -6,18 +6,10 @@ import { useForm } from "react-hook-form";
 
 import { login } from "@/actions/login";
 import { user } from "@/config/site";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
 import { loginFormSchema, LoginInputType } from "@/lib/schemas/login.schema";
+import CustomInputField from "@/components/shared/CustomInputField";
 
 export default function LoginForm() {
   const form = useForm<LoginInputType>({
@@ -37,58 +29,26 @@ export default function LoginForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <FormField
-          control={form.control}
+        <CustomInputField
+          form={form}
           name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input placeholder="Enter your email" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+          type="text"
+          label="Email"
+          placeholder="Enter your email"
         />
-        <FormField
-          control={form.control}
+        <CustomInputField
+          form={form}
           name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                Password
-              </FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="Enter your password"
-                  type="password"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+          type="password"
+          label="Password"
+          placeholder="Enter your password"
         />
         <div className="flex justify-between">
-          <FormField
-            control={form.control}
+          <CustomInputField
+            form={form}
             name="remember"
-            render={({ field }) => (
-              <FormItem>
-                <div className="flex gap-1.5 items-center">
-                  <FormControl>
-                    <Checkbox
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
-                    />
-                  </FormControl>
-                  <FormLabel className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                    Remember me
-                  </FormLabel>
-                </div>
-                <FormMessage />
-              </FormItem>
-            )}
+            type="checkbox"
+            label="Remember me"
           />
           <Link
             href="/forgot-password"
