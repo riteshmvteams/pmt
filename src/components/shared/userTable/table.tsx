@@ -11,8 +11,11 @@ import {
 
 import { DataTable } from "@/components/shared/DataTable/DataTable";
 import { getColumns, TUser } from "./columns";
+import { useView } from "@/store/dataView";
+import UsersGridView from "./UserGridView";
 
 export default function UserTable({ data }: { data: TUser[] }) {
+  const isGrid = useView((state) => state.isGrid);
   const [sorting, setSorting] = React.useState<SortingState>([]);
   // get the columns data
   const columns = useMemo(() => {
@@ -33,12 +36,16 @@ export default function UserTable({ data }: { data: TUser[] }) {
 
   return (
     <div>
-      <DataTable
-        columns={columns}
-        data={data}
-        table={table}
-        viewOptions={false}
-      />
+      {isGrid ? (
+        <UsersGridView data={data} />
+      ) : (
+        <DataTable
+          columns={columns}
+          data={data}
+          table={table}
+          viewOptions={false}
+        />
+      )}
     </div>
   );
 }

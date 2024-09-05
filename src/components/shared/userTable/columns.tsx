@@ -37,7 +37,7 @@ export type TUser = {
   user_status: string;
 };
 
-const tableActions = [
+export const userActions = [
   {
     title: "Assign Project",
     icon: CircleCheckBig,
@@ -62,7 +62,7 @@ const tableActions = [
     icon: Target,
   },
   {
-    target: "divider",
+    title: "divider",
   },
   {
     title: "Grant HR Role",
@@ -214,7 +214,7 @@ export const getColumns = (): ColumnDef<TUser>[] => {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start" side="left" className="w-56">
-              {tableActions?.map((action, index) => {
+              {userActions?.map((action, index) => {
                 return action.icon ? (
                   <DropdownMenuItem
                     key={index}
