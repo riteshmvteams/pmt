@@ -1,3 +1,5 @@
+"use client";
+
 import { TProject } from "@/app/(main)/projects/_components/columns";
 import { TTask } from "@/app/(main)/tasks/_components/columns";
 import { TUser } from "@/components/shared/userTable/columns";
@@ -554,6 +556,53 @@ export const TASKS_DATA: TTask[] = [
     due_date: "2024-09-03T17:51:55.692Z",
     status: "Open",
     assign: [],
+  },
+];
+
+export const KANBAN_TASKS = [
+  {
+    id: `container-1`,
+    title: "Open",
+    items: TASKS_DATA.filter((task) => task.status?.toLowerCase() === "open")
+      ?.map((task) => ({
+        id: `item-${faker.string.uuid()}-${Date.now()}`,
+        title: task.title,
+      }))
+      .slice(0, 8),
+  },
+  {
+    id: `container-2`,
+    title: "In Progress",
+    items: TASKS_DATA.filter(
+      (task) => task.status?.toLowerCase() === "in progress"
+    )
+      ?.map((task) => ({
+        id: `item-${faker.string.uuid()}-${Date.now()}`,
+        title: task.title,
+      }))
+      .slice(0, 8),
+  },
+  {
+    id: `container-3`,
+    title: "Resolved",
+    items: TASKS_DATA.filter(
+      (task) => task.status?.toLowerCase() === "resolved"
+    )
+      ?.map((task) => ({
+        id: `item-${faker.string.uuid()}-${Date.now()}`,
+        title: task.title,
+      }))
+      .slice(0, 8),
+  },
+  {
+    id: `container-4`,
+    title: "Closed",
+    items: TASKS_DATA.filter(
+      (task) => task.status?.toLowerCase() === "closed"
+    )?.map((task) => ({
+      id: `item-${faker.string.uuid()}-${Date.now()}`,
+      title: task.title,
+    })),
   },
 ];
 

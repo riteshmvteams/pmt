@@ -31,6 +31,7 @@ import Container from "@/app/(main)/tasks/_components/kanban/Container";
 import Items, {
   ItemNotAvailable,
 } from "@/app/(main)/tasks/_components/kanban/Items";
+import { KANBAN_TASKS } from "@/lib/constants";
 
 type DNDType = {
   id: UniqueIdentifier;
@@ -42,38 +43,43 @@ type DNDType = {
 };
 
 export default function TaskKanban() {
-  const [containers, setContainers] = useState<DNDType[]>([
-    {
-      id: `container-1`,
-      title: "Open",
-      items: [
-        { id: `item-1`, title: "Task 1" },
-        { id: `item-2`, title: "Task 2" },
-      ],
-    },
-    {
-      id: `container-2`,
-      title: "In Progress",
-      items: [
-        { id: `item-3`, title: "Task 3" },
-        { id: `item-4`, title: "Task 4" },
-      ],
-    },
-    {
-      id: `container-3`,
-      title: "Resolved",
-      items: [{ id: `item-5`, title: "Task 5" }],
-    },
-    {
-      id: `container-4`,
-      title: "Closed",
-      items: [
-        { id: `item-6`, title: "Task 6" },
-        { id: `item-7`, title: "Task 7" },
-        { id: `item-8`, title: "Task 8" },
-      ],
-    },
-  ]);
+  // const [containers, setContainers] = useState<DNDType[]>([
+  //   {
+  //     id: `container-1`,
+  //     title: "Open",
+  //     items: [
+  //       { id: `item-1`, title: "Task 1" },
+  //       { id: `item-2`, title: "Task 2" },
+  //     ],
+  //   },
+  //   {
+  //     id: `container-2`,
+  //     title: "In Progress",
+  //     items: [
+  //       { id: `item-3`, title: "Task 3" },
+  //       { id: `item-4`, title: "Task 4" },
+  //     ],
+  //   },
+  //   {
+  //     id: `container-3`,
+  //     title: "Resolved",
+  //     items: [{ id: `item-5`, title: "Task 5" }],
+  //   },
+  //   {
+  //     id: `container-4`,
+  //     title: "Closed",
+  //     items: [
+  //       { id: `item-6`, title: "Task 6" },
+  //       { id: `item-7`, title: "Task 7" },
+  //       { id: `item-8`, title: "Task 8" },
+  //     ],
+  //   },
+  // ]);
+
+  const [containers, setContainers] = useState<DNDType[]>(KANBAN_TASKS || []);
+
+  console.log(containers, "containers==>");
+
   const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
   const [currentContainerId, setCurrentContainerId] =
     useState<UniqueIdentifier>();
@@ -317,7 +323,7 @@ export default function TaskKanban() {
   }
 
   return (
-    <div className="flex w-full justify-center py-6">
+    <div className="flex w-full justify-center">
       <DndContext
         sensors={sensors}
         collisionDetection={closestCorners}
