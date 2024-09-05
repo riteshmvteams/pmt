@@ -9,7 +9,7 @@ interface Props {
   data: TMilestone[];
 }
 
-export default function DataGridView({ data }: Props) {
+export default function MilestoneGridView({ data }: Props) {
   console.log(data, "data==>");
 
   return (

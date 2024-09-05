@@ -10,7 +10,7 @@ import {
 import React, { useMemo } from "react";
 import { getColumns } from "./columns";
 import { useView } from "@/store/dataView";
-import DataGridView from "./DataGridView";
+import MilestoneGridView from "./MilestoneGridView";
 
 export default function MileStoneTable() {
   const isGrid = useView((state) => state?.isGrid);
@@ -36,7 +36,7 @@ export default function MileStoneTable() {
   return (
     <div>
       {isGrid ? (
-        <DataGridView data={PROJECTS_DATA} />
+        <MilestoneGridView data={PROJECTS_DATA} />
       ) : (
         <DataTable
           columns={columns}

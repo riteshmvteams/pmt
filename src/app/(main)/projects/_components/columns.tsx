@@ -32,7 +32,7 @@ export type TProject = {
   activity: string;
 };
 
-const tableActions = [
+export const projectActions = [
   {
     title: "Add User",
     target: "add-user",
@@ -143,7 +143,7 @@ export const getColumns = ({
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start" side="left" className="w-36">
-              {tableActions?.map((action) => {
+              {projectActions?.map((action) => {
                 return (
                   <DropdownMenuItem
                     key={action.target}

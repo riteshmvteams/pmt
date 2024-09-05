@@ -1,7 +1,6 @@
 "use client";
 
 import { DataTable } from "@/components/shared/DataTable/DataTable";
-import { getColumns } from "./columns";
 import {
   getCoreRowModel,
   getPaginationRowModel,
@@ -11,8 +10,14 @@ import { useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import { useSetParams } from "@/hooks/useSetParams";
 import { PROJECTS_DATA } from "@/lib/constants";
+import { useView } from "@/store/dataView";
+
+import { getColumns } from "./columns";
+import ProjectGridView from "./ProjectGridView";
 
 export default function Table() {
+  const isGrid = useView((state) => state?.isGrid);
+
   const searchParams = useSearchParams();
   const { setParams } = useSetParams();
   const star = searchParams.get("star");
@@ -35,12 +40,16 @@ export default function Table() {
 
   return (
     <div>
-      <DataTable
-        columns={columns}
-        data={PROJECTS_DATA}
-        table={table}
-        viewOptions={false}
-      />
+      {isGrid ? (
+        <ProjectGridView data={PROJECTS_DATA} />
+      ) : (
+        <DataTable
+          columns={columns}
+          data={PROJECTS_DATA}
+          table={table}
+          viewOptions={false}
+        />
+      )}
     </div>
   );
 }
