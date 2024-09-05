@@ -46,7 +46,7 @@ export type TTask = {
   due_date: string;
 };
 
-const tableActions = [
+export const taskActions = [
   {
     title: "Resolve",
     icon: CircleCheckBig,
@@ -250,7 +250,7 @@ export const getColumns = (): ColumnDef<TTask>[] => {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start" side="left" className="w-56">
-              {tableActions?.map((action, index) => {
+              {taskActions?.map((action, index) => {
                 return action.icon ? (
                   <DropdownMenuItem
                     key={index}

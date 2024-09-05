@@ -28,7 +28,9 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import Container from "@/app/(main)/tasks/_components/kanban/Container";
-import Items from "@/app/(main)/tasks/_components/kanban/Items";
+import Items, {
+  ItemNotAvailable,
+} from "@/app/(main)/tasks/_components/kanban/Items";
 
 type DNDType = {
   id: UniqueIdentifier;
@@ -43,7 +45,7 @@ export default function TaskKanban() {
   const [containers, setContainers] = useState<DNDType[]>([
     {
       id: `container-1`,
-      title: "To Do",
+      title: "Open",
       items: [
         { id: `item-1`, title: "Task 1" },
         { id: `item-2`, title: "Task 2" },
@@ -59,8 +61,17 @@ export default function TaskKanban() {
     },
     {
       id: `container-3`,
-      title: "Done",
+      title: "Resolved",
       items: [{ id: `item-5`, title: "Task 5" }],
+    },
+    {
+      id: `container-4`,
+      title: "Closed",
+      items: [
+        { id: `item-6`, title: "Task 6" },
+        { id: `item-7`, title: "Task 7" },
+        { id: `item-8`, title: "Task 8" },
+      ],
     },
   ]);
   const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
@@ -306,7 +317,7 @@ export default function TaskKanban() {
   }
 
   return (
-    <div className="flex h-screen w-full justify-center overflow-x-scroll px-4 py-6">
+    <div className="flex w-full justify-center py-6">
       <DndContext
         sensors={sensors}
         collisionDetection={closestCorners}
@@ -315,25 +326,31 @@ export default function TaskKanban() {
         onDragEnd={handleDragEnd}
       >
         <SortableContext items={containers.map((i) => i.id)}>
-          {containers.map((container) => (
-            <Container
-              id={container.id}
-              title={container.title}
-              key={container.id}
-              onAddItem={() => {
-                setShowAddItemModal(true);
-                setCurrentContainerId(container.id);
-              }}
-            >
-              <SortableContext items={container.items.map((i) => i.id)}>
-                <div className="flex items-start flex-col gap-y-4">
-                  {container.items.map((i) => (
-                    <Items title={i.title} id={i.id} key={i.id} />
-                  ))}
-                </div>
-              </SortableContext>
-            </Container>
-          ))}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 w-full gap-4">
+            {containers?.map((container) => (
+              <Container
+                id={container.id}
+                title={container.title}
+                key={container.id}
+                onAddItem={() => {
+                  setShowAddItemModal(true);
+                  setCurrentContainerId(container.id);
+                }}
+              >
+                {container?.items?.length ? (
+                  <SortableContext items={container.items.map((i) => i.id)}>
+                    <div className="flex items-start flex-col gap-y-4">
+                      {container.items.map((i) => (
+                        <Items title={i.title} id={i.id} key={i.id} />
+                      ))}
+                    </div>
+                  </SortableContext>
+                ) : (
+                  <ItemNotAvailable />
+                )}
+              </Container>
+            ))}
+          </div>
         </SortableContext>
         <DragOverlay adjustScale={false}>
           {/* Drag Overlay For item Item */}

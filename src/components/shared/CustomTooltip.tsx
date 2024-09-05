@@ -6,15 +6,18 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
 
 export default function CustomTooltip({
   children,
   title,
   align = "center",
+  className,
 }: {
   children: React.ReactNode;
   title: string;
   align?: "start" | "center" | "end";
+  className?: string;
 }) {
   return (
     <TooltipProvider delayDuration={0}>
@@ -22,7 +25,12 @@ export default function CustomTooltip({
         <TooltipTrigger asChild>
           <div>{children}</div>
         </TooltipTrigger>
-        <TooltipContent align={align}>{title}</TooltipContent>
+        <TooltipContent
+          align={align}
+          className={cn("text-xs font-lexend font-light", className)}
+        >
+          {title}
+        </TooltipContent>
       </Tooltip>
     </TooltipProvider>
   );
