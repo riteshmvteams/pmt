@@ -4,6 +4,7 @@ import { routes } from "@/config/routes";
 import { PROJECTS_DATA } from "@/lib/constants";
 import { House } from "lucide-react";
 import ProjectDetailTabs from "./_components/ProjectDetailTabs";
+import BackButton from "@/components/shared/BackButton";
 
 export default function ProjectDetail({
   params,
@@ -38,15 +39,12 @@ export default function ProjectDetail({
     <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
       <div className="flex items-center justify-between">
         <CustomBreadcrumb paths={path} />
-        <CheckInButton />
+        <div className="flex gap-2 items-center">
+          <BackButton />
+          <CheckInButton />
+        </div>
       </div>
       <ProjectDetailTabs tab={searchParams?.tab} />
-      {/* <div
-        className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm"
-        x-chunk="dashboard-02-chunk-1"
-      >
-        <div className="flex flex-col items-center gap-1 text-center"></div>
-      </div> */}
     </main>
   );
 }

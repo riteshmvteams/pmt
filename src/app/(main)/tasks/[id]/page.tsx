@@ -1,3 +1,4 @@
+import BackButton from "@/components/shared/BackButton";
 import CustomBreadcrumb from "@/components/shared/CustomBreadcrumb";
 import { routes } from "@/config/routes";
 import { House } from "lucide-react";
@@ -23,8 +24,11 @@ export default function TaskDetail({ params }: { params: { id: string } }) {
 
   return (
     <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
-      <div className="flex items-center">
+      <div className="flex items-center justify-between">
         <CustomBreadcrumb paths={path} />
+        <div className="flex gap-2 items-center">
+          <BackButton />
+        </div>
       </div>
       <div
         className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm"

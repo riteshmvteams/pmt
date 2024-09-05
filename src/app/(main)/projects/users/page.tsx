@@ -4,6 +4,7 @@ import { routes } from "@/config/routes";
 import CheckInButton from "@/components/shared/CheckInButton";
 import CustomBreadcrumb from "@/components/shared/CustomBreadcrumb";
 import ProjectUsersTabs from "./_components/ProjectUsersTabs";
+import BackButton from "@/components/shared/BackButton";
 
 const path = [
   {
@@ -28,7 +29,10 @@ export default function ProjectUsers() {
     <main className="flex flex-1 flex-col gap-4 lg:gap-6 p-6">
       <div className="flex items-center justify-between">
         <CustomBreadcrumb paths={path} />
-        <CheckInButton />
+        <div className="flex items-center gap-2">
+          <CheckInButton />
+          <BackButton variant="outline" />
+        </div>
       </div>
       <ProjectUsersTabs />
     </main>
