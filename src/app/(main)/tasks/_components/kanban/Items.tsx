@@ -39,6 +39,7 @@ const Items = ({ id, title }: ItemsType) => {
       type: "item",
     },
   });
+
   return (
     <div
       ref={setNodeRef}
@@ -49,7 +50,7 @@ const Items = ({ id, title }: ItemsType) => {
       }}
       className={cn(
         "bg-background w-full px-2 py-2 hover:ring-1 rounded-sm",
-        isDragging && "opacity-30"
+        isDragging && "opacity-30 bg-green-100"
       )}
     >
       <div className="flex justify-between w-full group h-full min-h-28">

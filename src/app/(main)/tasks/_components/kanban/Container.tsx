@@ -38,6 +38,7 @@ const Container = ({
       type: "container",
     },
   });
+
   return (
     <div
       {...attributes}
@@ -47,7 +48,7 @@ const Container = ({
         transform: CSS.Translate.toString(transform),
       }}
       className={clsx(
-        "w-full h-max py-4 px-3 flex flex-col gap-y-4 border bg-muted max-h-[650px] scrollbar overflow-y-auto",
+        "w-full h-max py-4 px-3 flex flex-col gap-y-4 border max-h-[650px] scrollbar overflow-y-auto bg-muted",
         isDragging && "opacity-50"
       )}
     >

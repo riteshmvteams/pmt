@@ -1,7 +1,7 @@
 "use client";
 
 import { DataTable } from "@/components/shared/DataTable/DataTable";
-import { PROJECTS_DATA } from "@/lib/constants";
+import { MILESTONES_DATA, PROJECTS_DATA } from "@/lib/constants";
 import {
   getCoreRowModel,
   getPaginationRowModel,
@@ -21,7 +21,7 @@ export default function MileStoneTable() {
   }, []);
 
   const table = useReactTable({
-    data: PROJECTS_DATA,
+    data: MILESTONES_DATA,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
@@ -36,11 +36,11 @@ export default function MileStoneTable() {
   return (
     <div>
       {isGrid ? (
-        <MilestoneGridView data={PROJECTS_DATA} />
+        <MilestoneGridView data={MILESTONES_DATA} />
       ) : (
         <DataTable
           columns={columns}
-          data={PROJECTS_DATA}
+          data={MILESTONES_DATA}
           table={table}
           viewOptions={false}
         />

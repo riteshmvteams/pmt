@@ -1,3 +1,4 @@
+import { TMilestone } from "@/app/(main)/milestones/_components/columns";
 import { TProject } from "@/app/(main)/projects/_components/columns";
 import { TTask } from "@/app/(main)/tasks/_components/columns";
 import { TUser } from "@/components/shared/userTable/columns";
@@ -1459,5 +1460,37 @@ export const Users_DATA: TUser[] = [
     role: "Super-admin",
     projects: 25,
     user_status: "active",
+  },
+];
+
+// ================ Milestone Data
+export const MILESTONES_DATA: TMilestone[] = [
+  {
+    id: 1,
+    title: "Milestone 1",
+    status: "Open",
+    created_at: "2025-05-01T01:33:25.924Z",
+    tasks: TASKS_DATA?.slice(0, 4),
+  },
+  {
+    id: 2,
+    title: "Milestone 2",
+    status: "Open",
+    created_at: "2025-05-01T01:33:25.924Z",
+    tasks: TASKS_DATA?.slice(5, 9),
+  },
+  {
+    id: 3,
+    title: "Milestone 3 - Completed",
+    status: "Completed",
+    created_at: "2025-05-01T01:33:25.924Z",
+    tasks: TASKS_DATA?.slice(10, 15),
+  },
+  {
+    id: 4,
+    title: "Milestone 4 - sss",
+    status: "Closed",
+    created_at: "2025-05-01T01:33:25.924Z",
+    tasks: TASKS_DATA?.slice(16, 20),
   },
 ];

@@ -5,7 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { DatabaseZap, Hourglass, ListTodo, UserCheck } from "lucide-react";
+import { CalendarPlus2, FolderOpenDot, IdCard } from "lucide-react";
 import { formatDate, trimText } from "@/lib/helpers";
 import Link from "next/link";
 import { routes } from "@/config/routes";
@@ -54,25 +54,27 @@ export default function UsersGridView({ data }: Props) {
                   <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
 
-                <div className="grid sm:grid-cols-2 gap-x-8 gap-y-5">
+                <div className="grid gap-x-8 gap-y-3">
+                  <Link
+                    href={routes?.userDetail(user?.id)}
+                    className="flex items-center gap-2 text-muted-foreground hover:underline underline-offset-2 hover:text-primary"
+                  >
+                    <IdCard className="w-4 h-4" />
+                    <span className="text-xs">Name: {user?.name}</span>
+                  </Link>
                   <Link
                     href={routes?.usersProjects(user?.id)}
                     className="flex items-center gap-2 text-muted-foreground hover:underline underline-offset-2 hover:text-primary"
                   >
-                    <UserCheck className="w-4 h-4" />
-                    <span className="text-xs">12 users</span>
+                    <FolderOpenDot className="w-4 h-4" />
+                    <span className="text-xs">12 Projects</span>
                   </Link>
+
                   <div className="flex items-center gap-2 text-muted-foreground">
-                    <ListTodo className="w-4 h-4" />
-                    <span className="text-xs">10 Tasks</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-muted-foreground">
-                    <Hourglass className="w-4 h-4" />
-                    <span className="text-xs">24 hours spent</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-muted-foreground">
-                    <DatabaseZap className="w-4 h-4" />
-                    <span className="text-xs">1.83 MB storage</span>
+                    <CalendarPlus2 className="w-4 h-4" />
+                    <span className="text-xs">
+                      Created on: {formatDate(user?.created_at)}
+                    </span>
                   </div>
                 </div>
               </div>

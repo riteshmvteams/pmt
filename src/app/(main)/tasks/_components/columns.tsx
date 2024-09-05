@@ -114,6 +114,8 @@ export const getStatusBadge = (status: string) => {
         </Badge>
       );
     case "resolved":
+    case "closed":
+    case "completed":
       return (
         <Badge
           variant="outline"

@@ -16,16 +16,17 @@ import Text from "@/components/shared/Text";
 import Title from "@/components/shared/Title";
 import React from "react";
 import { Checkbox } from "@/components/ui/checkbox";
+import { TTask } from "../../tasks/_components/columns";
 
-export type TProject = {
+export type TMilestone = {
   id: number;
-  isStarred: boolean;
   title: string;
-  users: number;
-  activity: string;
+  status: "Open" | "Completed" | "Closed";
+  created_at: string;
+  tasks: TTask[];
 };
 
-const tableActions = [
+export const milestonesActions = [
   {
     title: "Create New Task",
     target: "create-task",
@@ -53,7 +54,7 @@ const tableActions = [
   },
 ];
 
-export const getColumns = (): ColumnDef<TProject>[] => {
+export const getColumns = (): ColumnDef<TMilestone>[] => {
   return [
     {
       accessorKey: "id",
@@ -107,12 +108,12 @@ export const getColumns = (): ColumnDef<TProject>[] => {
       },
     },
     {
-      accessorKey: "users",
+      accessorKey: "tasks",
       header: () => {
         return <Title className="w-[100px]">Taks Count</Title>;
       },
       cell: ({ row }) => {
-        return <Text className="p-1.5">{row.original.users}</Text>;
+        return <Text className="p-1.5">{row.original.tasks?.length}</Text>;
       },
     },
     {
@@ -127,7 +128,7 @@ export const getColumns = (): ColumnDef<TProject>[] => {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start" side="left" className="w-48">
-              {tableActions?.map((action, index) => {
+              {milestonesActions?.map((action, index) => {
                 return action.icon ? (
                   <DropdownMenuItem
                     key={index}
