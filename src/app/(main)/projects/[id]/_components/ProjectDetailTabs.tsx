@@ -6,6 +6,12 @@ import ViewSetting from "@/components/shared/ViewSetting";
 import CustomTabTrigger from "@/components/shared/CustomTabTrigger";
 import { Users_DATA } from "@/lib/constants";
 import UserTable from "@/components/shared/userTable/table";
+import ProjectOverview from "./overview/ProjectOverview";
+import ProjectTasks from "./tasks/ProjectTasks";
+import ProjectFiles from "./files/ProjectFiles";
+import ProjectNotes from "./notes/ProjectNotes";
+import ProjectMilestones from "./milestones/ProjectMilestones";
+import ProjectTimeLogs from "./time/ProjectTimeLogs";
 
 const tabList = [
   {
@@ -47,34 +53,34 @@ const tabList = [
 
 const ProjectDetailTabs = ({ tab }: { tab: string }) => {
   return (
-    <Tabs defaultValue={tab ? tab : "tasks"} className="">
+    <Tabs defaultValue={tab ? tab : "tasks"} className="flex flex-col gap-4">
       <CustomTabTrigger tabs={tabList} className="grid-cols-7 max-w-[800px]">
         <Button>Add Project</Button>
         <ViewSetting />
       </CustomTabTrigger>
       <TabsContent value="overview">
         <Suspense fallback="Loading...">
-          <h2>Overview</h2>
+          <ProjectOverview />
         </Suspense>
       </TabsContent>
       <TabsContent value="tasks">
         <Suspense fallback="Loading...">
-          <h2>Tasks</h2>
+          <ProjectTasks />
         </Suspense>
       </TabsContent>
       <TabsContent value="files">
         <Suspense fallback="Loading...">
-          <h2>Files</h2>
+          <ProjectFiles />
         </Suspense>
       </TabsContent>
       <TabsContent value="notes">
         <Suspense fallback="Loading...">
-          <h2>Notes</h2>
+          <ProjectNotes />
         </Suspense>
       </TabsContent>
       <TabsContent value="milestones">
         <Suspense fallback="Loading...">
-          <h2>milestones</h2>
+          <ProjectMilestones />
         </Suspense>
       </TabsContent>
       <TabsContent value="users">
@@ -84,7 +90,7 @@ const ProjectDetailTabs = ({ tab }: { tab: string }) => {
       </TabsContent>
       <TabsContent value="time">
         <Suspense fallback="Loading...">
-          <h2>Time</h2>
+          <ProjectTimeLogs />
         </Suspense>
       </TabsContent>
     </Tabs>
