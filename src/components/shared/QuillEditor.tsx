@@ -1,9 +1,9 @@
-import { cn } from "@/lib/utils";
 import ReactQuill, { type ReactQuillProps } from "react-quill";
-// import { FieldError } from 'rizzui';
-// import cn from '@/utils/class-names';
+
 import "react-quill/dist/quill.snow.css";
 import Text from "./Text";
+import { cn } from "@/lib/utils";
+import Title from "./Title";
 
 interface QuillEditorProps extends ReactQuillProps {
   error?: string;
@@ -30,6 +30,7 @@ export default function QuillEditor({
 
       ["bold", "italic", "underline", "strike"], // toggled buttons
       ["blockquote", "code-block"],
+      ["link"],
 
       [{ list: "ordered" }, { list: "bullet" }],
       [{ script: "sub" }, { script: "super" }], // superscript/subscript
@@ -46,7 +47,7 @@ export default function QuillEditor({
   return (
     <div className={cn(className)}>
       {label && (
-        <label className={cn("mb-1.5 block", labelClassName)}>{label}</label>
+        <Title className={cn("mb-2 block", labelClassName)}>{label}</Title>
       )}
       <ReactQuill
         modules={quillModules}

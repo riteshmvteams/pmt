@@ -5,9 +5,10 @@ import { Suspense } from "react";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
 import CustomTabTrigger from "@/components/shared/CustomTabTrigger";
 import { Button } from "@/components/ui/button";
+import { useTaskView } from "@/store/dataView";
+
 import TaskTable from "./table";
 import TaskKanban from "./kanban";
-import { useTaskView } from "@/store/dataView";
 import TaskViewOptions from "./TaskViewOptions";
 
 const tabList = [

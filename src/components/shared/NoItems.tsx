@@ -27,11 +27,7 @@ export default function NoItems({
         {description && (
           <p className="text-sm text-muted-foreground">{description}</p>
         )}
-        {children && (
-          <Button onClick={onClick} className="rounded-sm font-lexend px-8">
-            {children}
-          </Button>
-        )}
+        {children && children}
       </div>
     </div>
   );

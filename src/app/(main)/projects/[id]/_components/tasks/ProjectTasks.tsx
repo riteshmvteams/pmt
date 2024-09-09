@@ -1,13 +1,14 @@
 "use client";
 
+import TaskTable from "@/app/(main)/tasks/_components/table";
 import NoItems from "@/components/shared/NoItems";
 import { CalendarCheck } from "lucide-react";
 import React, { useState } from "react";
 
 export default function ProjectTasks() {
-  const [task] = useState(false);
+  const [task] = useState(true);
   return task ? (
-    <div>ProjectTasks</div>
+    <TaskTable />
   ) : (
     <NoItems
       icon={

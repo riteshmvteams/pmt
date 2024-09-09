@@ -34,7 +34,7 @@ export default function CustomInputField({
           <CheckBoxInput field={field} label={label} />
         ) : (
           <FormItem>
-            <FormLabel>{label}</FormLabel>
+            <FormLabel className="font-lexend">{label}</FormLabel>
             <FormControl>
               {type === "password" ? (
                 <PasswordInput field={field} />

@@ -5,6 +5,7 @@ import { fontSans, lexendDeca } from "@/app/font";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { siteConfig } from "@/config/site";
+import TopLoader from "@/components/shared/TopLoader";
 
 export const metadata: Metadata = {
   title: siteConfig.title,
@@ -32,6 +33,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <TopLoader />
           {children}
         </ThemeProvider>
       </body>

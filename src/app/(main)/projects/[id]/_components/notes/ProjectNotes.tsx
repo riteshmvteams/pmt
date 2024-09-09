@@ -5,9 +5,9 @@ import { CalendarCheck } from "lucide-react";
 import React, { useState } from "react";
 
 export default function ProjectNotes() {
-  const [task] = useState(false);
+  const [task] = useState(true);
   return task ? (
-    <div>ProjectTasks</div>
+    <div>Notes</div>
   ) : (
     <NoItems
       icon={
