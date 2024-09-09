@@ -2,10 +2,17 @@
 
 import React, { useRef, useState } from "react";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
-import Upload from "./Upload";
-import { File, FileText, Trash, Trash2 } from "lucide-react";
+import { Trash2 } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
+import CSVIcon from "@/components/icons/CSVIcon";
+import PDFIcon from "@/components/icons/PDFIcon";
+import XMLIcon from "@/components/icons/XMLIcon";
+import ZIPIcon from "@/components/icons/ZIPIcon";
+import FileIcon from "@/components/icons/FileIcon";
+import WordIcon from "@/components/icons/WordIcon";
+
+import Upload from "./Upload";
 import Text from "../Text";
 import Title from "../Title";
 
@@ -41,13 +48,13 @@ export default function FileUpload({
 }
 
 const fileType = {
-  "text/csv": <File className="h-4 w-4" />,
-  "text/plain": <File className="h-4 w-4" />,
-  "application/pdf": <FileText className="h-4 w-4" />,
-  "application/xml": <File className="h-4 w-4" />,
-  "application/zip": <File className="h-4 w-4" />,
-  "application/gzip": <File className="h-4 w-4" />,
-  "application/msword": <File className="h-4 w-4" />,
+  "text/csv": <CSVIcon height="32px" width="32px" />,
+  "text/plain": <FileIcon height="32px" width="32px" />,
+  "application/pdf": <PDFIcon height="32px" width="32px" />,
+  "application/xml": <XMLIcon height="32px" width="32px" />,
+  "application/zip": <ZIPIcon height="32px" width="32px" />,
+  "application/gzip": <ZIPIcon height="32px" width="32px" />,
+  "application/msword": <WordIcon height="32px" width="32px" />,
 } as { [key: string]: React.ReactElement };
 
 export const FileInput = ({
@@ -131,7 +138,13 @@ export const FileInput = ({
                       sizes="(max-width: 768px) 100vw"
                     />
                   ) : (
-                    <>{fileType[file.type]}</>
+                    <>
+                      {fileType[file.type] ? (
+                        fileType[file.type]
+                      ) : (
+                        <FileIcon width="32px" height="32px" />
+                      )}
+                    </>
                   )}
                 </div>
                 <div className="truncate px-2.5 text-sm">{file.name}</div>

@@ -1,13 +1,19 @@
 "use client";
 
-import NoItems from "@/components/shared/NoItems";
 import { CalendarCheck } from "lucide-react";
 import React, { useState } from "react";
 
+import NoItems from "@/components/shared/NoItems";
+import AddProjectNotes from "./AddProjectNotes";
+import NotesListing from "./NotesListing";
+
 export default function ProjectNotes() {
   const [task] = useState(true);
+
   return task ? (
-    <div>Notes</div>
+    <div>
+      <NotesListing />
+    </div>
   ) : (
     <NoItems
       icon={
@@ -18,7 +24,7 @@ export default function ProjectNotes() {
       }
       title="No Tasks Added to this project"
     >
-      Add Notes
+      <AddProjectNotes title="Add Notes" btnLabel="Add Note" />
     </NoItems>
   );
 }

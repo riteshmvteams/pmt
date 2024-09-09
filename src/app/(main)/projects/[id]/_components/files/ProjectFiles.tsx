@@ -3,11 +3,12 @@
 import NoItems from "@/components/shared/NoItems";
 import { FileCheck } from "lucide-react";
 import React, { useState } from "react";
+import FilesTable from "./FilesTable";
 
 export default function ProjectFiles() {
-  const [task] = useState(false);
+  const [task] = useState(true);
   return task ? (
-    <div>ProjectTasks</div>
+    <FilesTable />
   ) : (
     <NoItems
       icon={
@@ -17,8 +18,6 @@ export default function ProjectFiles() {
         />
       }
       title="No Files Added to this project"
-    >
-      Add Files
-    </NoItems>
+    ></NoItems>
   );
 }

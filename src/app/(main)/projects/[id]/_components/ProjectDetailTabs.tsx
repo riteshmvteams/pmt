@@ -55,7 +55,6 @@ const ProjectDetailTabs = ({ tab }: { tab: string }) => {
   return (
     <Tabs defaultValue={tab ? tab : "tasks"} className="flex flex-col gap-4">
       <CustomTabTrigger tabs={tabList} className="grid-cols-7 max-w-[800px]">
-        <Button>Add Project</Button>
         <ViewSetting />
       </CustomTabTrigger>
       <TabsContent value="overview">

@@ -27,7 +27,7 @@ type Props = {
   btnLabel?: string;
 };
 
-export default function AddProjectDetails({ title, btnLabel }: Props) {
+export default function AddProjectNotes({ title, btnLabel }: Props) {
   const form = useForm<z.infer<typeof quillFormSchema>>({
     resolver: zodResolver(quillFormSchema),
     defaultValues: {
@@ -45,13 +45,13 @@ export default function AddProjectDetails({ title, btnLabel }: Props) {
       btnLabel={btnLabel}
     >
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <CustomInputField
             form={form}
             name="overview"
             type="text"
-            label="Project Title"
-            placeholder="Enter Project Title"
+            label="Note Title"
+            placeholder="Enter Note Title"
           />
           <Controller
             control={form.control}
@@ -68,7 +68,30 @@ export default function AddProjectDetails({ title, btnLabel }: Props) {
           />
           <FileUpload />
           <div className="flex flex-col">
-            <Title className="mb-2">Visible To</Title>
+            <Title className="mb-2">Privacy</Title>
+            <div className="grid grid-cols-5 gap-y-2 bg-muted/50 p-6 rounded-md">
+              {Array.from({ length: 16 })?.map((_, index) => {
+                return (
+                  <div className="flex items-center gap-1.5" key={index}>
+                    <Checkbox id={`${index}`} />
+                    <label htmlFor={`${index}`} className="text-sm font-lexend">
+                      Admin
+                    </label>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="flex flex-col">
+            <Title className="mb-2">
+              Notify Via mail -
+              <span className="text-xs text-muted-foreground font-light">
+                {" "}
+                (Notification will only be sent to selected private users if
+                notes privacy is selected)
+              </span>
+            </Title>
             <div className="grid grid-cols-5 gap-y-2 bg-muted/50 p-6 rounded-md">
               {Array.from({ length: 16 })?.map((_, index) => {
                 return (
