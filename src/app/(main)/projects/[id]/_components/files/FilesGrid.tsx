@@ -8,8 +8,6 @@ import {
 import { fileActions, TFiles } from "./columns";
 import Link from "next/link";
 import { formatDate, trimText } from "@/lib/helpers";
-import CSVIcon from "@/components/icons/CSVIcon";
-import ZIPIcon from "@/components/icons/ZIPIcon";
 import XMLIcon from "@/components/icons/XMLIcon";
 import CustomDropDown from "@/components/shared/CustomDropDown";
 

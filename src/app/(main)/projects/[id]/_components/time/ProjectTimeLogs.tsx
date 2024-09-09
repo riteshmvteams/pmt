@@ -1,13 +1,16 @@
 "use client";
 
 import NoItems from "@/components/shared/NoItems";
+import TimeLogListing from "@/components/shared/timelog/TimeLogListing";
 import { CalendarCheck } from "lucide-react";
 import React, { useState } from "react";
 
 export default function ProjectTimeLogs() {
-  const [task] = useState(false);
+  const [task] = useState(true);
   return task ? (
-    <div>ProjectTasks</div>
+    <div>
+      <TimeLogListing />
+    </div>
   ) : (
     <NoItems
       icon={

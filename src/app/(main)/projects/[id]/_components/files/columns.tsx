@@ -1,10 +1,11 @@
-import Text from "@/components/shared/Text";
-import { formatDate, formatDateWithWeekday } from "@/lib/helpers";
-import { ColumnDef } from "@tanstack/react-table";
 import { Eye, Trash2 } from "lucide-react";
+import { ColumnDef } from "@tanstack/react-table";
+
+import Text from "@/components/shared/Text";
 import Title from "@/components/shared/Title";
 import XMLIcon from "@/components/icons/XMLIcon";
 import CustomDropDown from "@/components/shared/CustomDropDown";
+import { formatDate, formatDateWithWeekday } from "@/lib/helpers";
 
 export type TFiles = {
   id: number;

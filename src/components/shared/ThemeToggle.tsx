@@ -9,13 +9,13 @@ export default function ThemeToggle() {
   return (
     <div className="grid grid-cols-2 gap-4">
       <button
-        className="radio-active mb-3 inline-flex rounded-lg ring-4 ring-offset-4 dark:ring-0"
+        className="radio-active mb-3 inline-flex rounded-lg ring-2 ring-offset-4 dark:ring-0 ring-ring"
         onClick={() => setTheme("light")}
       >
         <LightMode />
       </button>
       <button
-        className="radio-active mb-3 inline-flex rounded-lg  ring-offset-4 dark:ring-4 ring-0 ring-offset-background"
+        className="radio-active mb-3 inline-flex rounded-lg ring-offset-4 dark:ring-2 ring-0 ring-offset-background ring-ring"
         onClick={() => setTheme("dark")}
       >
         <DarkMode />
