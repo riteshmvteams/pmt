@@ -19,6 +19,7 @@ import Link from "next/link";
 import { routes } from "@/config/routes";
 import CustomDropDown from "@/components/shared/CustomDropDown";
 import { cn } from "@/lib/utils";
+import FolderIcon from "@/components/icons/FolderIcon";
 
 interface Props {
   data: TProject[];
@@ -57,7 +58,7 @@ export default function ProjectGridView({ data }: Props) {
 
               <div className="flex gap-6 items-start">
                 <div className="p-3 border text-muted-foreground w-max bg-muted/60 rounded-lg h-max">
-                  <FolderOpenDot className="h-10 w-10" />
+                  <FolderIcon width="40px" height="40px" />
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-x-8 gap-y-5">

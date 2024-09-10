@@ -24,6 +24,7 @@ interface MenuObject {
 
 export default function DesktopMenu() {
   const pathname = usePathname();
+
   return (
     <div className="flex-1">
       <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
@@ -42,7 +43,7 @@ export default function DesktopMenu() {
                   className={cn(
                     "flex items-center gap-3 rounded-lg px-3 py-2.5 text-muted-foreground transition-all hover:text-primary hover:no-underline",
                     (pathname === "/analytics" || pathname === "/archive") &&
-                      "bg-muted"
+                      "bg-primary/10 text-foreground"
                   )}
                 >
                   <div className="flex gap-3 items-center">
@@ -80,8 +81,8 @@ export const NavigationLink = ({
     <Link
       href={menu.href}
       className={cn(
-        "flex items-center gap-3 rounded-lg px-3 py-2.5 text-muted-foreground transition-all hover:text-primary",
-        pathname === menu.href && "bg-muted",
+        "flex items-center gap-3 rounded-lg px-3 py-2.5 text-muted-foreground transition-all hover:text-foreground",
+        pathname?.startsWith(menu.href) && "bg-primary/10 text-foreground",
         isChild && "pl-8",
         isChild &&
           pathname?.startsWith(menu.href) &&

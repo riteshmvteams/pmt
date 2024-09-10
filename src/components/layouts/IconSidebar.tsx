@@ -24,36 +24,37 @@ const IconSidebar = () => {
           <nav className="flex flex-col gap-0.5 items-center">
             {NAVIGATION_MENUS?.map((menu) => {
               return (
-                <TooltipProvider key={menu.id} delayDuration={0}>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className={cn(
-                          "rounded-lg h-12 w-12 text-muted-foreground hover:text-foreground",
-                          pathname === menu.href && "bg-muted text-foreground"
-                        )}
-                        aria-label="Models"
-                        asChild
-                      >
-                        {menu?.icon && (
+                menu?.icon && (
+                  <TooltipProvider key={menu.id} delayDuration={0}>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className={cn(
+                            "rounded-lg h-12 w-12 text-muted-foreground hover:text-foreground",
+                            pathname?.startsWith(menu.href) &&
+                              "bg-primary/10 text-foreground"
+                          )}
+                          aria-label="Models"
+                          asChild
+                        >
                           <Link href={menu.href}>
                             <menu.icon className="size-6" />
                           </Link>
-                        )}
-                      </Button>
-                    </TooltipTrigger>
-                    <TooltipContent
-                      align="center"
-                      side="right"
-                      sideOffset={10}
-                      className={cn("text-sm font-lexend font-normal")}
-                    >
-                      {menu?.title}
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
+                        </Button>
+                      </TooltipTrigger>
+                      <TooltipContent
+                        align="center"
+                        side="right"
+                        sideOffset={10}
+                        className={cn("text-sm font-lexend font-normal")}
+                      >
+                        {menu?.title}
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                )
               );
             })}
           </nav>
