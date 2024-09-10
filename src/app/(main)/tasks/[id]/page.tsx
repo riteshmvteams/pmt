@@ -23,19 +23,16 @@ export default function TaskDetail({ params }: { params: { id: string } }) {
   ];
 
   return (
-    <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
+    <>
       <div className="flex items-center justify-between">
         <CustomBreadcrumb paths={path} />
         <div className="flex gap-2 items-center">
           <BackButton />
         </div>
       </div>
-      <div
-        className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm"
-        x-chunk="dashboard-02-chunk-1"
-      >
+      <div className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm">
         <div className="flex flex-col items-center gap-1 text-center"></div>
       </div>
-    </main>
+    </>
   );
 }

@@ -26,7 +26,7 @@ const path = [
 
 export default function Projects() {
   return (
-    <main className="flex flex-1 flex-col gap-4 lg:gap-6 p-6">
+    <>
       <div className="flex items-center justify-between">
         <CustomBreadcrumb paths={path} />
         <div className="flex items-center gap-2">
@@ -35,6 +35,6 @@ export default function Projects() {
         </div>
       </div>
       <UsersProjectTabs />
-    </main>
+    </>
   );
 }
