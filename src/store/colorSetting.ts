@@ -54,3 +54,15 @@ export const useColorSetting = create<TColorSetting>((set) => ({
     return set({ color: payload?.name });
   },
 }));
+
+// sidebar layout
+type TSidebar = {
+  sidebarType: "default" | "icon";
+  updateSidebarType: (variable: TSidebar["sidebarType"]) => void;
+};
+export const useSidebarType = create<TSidebar>((set) => ({
+  sidebarType: "default",
+  updateSidebarType: (payload) => {
+    return set({ sidebarType: payload });
+  },
+}));

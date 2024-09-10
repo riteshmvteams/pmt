@@ -18,6 +18,8 @@ interface DataTableProps<TData, TValue> {
   viewOptions?: boolean;
 }
 
+// w-[calc(100vw-48px)] md:w-[calc(100vw-280px)] lg:w-[calc(100vw-340px)]
+
 export function DataTable<TData, TValue>({
   columns,
   data,
@@ -27,7 +29,7 @@ export function DataTable<TData, TValue>({
   return (
     <div>
       {viewOptions && <DataTableViewOptions table={table} />}
-      <div className="rounded-md border w-[calc(100vw-48px)] md:w-[calc(100vw-280px)] lg:w-[calc(100vw-340px)] scrollbar">
+      <div className="rounded-md border  scrollbar">
         <ReactTable>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

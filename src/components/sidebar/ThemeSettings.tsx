@@ -11,6 +11,7 @@ import {
 import { Settings } from "lucide-react";
 import ThemeToggle from "../shared/ThemeToggle";
 import ColorSettings from "./ColorSettings";
+import LayoutSettings from "./LayoutSettings";
 
 export default function ThemeSettings() {
   return (
@@ -27,6 +28,7 @@ export default function ThemeSettings() {
         <div className="grid gap-10 py-4">
           <ThemeToggle />
           <ColorSettings />
+          <LayoutSettings />
         </div>
       </SheetContent>
     </Sheet>

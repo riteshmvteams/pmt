@@ -5,7 +5,6 @@ export default function Logo({ url }: { url: string }) {
   return (
     <Link href={url} className="w-28 h-14">
       <Image
-        // src="/images/companyLogo.png"
         src="/images/mvtLogo.png"
         alt="Image"
         width="1920"
