@@ -46,3 +46,16 @@ export const formatDateWithWeekday = (date: Date | string, withTime = true) => {
 export const trimText = (text: string, maxLength: number) => {
   return text?.length > maxLength ? `${text?.slice(0, maxLength)}...` : text;
 };
+
+export const getLocalStorageValue = (key: string, isJson = false) => {
+  if (isJson) {
+    if (typeof window !== "undefined") {
+      const storageValue = localStorage.getItem(key);
+      return JSON.parse(storageValue!);
+    }
+  } else {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem(key);
+    }
+  }
+};

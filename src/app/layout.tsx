@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { siteConfig } from "@/config/site";
 import TopLoader from "@/components/shared/TopLoader";
+import InitialLoad from "@/components/providers/initial-load";
 
 export const metadata: Metadata = {
   title: siteConfig.title,
@@ -33,8 +34,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <TopLoader />
-          {children}
+          <InitialLoad>
+            <TopLoader />
+            {children}
+          </InitialLoad>
         </ThemeProvider>
       </body>
     </html>
