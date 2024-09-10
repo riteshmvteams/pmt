@@ -51,5 +51,9 @@ export const useSetParams = () => {
     replace(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
-  return { setParams };
+  const getParams = (key: string) => {
+    return searchParams.get(key);
+  };
+
+  return { setParams, getParams };
 };

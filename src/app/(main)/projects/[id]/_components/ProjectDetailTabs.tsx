@@ -1,7 +1,6 @@
 import { Suspense } from "react";
 
 import { Tabs, TabsContent } from "@/components/ui/tabs";
-import { Button } from "@/components/ui/button";
 import ViewSetting from "@/components/shared/ViewSetting";
 import CustomTabTrigger from "@/components/shared/CustomTabTrigger";
 import { Users_DATA } from "@/lib/constants";

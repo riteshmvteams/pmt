@@ -6,14 +6,16 @@ import React, { useState } from "react";
 import NoItems from "@/components/shared/NoItems";
 import AddProjectNotes from "./AddProjectNotes";
 import NotesListing from "./NotesListing";
+import { useSearchParams } from "next/navigation";
+import NotesDetail from "./NotesDetail";
 
 export default function ProjectNotes() {
   const [task] = useState(true);
+  const searchParams = useSearchParams();
+  const note = searchParams.get("note") || "";
 
   return task ? (
-    <div>
-      <NotesListing />
-    </div>
+    <div>{note ? <NotesDetail /> : <NotesListing />}</div>
   ) : (
     <NoItems
       icon={

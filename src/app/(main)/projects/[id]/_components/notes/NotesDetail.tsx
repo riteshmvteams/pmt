@@ -22,23 +22,22 @@ import { getStatusBadge } from "@/app/(main)/tasks/_components/columns";
 import CustomAvatar from "@/components/shared/CustomAvatar";
 import Title from "@/components/shared/Title";
 import CustomTooltip from "@/components/shared/CustomTooltip";
-import AddProjectDetails from "./AddProjectDetails";
 import PrivateTag from "@/components/shared/PrivateTag";
+import AddProjectNotes from "./AddProjectNotes";
 
 const htmlString = `<p>This project is a good choice for beginners because it is relatively simple to implement, but it still requires you to learn some important web development concepts, such as HTML, CSS, and JavaScript.</p><br /><br /><p>To create a <b>quiz app</b>, you will need to:</p><br /><p>1. Design the quiz questions. This includes coming up with the questions themselves, as well as the possible answers for each question. You may also want to decide on a scoring system for the quiz.</br>`;
 
-export default function ProjectOverview() {
+export default function NotesDetail() {
   const [overview] = useState(true);
 
-  return overview ? (
+  return (
     <div className="grid grid-cols-12 gap-x-10">
       <div className="col-span-8">
         <div className="font-lexend bg-muted/50 p-4 rounded-md border flex flex-col gap-1">
           <div className="flex items-center gap-3">
             <h2 className="text-xl font-medium">
-              Project Title - Carrer Planning
+              Notes Title - Github Credentials
             </h2>
-            {getStatusBadge("Open")}
           </div>
           <p className="text-xs font-light">
             Last updated by <span className="font-normal">Super Admin</span> on{" "}
@@ -55,7 +54,6 @@ export default function ProjectOverview() {
                 <CardTitle className="text-base font-lexend font-medium tracking-wide flex flex-col gap-1">
                   <UserAvatar />
                 </CardTitle>
-                <PrivateTag />
               </div>
             </CardHeader>
             <CardContent className="p-4 flex flex-col gap-4">
@@ -66,7 +64,7 @@ export default function ProjectOverview() {
             </CardContent>
           </Card>
           <div className="flex justify-end my-2">
-            <AddProjectDetails title="Add Project Details" />
+            <AddProjectNotes title="Add Comment" />
           </div>
         </div>
 
@@ -146,43 +144,8 @@ export default function ProjectOverview() {
             </CustomTooltip>
           </div>
         </div>
-        <div className="bg-muted/20 border p-4 rounded-md flex flex-col gap-2">
-          <div className="flex items-center gap-2">
-            <Paperclip className="w-5 h-5" />
-            <Title>Attached Files</Title>
-          </div>
-        </div>
-        <div className="bg-muted/20 border p-4 rounded-md flex flex-col gap-2">
-          <div className="flex items-center gap-2">
-            <Activity className="w-4 h-4" />
-            <Title>Activities</Title>
-          </div>
-        </div>
-        <div className="bg-muted/20 border p-4 rounded-md flex flex-col gap-4">
-          <div className="flex items-center gap-2">
-            <UserRound className="w-4 h-4" />
-            <Title>People involved</Title>
-          </div>
-          <div className="flex items-center flex-wrap gap-1">
-            {Array.from({ length: 6 }).map((_, index) => {
-              return <CustomAvatar key={index} className="w-8 h-8" />;
-            })}
-          </div>
-        </div>
       </div>
     </div>
-  ) : (
-    <NoItems
-      title="No Overview Yet"
-      icon={
-        <ShipWheel
-          strokeWidth={1.5}
-          className="w-16 h-16 text-muted-foreground"
-        />
-      }
-    >
-      <AddProjectDetails title="Add Project Overview" btnLabel="Add Overview" />
-    </NoItems>
   );
 }
 
