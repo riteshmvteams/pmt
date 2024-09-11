@@ -155,7 +155,7 @@ function Upload(
           inputClasses.variant[variant].base,
           inputClasses.variant[variant].color[color],
           props.disabled && inputClasses.disabled,
-          "hover:border-2",
+          "hover:border-2 dark:border-border",
           className
         )}
         {...dropzoneRootProps}

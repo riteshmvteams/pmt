@@ -21,7 +21,7 @@ export default function ThemeSettings() {
           <Settings className="h-5 w-5" />
         </Button>
       </SheetTrigger>
-      <SheetContent>
+      <SheetContent className="overflow-y-auto scrollbar">
         <SheetHeader>
           <SheetTitle>Configure Theme</SheetTitle>
         </SheetHeader>

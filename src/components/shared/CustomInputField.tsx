@@ -9,6 +9,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { EyeClosedIcon, EyeOpenIcon } from "@radix-ui/react-icons";
+import { cn } from "@/lib/utils";
 
 type Props = {
   form: any;
@@ -16,6 +17,8 @@ type Props = {
   type: "password" | "text" | "checkbox";
   label: string;
   placeholder?: string;
+  labelClassName?: string;
+  className?: string;
 };
 
 export default function CustomInputField({
@@ -24,6 +27,8 @@ export default function CustomInputField({
   type,
   label,
   placeholder,
+  labelClassName,
+  className,
 }: Props) {
   return (
     <FormField
@@ -33,8 +38,10 @@ export default function CustomInputField({
         type === "checkbox" ? (
           <CheckBoxInput field={field} label={label} />
         ) : (
-          <FormItem>
-            <FormLabel className="font-lexend">{label}</FormLabel>
+          <FormItem className={className}>
+            <FormLabel className={cn("font-lexend", labelClassName)}>
+              {label}
+            </FormLabel>
             <FormControl>
               {type === "password" ? (
                 <PasswordInput field={field} />
