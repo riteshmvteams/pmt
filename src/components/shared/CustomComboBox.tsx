@@ -18,12 +18,14 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
+  useFormField,
 } from "@/components/ui/form";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import React from "react";
 
 const languages = [
   { label: "English", value: "en" },
@@ -35,13 +37,18 @@ const languages = [
   { label: "Japanese", value: "ja" },
   { label: "Korean", value: "ko" },
   { label: "Chinese", value: "zh" },
-] as const;
+];
 
 type Props = {
   className?: string;
   form: any;
   label?: string;
   labelClassName?: string;
+  name?: string;
+  options?: {
+    label: string;
+    value: string;
+  }[];
 };
 
 export default function CustomComboBox({
@@ -49,11 +56,13 @@ export default function CustomComboBox({
   form,
   label,
   labelClassName,
+  name = "language",
+  options = languages,
 }: Props) {
   return (
     <FormField
       control={form.control}
-      name="language"
+      name={name}
       render={({ field }) => (
         <FormItem className="flex flex-col">
           <FormLabel className={cn("font-lexend", labelClassName)}>
@@ -62,21 +71,15 @@ export default function CustomComboBox({
           <Popover>
             <PopoverTrigger asChild>
               <FormControl>
-                <Button
-                  variant="outline"
-                  role="combobox"
-                  className={cn(
-                    "w-full justify-between",
-                    !field.value && "text-muted-foreground"
-                  )}
-                >
-                  {field.value
-                    ? languages.find(
-                        (language) => language.value === field.value
-                      )?.label
-                    : "Select ..."}
-                  <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                </Button>
+                <div>
+                  <SelectTrigger field={field}>
+                    {field.value
+                      ? options.find((option) => option.value === field.value)
+                          ?.label
+                      : "Select ..."}
+                    <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                  </SelectTrigger>
+                </div>
               </FormControl>
             </PopoverTrigger>
             <PopoverContent className={cn("w-[200px] p-0", className)}>
@@ -85,19 +88,19 @@ export default function CustomComboBox({
                 <CommandList>
                   <CommandEmpty>No data found.</CommandEmpty>
                   <CommandGroup>
-                    {languages.map((language) => (
+                    {options.map((option) => (
                       <CommandItem
-                        value={language.label}
-                        key={language.value}
+                        value={option.label}
+                        key={option.value}
                         onSelect={() => {
-                          form.setValue("language", language.value);
+                          form.setValue(name, option.value);
                         }}
                       >
-                        {language.label}
+                        {option.label}
                         <CheckIcon
                           className={cn(
                             "ml-auto h-4 w-4",
-                            language.value === field.value
+                            option.value === field.value
                               ? "opacity-100"
                               : "opacity-0"
                           )}
@@ -113,5 +116,29 @@ export default function CustomComboBox({
         </FormItem>
       )}
     />
+  );
+}
+
+function SelectTrigger({
+  field,
+  children,
+}: {
+  field: any;
+  children: React.ReactNode;
+}) {
+  const { error } = useFormField();
+  return (
+    <Button
+      variant="outline"
+      role="combobox"
+      className={cn(
+        "w-full justify-between",
+        !field.value && "text-muted-foreground",
+        error ? "focus-visible:ring-destructive" : ""
+      )}
+      type="button"
+    >
+      {children}
+    </Button>
   );
 }

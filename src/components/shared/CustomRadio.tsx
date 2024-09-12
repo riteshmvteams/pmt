@@ -23,12 +23,12 @@ const priorities = [
 ];
 
 export default function CustomRadio({ form }: Props) {
-  const selected = form.watch("type");
+  const selected = form.watch("priority");
 
   return (
     <FormField
       control={form.control}
-      name="type"
+      name="priority"
       render={({ field }) => (
         <FormItem className="space-y-2">
           <FormLabel className="font-lexend">Select Priority of Task</FormLabel>

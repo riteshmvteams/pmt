@@ -4,6 +4,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
+  useFormField,
 } from "@/components/ui/form";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -46,7 +47,11 @@ export default function CustomInputField({
               {type === "password" ? (
                 <PasswordInput field={field} />
               ) : (
-                <Input placeholder={placeholder} type={type} {...field} />
+                <SimpleInput
+                  field={field}
+                  placeholder={placeholder}
+                  type={type}
+                />
               )}
             </FormControl>
             <FormMessage />
@@ -57,8 +62,29 @@ export default function CustomInputField({
   );
 }
 
+const SimpleInput = ({
+  field,
+  placeholder,
+  type = "text",
+}: {
+  field: any;
+  placeholder?: string;
+  type: "text";
+}) => {
+  const { error } = useFormField();
+  return (
+    <Input
+      placeholder={placeholder}
+      type={type}
+      {...field}
+      className={error ? "focus-visible:ring-destructive" : ""}
+    />
+  );
+};
+
 const PasswordInput = ({ field }: { field: any }) => {
   const [show, setShow] = useState(false);
+  const { error } = useFormField();
 
   return (
     <div className="relative">
@@ -66,6 +92,7 @@ const PasswordInput = ({ field }: { field: any }) => {
         placeholder="Enter your password"
         type={show ? "text" : "password"}
         {...field}
+        className={error ? "focus-visible:ring-destructive" : ""}
       />
 
       <button

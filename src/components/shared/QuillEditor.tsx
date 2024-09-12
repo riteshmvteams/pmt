@@ -60,7 +60,12 @@ export default function QuillEditor({
         {...props}
       />
       {error && (
-        <Text className={cn("text-xs text-red-500", errorClassName)}>
+        <Text
+          className={cn(
+            "text-sm mt-1 font-medium text-red-500",
+            errorClassName
+          )}
+        >
           {error}
         </Text>
       )}
