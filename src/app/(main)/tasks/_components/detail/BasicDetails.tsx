@@ -1,6 +1,6 @@
 import { getStatusBadge } from "@/components/shared/status-badge";
 import { Badge } from "@/components/ui/badge";
-import { Wrench } from "lucide-react";
+import { Plug } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import PrivateTag from "@/components/shared/PrivateTag";
 import { UserAvatar } from "@/app/(main)/projects/[id]/_components/overview/ProjectOverview";
@@ -11,25 +11,75 @@ const htmlString = `<p>This project is a good choice for beginners because it is
 export default function BasicDetails() {
   return (
     <div>
-      <div className="grid grid-cols-3 gap-4">
-        {Array.from({ length: 12 })?.map((_, ind) => {
-          return (
-            <div
-              key={ind}
-              className="flex gap-3 items-center bg-primary/5 px-4 py-2 rounded-lg"
+      <div className="grid grid-cols-2 gap-4 p-6 rounded-lg bg-primary/5">
+        <div className="flex gap-3 items-center rounded-lg">
+          <div className="min-w-16 font-lexend text-sm text-muted-foreground">
+            Status
+          </div>
+          {getStatusBadge("Open")}
+        </div>
+        <div className="flex gap-3 items-center rounded-lg">
+          <div className="min-w-16 font-lexend text-sm text-muted-foreground">
+            Priority
+          </div>
+          {getStatusBadge("Medium")}
+        </div>
+        <div className="flex gap-3 items-center rounded-lg">
+          <div className="min-w-16 font-lexend text-sm text-muted-foreground">
+            Type
+          </div>
+          <div>
+            <Badge
+              className="rounded-md gap-1 py-1 bg-background"
+              variant="outline"
             >
-              <div className="min-w-20 font-lexend text-sm">Type:</div>
-              <div>
-                <Badge
-                  className="rounded-md py-1 gap-2 text-muted-foreground"
-                  variant="outline"
-                >
-                  <Wrench className="w-[14px] h-[14px]" /> Development
-                </Badge>
-              </div>
-            </div>
-          );
-        })}
+              <Plug className="w-[14px] h-[14px]" strokeWidth={2.5} />{" "}
+              Development
+            </Badge>
+          </div>
+        </div>
+        <div className="flex gap-3 items-center rounded-lg">
+          <div className="min-w-16 font-lexend text-sm text-muted-foreground">
+            Type
+          </div>
+          <div>
+            <Badge
+              className="rounded-md gap-1 py-1 bg-background"
+              variant="outline"
+            >
+              <Plug className="w-[14px] h-[14px]" strokeWidth={2.5} />{" "}
+              Development
+            </Badge>
+          </div>
+        </div>
+        <div className="flex gap-3 items-center rounded-lg">
+          <div className="min-w-16 font-lexend text-sm text-muted-foreground">
+            Type
+          </div>
+          <div>
+            <Badge
+              className="rounded-md gap-1 py-1 bg-background"
+              variant="outline"
+            >
+              <Plug className="w-[14px] h-[14px]" strokeWidth={2.5} />{" "}
+              Development
+            </Badge>
+          </div>
+        </div>
+        <div className="flex gap-3 items-center rounded-lg">
+          <div className="min-w-16 font-lexend text-sm text-muted-foreground">
+            Type
+          </div>
+          <div>
+            <Badge
+              className="rounded-md gap-1 py-1 bg-background"
+              variant="outline"
+            >
+              <Plug className="w-[14px] h-[14px]" strokeWidth={2.5} />{" "}
+              Development
+            </Badge>
+          </div>
+        </div>
       </div>
 
       <div className="py-10">
@@ -43,7 +93,7 @@ export default function BasicDetails() {
               <PrivateTag />
             </div>
           </CardHeader>
-          <CardContent className="flex flex-col gap-4 bg-muted/10 p-0">
+          <CardContent className="flex flex-col gap-4 bg-muted/10 p-x-4 py-2.5">
             <div
               className="text-sm ql-editor"
               dangerouslySetInnerHTML={{ __html: htmlString }}

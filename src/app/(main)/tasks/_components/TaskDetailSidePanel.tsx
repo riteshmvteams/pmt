@@ -19,7 +19,15 @@ import { getStatusBadge } from "@/components/shared/status-badge";
 import Text from "@/components/shared/Text";
 import { formatDate, formatDateWithWeekday } from "@/lib/helpers";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, EllipsisVertical, X } from "lucide-react";
+import { taskActions } from "./columns";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function TaskDetailSidePanel({
   children,
@@ -48,8 +56,6 @@ export default function TaskDetailSidePanel({
   });
   const framer = useTabs(hookProps);
 
-  console.log(framer, "framer==>");
-
   return (
     <Sheet>
       <SheetTrigger asChild>{children}</SheetTrigger>
@@ -58,12 +64,7 @@ export default function TaskDetailSidePanel({
         className={cn("sm:max-w-[1200px] overflow-y-auto scrollbar p-0")}
       >
         <SheetHeader className="px-6 pt-4 bg-muted border-b sticky top-0 z-20">
-          <div className="flex gap-4 items-center">
-            {/* <SheetClose asChild>
-              <Button className="" variant="outline" size="icon">
-                <ChevronLeft className="w-4 h-4" />
-              </Button>
-            </SheetClose> */}
+          <div className="flex gap-4 items-start justify-between">
             <div className="flex flex-col gap-0.5">
               <SheetTitle className="font-lexend text-xl lg:text-2xl flex items-center gap-4">
                 #45: Fix the Dropdown issue {getStatusBadge("Open")}
@@ -75,6 +76,48 @@ export default function TaskDetailSidePanel({
                   {formatDateWithWeekday(new Date())}
                 </span>
               </Text>
+            </div>
+
+            <div className="flex items-center gap-1">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="text-muted-foreground"
+                  >
+                    <span className="sr-only">Open menu</span>
+                    <EllipsisVertical className="h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" side="left" className="w-56">
+                  {taskActions?.map((action, index) => {
+                    return action.icon ? (
+                      <DropdownMenuItem
+                        key={index}
+                        className="py-1.5 cursor-pointer"
+                      >
+                        <action.icon className="mr-3 h-[14px] w-[14px]" />
+                        <span className="text-[13px]">{action.title}</span>
+                      </DropdownMenuItem>
+                    ) : (
+                      <DropdownMenuSeparator
+                        className="my-1 bg-primary/20"
+                        key={index}
+                      />
+                    );
+                  })}
+                </DropdownMenuContent>
+              </DropdownMenu>
+              <SheetClose asChild>
+                <Button
+                  size="icon"
+                  variant="outline"
+                  className="text-muted-foreground"
+                >
+                  <X className="w-4 h-4" />
+                </Button>
+              </SheetClose>
             </div>
           </div>
           <FramerLayout.Tabs {...framer.tabProps} className="justify-start" />

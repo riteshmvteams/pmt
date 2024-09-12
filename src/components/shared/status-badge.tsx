@@ -3,6 +3,7 @@ import { Badge } from "../ui/badge";
 export const getStatusBadge = (status: string) => {
   switch (status?.toLowerCase()) {
     case "open":
+    case "low":
       return (
         <Badge
           variant="outline"
@@ -13,6 +14,7 @@ export const getStatusBadge = (status: string) => {
         </Badge>
       );
     case "in progress":
+    case "medium":
       return (
         <Badge
           variant="outline"
@@ -25,6 +27,7 @@ export const getStatusBadge = (status: string) => {
     case "resolved":
     case "closed":
     case "completed":
+    case "high":
       return (
         <Badge
           variant="outline"

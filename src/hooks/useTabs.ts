@@ -1,6 +1,11 @@
 import { ReactNode, useState } from "react";
 
-export type Tab = { label: string; id: string; children: ReactNode };
+export type Tab = {
+  label: string;
+  id: string;
+  children: ReactNode;
+  icon?: ReactNode;
+};
 
 export function useTabs({
   tabs,

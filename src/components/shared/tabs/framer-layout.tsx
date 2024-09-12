@@ -40,7 +40,7 @@ export const Tabs = ({
               className={cn(
                 "text-md relative rounded-md flex items-center h-8 px-5 text-sm text-muted-foreground cursor-pointer select-none transition-colors",
                 {
-                  "text-primary": selectedTabIndex === i,
+                  "text-primary bg-primary/5": selectedTabIndex === i,
                 }
               )}
               onHoverStart={() => setHoveredTab(i)}
@@ -49,6 +49,7 @@ export const Tabs = ({
                 setSelectedTab([i, i > selectedTabIndex ? 1 : -1]);
               }}
             >
+              {item?.icon && item.icon}
               <span className="z-20 font-lexend">{item.label}</span>
               {i === selectedTabIndex ? (
                 <motion.div

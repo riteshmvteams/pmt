@@ -1,4 +1,6 @@
-import { Suspense } from "react";
+"use client";
+
+import { Suspense, useState } from "react";
 
 import { Tabs, TabsContent } from "@/components/ui/tabs";
 import ViewSetting from "@/components/shared/ViewSetting";
@@ -11,6 +13,22 @@ import ProjectFiles from "./files/ProjectFiles";
 import ProjectNotes from "./notes/ProjectNotes";
 import ProjectMilestones from "./milestones/ProjectMilestones";
 import ProjectTimeLogs from "./time/ProjectTimeLogs";
+import BasicDetails from "@/app/(main)/tasks/_components/detail/BasicDetails";
+import TaskComments from "@/app/(main)/tasks/_components/detail/TaskComments";
+import TaskOtherDetails from "@/app/(main)/tasks/_components/detail/TaskOtherDetails";
+import { useTabs } from "@/hooks/useTabs";
+import { FramerLayout } from "@/components/shared/tabs/framer-layout";
+import {
+  Activity,
+  CircleCheckBig,
+  File,
+  Milestone,
+  NotebookPen,
+  TableOfContents,
+  Timer,
+  UserRoundCheck,
+} from "lucide-react";
+import ProjectActivities from "./activities/ProjectActivities";
 
 const tabList = [
   {
@@ -51,47 +69,124 @@ const tabList = [
 ];
 
 const ProjectDetailTabs = ({ tab }: { tab: string }) => {
+  const [hookProps] = useState({
+    tabs: [
+      {
+        icon: <TableOfContents className="h-[14px] w-[14px] mr-1.5" />,
+        label: "Overview",
+        children: <ProjectOverview />,
+        id: "Overview",
+      },
+      {
+        icon: <CircleCheckBig className="h-[14px] w-[14px] mr-1.5" />,
+        label: "Tasks",
+        children: <ProjectTasks />,
+        id: "Tasks",
+      },
+      {
+        icon: <File className="h-[14px] w-[14px] mr-1.5" />,
+        label: "Files",
+        children: <ProjectFiles />,
+        id: "Files",
+      },
+      {
+        icon: <NotebookPen className="h-[14px] w-[14px] mr-1.5" />,
+        label: "Notes",
+        children: <ProjectNotes />,
+        id: "Notes",
+      },
+      {
+        icon: <Milestone className="h-[14px] w-[14px] mr-1.5" />,
+        label: "Milestones",
+        children: <ProjectMilestones />,
+        id: "Milestones",
+      },
+
+      {
+        icon: <UserRoundCheck className="h-[14px] w-[14px] mr-1.5" />,
+        label: "Users",
+        children: (
+          <Suspense fallback="Loading...">
+            <UserTable data={Users_DATA?.slice(0, 6)} />
+          </Suspense>
+        ),
+        id: "Users",
+      },
+      {
+        icon: <Timer className="h-[14px] w-[14px] mr-1.5" />,
+        label: "Time",
+        children: (
+          <Suspense fallback="Loading...">
+            <ProjectTimeLogs />
+          </Suspense>
+        ),
+        id: "Time",
+      },
+      {
+        icon: <Activity className="h-[14px] w-[14px] mr-1.5" />,
+        label: "Activities",
+        children: (
+          <Suspense fallback="Loading...">
+            <ProjectActivities />
+          </Suspense>
+        ),
+        id: "Activities",
+      },
+    ],
+    initialTabId: "Tasks",
+  });
+  const framer = useTabs(hookProps);
+
   return (
-    <Tabs defaultValue={tab ? tab : "tasks"} className="flex flex-col gap-4">
-      <CustomTabTrigger tabs={tabList} className="grid-cols-7 max-w-[800px]">
+    // <Tabs defaultValue={tab ? tab : "tasks"} className="flex flex-col gap-4">
+    //   <CustomTabTrigger tabs={tabList} className="grid-cols-7 max-w-[800px]">
+    //     <ViewSetting />
+    //   </CustomTabTrigger>
+    //   <TabsContent value="overview">
+    //     <Suspense fallback="Loading...">
+    //       <ProjectOverview />
+    //     </Suspense>
+    //   </TabsContent>
+    //   <TabsContent value="tasks">
+    //     <Suspense fallback="Loading...">
+    //       <ProjectTasks />
+    //     </Suspense>
+    //   </TabsContent>
+    //   <TabsContent value="files">
+    //     <Suspense fallback="Loading...">
+    //       <ProjectFiles />
+    //     </Suspense>
+    //   </TabsContent>
+    //   <TabsContent value="notes">
+    //     <Suspense fallback="Loading...">
+    //       <ProjectNotes />
+    //     </Suspense>
+    //   </TabsContent>
+    //   <TabsContent value="milestones">
+    //     <Suspense fallback="Loading...">
+    //       <ProjectMilestones />
+    //     </Suspense>
+    //   </TabsContent>
+    //   <TabsContent value="users">
+    //     <Suspense fallback="Loading...">
+    //       <UserTable data={Users_DATA?.slice(0, 6)} />
+    //     </Suspense>
+    //   </TabsContent>
+    //   <TabsContent value="time">
+    //     <Suspense fallback="Loading...">
+    //       <ProjectTimeLogs />
+    //     </Suspense>
+    //   </TabsContent>
+    // </Tabs>
+    <div className="space-y-6">
+      <div className="border-b flex justify-between">
+        <FramerLayout.Tabs {...framer.tabProps} className="justify-start" />
         <ViewSetting />
-      </CustomTabTrigger>
-      <TabsContent value="overview">
-        <Suspense fallback="Loading...">
-          <ProjectOverview />
-        </Suspense>
-      </TabsContent>
-      <TabsContent value="tasks">
-        <Suspense fallback="Loading...">
-          <ProjectTasks />
-        </Suspense>
-      </TabsContent>
-      <TabsContent value="files">
-        <Suspense fallback="Loading...">
-          <ProjectFiles />
-        </Suspense>
-      </TabsContent>
-      <TabsContent value="notes">
-        <Suspense fallback="Loading...">
-          <ProjectNotes />
-        </Suspense>
-      </TabsContent>
-      <TabsContent value="milestones">
-        <Suspense fallback="Loading...">
-          <ProjectMilestones />
-        </Suspense>
-      </TabsContent>
-      <TabsContent value="users">
-        <Suspense fallback="Loading...">
-          <UserTable data={Users_DATA?.slice(0, 6)} />
-        </Suspense>
-      </TabsContent>
-      <TabsContent value="time">
-        <Suspense fallback="Loading...">
-          <ProjectTimeLogs />
-        </Suspense>
-      </TabsContent>
-    </Tabs>
+      </div>
+      <FramerLayout.Content {...framer.contentProps} className="">
+        {framer.selectedTab.children}
+      </FramerLayout.Content>
+    </div>
   );
 };
 
