@@ -14,6 +14,7 @@ type Props = {
   className?: string;
   btnLabel?: string;
   title: string;
+  trigger?: React.ReactNode;
 };
 
 export function CustomSheet({
@@ -22,11 +23,16 @@ export function CustomSheet({
   className,
   btnLabel = "Add Project Details",
   title,
+  trigger,
 }: Props) {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button className="font-lexend">{btnLabel}</Button>
+        {trigger ? (
+          trigger
+        ) : (
+          <Button className="font-lexend">{btnLabel}</Button>
+        )}
       </SheetTrigger>
       <SheetContent
         side={side}

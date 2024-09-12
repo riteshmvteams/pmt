@@ -23,10 +23,11 @@ import {
   Trash2,
   Undo,
 } from "lucide-react";
-import { routes } from "@/config/routes";
 import Title from "@/components/shared/Title";
 import CustomTooltip from "@/components/shared/CustomTooltip";
 import { Checkbox } from "@/components/ui/checkbox";
+import { CustomSheet } from "@/components/shared/CustomSheet";
+import TaskDetailSidePanel from "./TaskDetailSidePanel";
 
 type User = {
   id: number;
@@ -184,22 +185,21 @@ export const getColumns = (): ColumnDef<TTask>[] => {
             <Badge variant="outline" className="rounded-sm">
               {tag}
             </Badge>
-            <CustomTooltip title={title}>
-              <div className="group">
-                <Text
-                  className="text-sm group-hover:underline"
-                  as="link"
-                  href={routes.taskDetail(id)}
-                >
-                  {trimText(title, 20)}{" "}
-                </Text>
-                <span className="text-xs text-muted-foreground no-underline">
-                  {updated_at > created_at ? "updated" : "Created"} By Ritesh on{" "}
-                  {formatDate(
-                    updated_at > created_at ? updated_at : created_at
-                  )}
-                </span>
-              </div>
+            <CustomTooltip title={title} align="start">
+              <TaskDetailSidePanel>
+                <div className="group">
+                  <Text className="text-sm group-hover:underline cursor-pointer inline">
+                    {trimText(title, 20)}{" "}
+                  </Text>
+                  <span className="text-xs text-muted-foreground no-underline">
+                    {updated_at > created_at ? "updated" : "Created"} By Ritesh
+                    on{" "}
+                    {formatDate(
+                      updated_at > created_at ? updated_at : created_at
+                    )}
+                  </span>
+                </div>
+              </TaskDetailSidePanel>
             </CustomTooltip>
           </div>
         );

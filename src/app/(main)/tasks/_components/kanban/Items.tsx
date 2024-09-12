@@ -19,6 +19,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { EllipsisVertical, ShoppingBasket } from "lucide-react";
 import CustomTooltip from "@/components/shared/CustomTooltip";
+import TaskDetailSidePanel from "../TaskDetailSidePanel";
+import Title from "@/components/shared/Title";
 
 type ItemsType = {
   id: UniqueIdentifier;
@@ -56,9 +58,13 @@ const Items = ({ id, title }: ItemsType) => {
       <div className="flex justify-between w-full group h-full min-h-28">
         <div className="flex flex-col justify-between gap-2">
           <div className="flex flex-col gap-2">
-            <Link href={routes.taskDetail(1)} className="font-lexend text-sm">
-              {title}
-            </Link>
+            <TaskDetailSidePanel>
+              <div>
+                <Title className="font-lexend text-sm">
+                  #{Math.floor(Math.random() * 100)}: {title}
+                </Title>
+              </div>
+            </TaskDetailSidePanel>
 
             <h3 className="text-sm text-muted-foreground">Project Name Test</h3>
           </div>
