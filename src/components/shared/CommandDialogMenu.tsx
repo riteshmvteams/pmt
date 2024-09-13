@@ -114,28 +114,30 @@ export function CommandDialogMenu() {
           <CommandSeparator />
           <CommandGroup heading="Settings">
             <CommandItem
-              onSelect={() => setOpen(false)}
-              className="data-[selected='true']:bg-primary/10 dark:data-[selected='true']:bg-accent"
+              onSelect={() => {
+                push(routes?.personalSettings?.profile);
+                setOpen(false);
+              }}
+              className="cursor-pointer data-[selected='true']:bg-primary/10 dark:data-[selected='true']:bg-accent"
+              asChild
             >
-              <PersonIcon className="mr-2 h-4 w-4" />
-              <span>Profile</span>
-              <CommandShortcut>⌘P</CommandShortcut>
+              <Link href={routes?.personalSettings?.profile}>
+                <GearIcon className="mr-2 h-4 w-4" />
+                <span>Personal Settings</span>
+              </Link>
             </CommandItem>
             <CommandItem
-              onSelect={() => setOpen(false)}
-              className="data-[selected='true']:bg-primary/10 dark:data-[selected='true']:bg-accent"
+              onSelect={() => {
+                push(routes?.companySettings?.myCompany);
+                setOpen(false);
+              }}
+              className="cursor-pointer data-[selected='true']:bg-primary/10 dark:data-[selected='true']:bg-accent"
+              asChild
             >
-              <EnvelopeClosedIcon className="mr-2 h-4 w-4" />
-              <span>Mail</span>
-              <CommandShortcut>⌘B</CommandShortcut>
-            </CommandItem>
-            <CommandItem
-              onSelect={() => setOpen(false)}
-              className="data-[selected='true']:bg-primary/10 dark:data-[selected='true']:bg-accent"
-            >
-              <GearIcon className="mr-2 h-4 w-4" />
-              <span>Settings</span>
-              <CommandShortcut>⌘S</CommandShortcut>
+              <Link href={routes?.companySettings?.myCompany}>
+                <GearIcon className="mr-2 h-4 w-4" />
+                <span>Company Settings</span>
+              </Link>
             </CommandItem>
           </CommandGroup>
         </CommandList>

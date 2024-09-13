@@ -1,6 +1,6 @@
 import CheckInButton from "@/components/shared/CheckInButton";
-// import SettingsBreadCrumb from "./_components/SettingsBreadCrumb";
-// import PersonalSettingsTabs from "./_components/PersonalSettingsTabs";
+import SettingsBreadCrumb from "./_components/SettingsBreadCrumb";
+import CompanySettingsTabs from "./_components/CompanySettingsTabs";
 
 export default function CompanySettingsLayout({
   children,
@@ -10,11 +10,11 @@ export default function CompanySettingsLayout({
   return (
     <>
       <div className="flex items-center justify-between">
-        {/* <SettingsBreadCrumb /> */}
+        <SettingsBreadCrumb />
         <CheckInButton />
       </div>
       <div className="flex flex-col gap-1">
-        {/* <PersonalSettingsTabs /> */}
+        <CompanySettingsTabs />
         {children}
       </div>
     </>

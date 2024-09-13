@@ -23,16 +23,16 @@ export default function PersonalSettingsTabs() {
         href: routes?.personalSettings?.profile,
       },
       {
-        label: "Time Logs",
-        icon: <Timer className="h-4 w-4 mr-1.5" />,
-        id: "Logs",
-        href: routes?.personalSettings?.timelogs,
-      },
-      {
         label: "Change Password",
         icon: <LockKeyhole className="h-4 w-4 mr-1.5" />,
         id: "Password",
         href: routes?.personalSettings?.changePassword,
+      },
+      {
+        label: "Time Logs",
+        icon: <Timer className="h-4 w-4 mr-1.5" />,
+        id: "Logs",
+        href: routes?.personalSettings?.timelogs,
       },
       {
         label: "Notifications",
@@ -57,5 +57,9 @@ export default function PersonalSettingsTabs() {
   });
   const framer = useTabs(hookProps);
 
-  return <FramerLayout.Tabs {...framer.tabProps} className="justify-start" />;
+  return (
+    <div className="flex-1 border-b">
+      <FramerLayout.Tabs {...framer.tabProps} className="justify-start" />
+    </div>
+  );
 }

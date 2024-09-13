@@ -27,9 +27,9 @@ export const routes = {
   },
 
   companySettings: {
-    myCompany: "company-settings/my-company",
-    importsExports: "company-settings/imports-exports",
-    taskType: "company-settings/task-type",
-    takeBackup: "company-settings/take-backup",
+    myCompany: "/company-settings/my-company",
+    importsExports: "/company-settings/imports-exports",
+    taskType: "/company-settings/task-type",
+    takeBackup: "/company-settings/take-backup",
   },
 };

@@ -13,7 +13,7 @@ export default function PersonalSettingsLayout({
         <SettingsBreadCrumb />
         <CheckInButton />
       </div>
-      <div>
+      <div className="flex flex-col gap-4">
         <PersonalSettingsTabs />
         {children}
       </div>
