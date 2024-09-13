@@ -18,6 +18,7 @@ export const routes = {
 
   personalSettings: {
     profile: "/personal-settings/profile",
+    changePassword: "/personal-settings/change-password",
     timelogs: "/personal-settings/timelogs",
     notifications: "/personal-settings/email-notifications",
     emailReports: "/personal-settings/email-reports",

@@ -4,6 +4,7 @@ import { ReactNode, useState } from "react";
 import { Tab } from "@/hooks/useTabs";
 import { cn } from "@/lib/utils";
 import { useSetParams } from "@/hooks/useSetParams";
+import { useRouter } from "next/navigation";
 
 const transition = {
   type: "tween",
@@ -26,6 +27,7 @@ export const Tabs = ({
 }: Props): JSX.Element => {
   const [hoveredTab, setHoveredTab] = useState<number | null>(null);
   const { setParams, getParams } = useSetParams();
+  const { push } = useRouter();
   const note = getParams("note");
   return (
     <motion.nav
@@ -49,6 +51,9 @@ export const Tabs = ({
               onHoverStart={() => setHoveredTab(i)}
               onFocus={() => setHoveredTab(i)}
               onClick={() => {
+                if (item?.href) {
+                  push(item?.href);
+                }
                 setSelectedTab([i, i > selectedTabIndex ? 1 : -1]);
                 if (note) {
                   setParams("note", "delete");
