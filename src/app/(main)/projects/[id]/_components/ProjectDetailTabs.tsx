@@ -72,39 +72,38 @@ const ProjectDetailTabs = ({ tab }: { tab: string }) => {
   const [hookProps] = useState({
     tabs: [
       {
-        icon: <TableOfContents className="h-[14px] w-[14px] mr-1.5" />,
         label: "Overview",
+        icon: <TableOfContents className="h-[14px] w-[14px] mr-1.5" />,
         children: <ProjectOverview />,
         id: "Overview",
       },
       {
-        icon: <CircleCheckBig className="h-[14px] w-[14px] mr-1.5" />,
         label: "Tasks",
+        icon: <CircleCheckBig className="h-[14px] w-[14px] mr-1.5" />,
         children: <ProjectTasks />,
         id: "Tasks",
       },
       {
-        icon: <File className="h-[14px] w-[14px] mr-1.5" />,
         label: "Files",
+        icon: <File className="h-[14px] w-[14px] mr-1.5" />,
         children: <ProjectFiles />,
         id: "Files",
       },
       {
-        icon: <NotebookPen className="h-[14px] w-[14px] mr-1.5" />,
         label: "Notes",
+        icon: <NotebookPen className="h-[14px] w-[14px] mr-1.5" />,
         children: <ProjectNotes />,
         id: "Notes",
       },
       {
-        icon: <Milestone className="h-[14px] w-[14px] mr-1.5" />,
         label: "Milestones",
+        icon: <Milestone className="h-[14px] w-[14px] mr-1.5" />,
         children: <ProjectMilestones />,
         id: "Milestones",
       },
-
       {
-        icon: <UserRoundCheck className="h-[14px] w-[14px] mr-1.5" />,
         label: "Users",
+        icon: <UserRoundCheck className="h-[14px] w-[14px] mr-1.5" />,
         children: (
           <Suspense fallback="Loading...">
             <UserTable data={Users_DATA?.slice(0, 6)} />
@@ -113,8 +112,8 @@ const ProjectDetailTabs = ({ tab }: { tab: string }) => {
         id: "Users",
       },
       {
-        icon: <Timer className="h-[14px] w-[14px] mr-1.5" />,
         label: "Time",
+        icon: <Timer className="h-[14px] w-[14px] mr-1.5" />,
         children: (
           <Suspense fallback="Loading...">
             <ProjectTimeLogs />
@@ -123,14 +122,14 @@ const ProjectDetailTabs = ({ tab }: { tab: string }) => {
         id: "Time",
       },
       {
+        label: "Activity",
         icon: <Activity className="h-[14px] w-[14px] mr-1.5" />,
-        label: "Activities",
         children: (
           <Suspense fallback="Loading...">
             <ProjectActivities />
           </Suspense>
         ),
-        id: "Activities",
+        id: "Activity",
       },
     ],
     initialTabId: "Tasks",
