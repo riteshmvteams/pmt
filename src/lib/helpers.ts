@@ -59,3 +59,14 @@ export const getLocalStorageValue = (key: string, isJson = false) => {
     }
   }
 };
+
+export const capitalizeText = (text: string) => {
+  const originalText = text?.split(" ");
+  const word = originalText
+    ?.map((word) => {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    ?.join(" ");
+
+  return word;
+};

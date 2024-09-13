@@ -17,18 +17,18 @@ export const routes = {
   archive: "/archive",
 
   personalSettings: {
-    profile: "/users/profile",
-    timelogs: "/timelogs",
-    notifications: "/email-notifications",
-    emailReports: "/email-reports",
-    announcements: "/announcements",
+    profile: "/personal-settings/profile",
+    timelogs: "/personal-settings/timelogs",
+    notifications: "/personal-settings/email-notifications",
+    emailReports: "/personal-settings/email-reports",
+    announcements: "/personal-settings/announcements",
     signOut: "/sign-out",
   },
 
   companySettings: {
-    myCompany: "/my-company",
-    importsExports: "/imports-exports",
-    taskType: "/task-type",
-    takeBackup: "/take-backup",
+    myCompany: "company-settings/my-company",
+    importsExports: "company-settings/imports-exports",
+    taskType: "company-settings/task-type",
+    takeBackup: "company-settings/take-backup",
   },
 };

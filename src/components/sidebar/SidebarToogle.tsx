@@ -8,14 +8,13 @@ export default function SidebarToogle() {
   const { sidebarType, updateSidebarType } = useSidebarType((state) => state);
 
   return (
-    <div className="hidden md:block">
+    <div className="hidden md:block relative">
       <Button
-        className="h-10 w-12"
-        variant="outline"
-        size="icon"
         onClick={() => {
           updateSidebarType(sidebarType === "default" ? "icon" : "default");
         }}
+        variant="outline"
+        className="px-2.5 text-muted-foreground"
       >
         <MenuIcon className="h-5 w-5" />
       </Button>
