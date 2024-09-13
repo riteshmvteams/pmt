@@ -64,7 +64,7 @@ export const NAVIGATION_MENUS = [
   {
     id: 7,
     title: "Starred",
-    href: `${routes.projects}?filter=starred`,
+    href: `${routes.projects}?star=true`,
     icon: Star,
   },
 ];

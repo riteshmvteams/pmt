@@ -1,6 +1,6 @@
 import { getStatusBadge } from "@/components/shared/status-badge";
 import { Badge } from "@/components/ui/badge";
-import { Plug } from "lucide-react";
+import { AlarmClockCheck, Plug } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import PrivateTag from "@/components/shared/PrivateTag";
 import { UserAvatar } from "@/app/(main)/projects/[id]/_components/overview/ProjectOverview";
@@ -16,13 +16,26 @@ export default function BasicDetails() {
           <div className="min-w-16 font-lexend text-sm text-muted-foreground">
             Status
           </div>
-          {getStatusBadge("Open")}
+          {/* {getStatusBadge("Open")} */}
+          <Badge
+            className="rounded-md gap-1 py-1 bg-destructive text-destructive-foreground"
+            variant="outline"
+          >
+            <AlarmClockCheck className="w-[14px] h-[14px]" strokeWidth={2} />{" "}
+            Open
+          </Badge>
         </div>
         <div className="flex gap-3 items-center rounded-lg">
           <div className="min-w-16 font-lexend text-sm text-muted-foreground">
             Priority
           </div>
-          {getStatusBadge("Medium")}
+          <Badge
+            className="rounded-md gap-1 py-1 bg-amber-600 text-amber-50"
+            variant="outline"
+          >
+            <AlarmClockCheck className="w-[14px] h-[14px]" strokeWidth={2} />{" "}
+            Medium
+          </Badge>
         </div>
         <div className="flex gap-3 items-center rounded-lg">
           <div className="min-w-16 font-lexend text-sm text-muted-foreground">

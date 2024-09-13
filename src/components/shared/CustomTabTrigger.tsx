@@ -17,11 +17,11 @@ type Props = {
 
 export default function CustomTabTrigger({ children, tabs, className }: Props) {
   const { setParams, getParams } = useSetParams();
-  const note = getParams("note");
+  const star = getParams("star");
 
   const onTabClick = (target: string) => {
-    if (note) {
-      setParams("note", "delete");
+    if (star) {
+      setParams("star", "delete");
       return;
     }
     setParams("tab", target);
