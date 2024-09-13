@@ -1,3 +1,4 @@
+import CustomAreaChart from "@/components/shared/chart/AreaChart";
 import BarChartUI from "@/components/shared/chart/BarChart";
 import PieChartUI from "@/components/shared/chart/PieChart";
 import RadicalChartUI from "@/components/shared/chart/RadicalChart";
@@ -12,6 +13,7 @@ export default function Dashboard() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <CustomAreaChart className="sm:col-span-2 lg:col-span-3" />
         <BarChartUI className="sm:col-span-2 lg:col-span-3" />
         <PieChartUI />
         <RadicalChartUI />
