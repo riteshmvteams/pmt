@@ -3,6 +3,7 @@ import { ReactNode, useState } from "react";
 
 import { Tab } from "@/hooks/useTabs";
 import { cn } from "@/lib/utils";
+import { useSetParams } from "@/hooks/useSetParams";
 
 const transition = {
   type: "tween",
@@ -24,6 +25,8 @@ export const Tabs = ({
   className,
 }: Props): JSX.Element => {
   const [hoveredTab, setHoveredTab] = useState<number | null>(null);
+  const { setParams, getParams } = useSetParams();
+  const note = getParams("note");
   return (
     <motion.nav
       className={cn(
@@ -47,6 +50,9 @@ export const Tabs = ({
               onFocus={() => setHoveredTab(i)}
               onClick={() => {
                 setSelectedTab([i, i > selectedTabIndex ? 1 : -1]);
+                if (note) {
+                  setParams("note", "delete");
+                }
               }}
             >
               {item?.icon && item.icon}

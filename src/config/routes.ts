@@ -5,7 +5,7 @@ export const routes = {
   showProjectUsers: (id: number) => `/projects/users?project=${id}`,
   projectDetail: (id: number) => `/projects/${id}`,
   notesDetail: (project: number, note: number) =>
-    `/projects/${project}?tab=notes&note=${note}`,
+    `/projects/${project}?note=${note}`,
   users: "/users",
   usersProjects: (id: number) => `/users/projects?user=${id}`,
   userDetail: (id: number) => `/users/${id}`,
