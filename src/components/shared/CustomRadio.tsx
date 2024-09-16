@@ -9,53 +9,56 @@ import {
 } from "@/components/ui/form";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { cn } from "@/lib/utils";
-import { CheckboxIcon } from "@radix-ui/react-icons";
-import { Check, FileCheck } from "lucide-react";
+import { Check } from "lucide-react";
 
 type Props = {
   form: any;
+  options?: { label: string; value: string }[];
+  name: string;
+  label?: string;
+  className?: string;
 };
 
-const priorities = [
-  { label: "Low", value: "low" },
-  { label: "Medium", value: "medium" },
-  { label: "High", value: "high" },
-];
-
-export default function CustomRadio({ form }: Props) {
-  const selected = form.watch("priority");
+export default function CustomRadio({
+  form,
+  options,
+  name,
+  label,
+  className,
+}: Props) {
+  const selected = form.watch(name);
 
   return (
     <FormField
       control={form.control}
-      name="priority"
+      name={name}
       render={({ field }) => (
         <FormItem className="space-y-2">
-          <FormLabel className="font-lexend">Select Priority of Task</FormLabel>
+          <FormLabel className="font-lexend">{label}</FormLabel>
           <FormControl>
             <RadioGroup
               onValueChange={field.onChange}
               defaultValue={field.value}
-              className="grid grid-cols-3 gap-4"
+              className={cn(`grid grid-cols-3 gap-4`, className)}
             >
-              {priorities?.map((priority) => {
+              {options?.map((option) => {
                 return (
                   <FormItem
-                    key={priority.value}
+                    key={option.value}
                     className="flex items-center space-y-0"
                   >
                     <FormControl>
-                      <RadioGroupItem value={priority?.value} hidden />
+                      <RadioGroupItem value={option?.value} hidden />
                     </FormControl>
                     <FormLabel
                       className={cn(
                         "relative border w-full rounded-md h-12 flex items-center justify-center cursor-pointer hover:border-ring font-lexend text-muted-foreground focus-visible:border-ring",
-                        selected === priority?.value
+                        selected === option?.value
                           ? "border-2 border-ring text-foreground"
                           : ""
                       )}
                     >
-                      {selected === priority?.value && (
+                      {selected === option?.value && (
                         <span className="absolute left-2 p-1 bg-primary rounded-full">
                           <Check
                             strokeWidth={2}
@@ -63,7 +66,7 @@ export default function CustomRadio({ form }: Props) {
                           />
                         </span>
                       )}
-                      <span>{priority?.label}</span>
+                      <span>{option?.label}</span>
                     </FormLabel>
                   </FormItem>
                 );

@@ -40,6 +40,12 @@ const projectOptions = [
   },
 ];
 
+const priorities = [
+  { label: "Low", value: "low" },
+  { label: "Medium", value: "medium" },
+  { label: "High", value: "high" },
+];
+
 export default function TaskCreate() {
   const form = useForm<TaskCreateInputType>({
     resolver: zodResolver(taskCreateSchema),
@@ -114,7 +120,12 @@ export default function TaskCreate() {
             />
           </div>
 
-          <CustomRadio form={form} />
+          <CustomRadio
+            form={form}
+            name="priority"
+            options={priorities}
+            label="Select Priority of Task"
+          />
 
           <Controller
             control={form.control}

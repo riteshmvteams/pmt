@@ -13,6 +13,9 @@ import { loginFormSchema, LoginInputType } from "@/lib/schemas/login.schema";
 import CustomInputField from "@/components/shared/CustomInputField";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import CustomTooltip from "@/components/shared/CustomTooltip";
+import Title from "@/components/shared/Title";
+import Text from "@/components/shared/Text";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function UserProfile() {
   const [edit, setEdit] = useState(false);
@@ -73,6 +76,21 @@ export default function UserProfile() {
                 placeholder="Enter your Email"
               />
 
+              <div className="flex gap-4 items-start">
+                <Title className="w-28 text-muted-foreground">
+                  Profile Image:
+                </Title>
+                <div>
+                  <Avatar className="w-20 h-20">
+                    <AvatarImage
+                      src="https://github.com/shadcn.png"
+                      alt="@shadcn"
+                    />
+                    <AvatarFallback>CN</AvatarFallback>
+                  </Avatar>
+                </div>
+              </div>
+
               <div className="flex gap-4">
                 <Button
                   type="button"
@@ -111,18 +129,41 @@ export default function UserProfile() {
           </div>
         </CardHeader>
         <CardContent className="flex flex-col gap-4 bg-muted/10 p-x-4 py-2.5">
-          <div className="flex gap-4">
-            <h4>First Name</h4>
-            <p>Ritesh</p>
+          <div className="flex gap-4 items-center">
+            <Title className="w-28 text-muted-foreground">First Name:</Title>
+            <Text className="tracking-wider">Ritesh</Text>
           </div>
-          <div className="flex gap-4">
-            <h4>Last Name</h4>
-            <p>Kumar</p>
+          <div className="flex gap-4 items-center">
+            <Title className="w-28 text-muted-foreground">Last Name:</Title>
+            <Text className="tracking-wider">Kumar</Text>
           </div>
-          <div className="flex gap-4">
-            <h4>Short Name</h4>
-            <p>RK</p>
+          <div className="flex gap-4 items-center">
+            <Title className="w-28 text-muted-foreground">Short Name:</Title>
+            <Text className="tracking-wider">RK</Text>
           </div>
+          <div className="flex gap-4 items-center">
+            <Title className="w-28 text-muted-foreground">Time Zone:</Title>
+            <Text className="tracking-wider">
+              (GMT +05:30) Chennai , Kolkata , Mumbai , New Delhi
+            </Text>
+          </div>
+          <div className="flex gap-4 items-start">
+            <Title className="w-28 text-muted-foreground">Profile Image:</Title>
+            <div>
+              <Avatar className="w-20 h-20">
+                <AvatarImage
+                  src="https://github.com/shadcn.png"
+                  alt="@shadcn"
+                />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+            </div>
+          </div>
+
+          {/* <div className="flex gap-4">
+            <h4>Keep me upto date with new Features</h4>
+            <p>yes</p>
+          </div> */}
         </CardContent>
       </Card>
     </div>
