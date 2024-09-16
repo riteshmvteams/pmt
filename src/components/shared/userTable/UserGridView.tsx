@@ -46,9 +46,10 @@ export default function UsersGridView({ data }: Props) {
             </CardHeader>
             <CardContent className="p-4 flex flex-col gap-4">
               <div className="flex gap-6 items-start">
-                <Avatar className="w-16 h-16">
+                <Avatar className="w-16 h-16 border">
                   <AvatarImage
-                    src="https://github.com/shadcn.png"
+                    // src="https://github.com/shadcn.png"
+                    src={`https://robohash.org/cat${user?.id}.png`}
                     alt="@shadcn"
                   />
                   <AvatarFallback>CN</AvatarFallback>

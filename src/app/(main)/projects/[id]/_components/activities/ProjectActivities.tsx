@@ -9,17 +9,18 @@ export default function ProjectActivities() {
         <h3 className="font-lexend font-medium text-xl">This Week</h3>
         <div className="flex flex-col gap-3 relative ml-4 after:content-[''] after:absolute after:left-[11px] after:z-[-1] after:top-2.5 after:bottom-2.5 after:w-0.5 after:bg-primary/50">
           <div className="flex items-center gap-3">
-            <span className="flex items-center justify-center h-6 w-6 rounded-full bg-primary text-primary-foreground">
+            <span className="flex items-center justify-center h-6 w-6 rounded-full bg-primary text-primary-foreground scale-90">
               <LayoutDashboard
                 className="w-[14px] h-[14px]"
                 strokeWidth={2.5}
               />
             </span>
             <div className="flex gap-3 items-center">
-              <Avatar className="w-7 h-7">
+              <Avatar className="w-7 h-7 border">
                 <AvatarImage
-                  src="https://github.com/shadcn.png"
+                  // src="https://github.com/shadcn.png"
                   alt="@shadcn"
+                  src={`https://robohash.org/${Math.random()}.png`}
                 />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
@@ -37,14 +38,15 @@ export default function ProjectActivities() {
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <span className="flex items-center justify-center h-6 w-6 rounded-full bg-primary text-primary-foreground">
+            <span className="flex items-center justify-center h-6 w-6 rounded-full bg-primary text-primary-foreground scale-90">
               <Plus className="w-[14px] h-[14px]" strokeWidth={2.5} />
             </span>
             <div className="flex gap-3 items-center">
-              <Avatar className="w-7 h-7">
+              <Avatar className="w-7 h-7 border">
                 <AvatarImage
-                  src="https://github.com/shadcn.png"
+                  // src="https://github.com/shadcn.png"
                   alt="@shadcn"
+                  src={`https://robohash.org/${Math.random()}.png`}
                 />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
@@ -62,17 +64,18 @@ export default function ProjectActivities() {
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <span className="flex items-center justify-center h-6 w-6 rounded-full bg-primary text-primary-foreground">
+            <span className="flex items-center justify-center h-6 w-6 rounded-full bg-primary text-primary-foreground scale-90">
               <LayoutDashboard
                 className="w-[14px] h-[14px]"
                 strokeWidth={2.5}
               />
             </span>
             <div className="flex gap-3 items-center">
-              <Avatar className="w-7 h-7">
+              <Avatar className="w-7 h-7 border">
                 <AvatarImage
-                  src="https://github.com/shadcn.png"
+                  // src="https://github.com/shadcn.png"
                   alt="@shadcn"
+                  src={`https://robohash.org/${Math.random()}.png`}
                 />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
@@ -96,17 +99,18 @@ export default function ProjectActivities() {
         <h3 className="font-lexend font-medium text-xl">This Month</h3>
         <div className="flex flex-col gap-3 relative ml-4 after:content-[''] after:absolute after:left-[11px] after:z-[-1] after:top-2.5 after:bottom-2.5 after:w-0.5 after:bg-primary/50">
           <div className="flex items-center gap-3">
-            <span className="flex items-center justify-center h-6 w-6 rounded-full bg-primary text-primary-foreground">
+            <span className="flex items-center justify-center h-6 w-6 rounded-full bg-primary text-primary-foreground scale-90">
               <LayoutDashboard
                 className="w-[14px] h-[14px]"
                 strokeWidth={2.5}
               />
             </span>
             <div className="flex gap-3 items-center">
-              <Avatar className="w-7 h-7">
+              <Avatar className="w-7 h-7 border">
                 <AvatarImage
-                  src="https://github.com/shadcn.png"
+                  // src="https://github.com/shadcn.png"
                   alt="@shadcn"
+                  src={`https://robohash.org/${Math.random()}.png`}
                 />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
@@ -124,14 +128,15 @@ export default function ProjectActivities() {
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <span className="flex items-center justify-center h-6 w-6 rounded-full bg-primary text-primary-foreground">
+            <span className="flex items-center justify-center h-6 w-6 rounded-full bg-primary text-primary-foreground scale-90">
               <Plus className="w-[14px] h-[14px]" strokeWidth={2.5} />
             </span>
             <div className="flex gap-3 items-center">
-              <Avatar className="w-7 h-7">
+              <Avatar className="w-7 h-7 border">
                 <AvatarImage
-                  src="https://github.com/shadcn.png"
+                  // src="https://github.com/shadcn.png"
                   alt="@shadcn"
+                  src={`https://robohash.org/${Math.random()}.png`}
                 />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
@@ -149,17 +154,18 @@ export default function ProjectActivities() {
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <span className="flex items-center justify-center h-6 w-6 rounded-full bg-primary text-primary-foreground">
+            <span className="flex items-center justify-center h-6 w-6 rounded-full bg-primary text-primary-foreground scale-90">
               <LayoutDashboard
                 className="w-[14px] h-[14px]"
                 strokeWidth={2.5}
               />
             </span>
             <div className="flex gap-3 items-center">
-              <Avatar className="w-7 h-7">
+              <Avatar className="w-7 h-7 border">
                 <AvatarImage
-                  src="https://github.com/shadcn.png"
+                  // src="https://github.com/shadcn.png"
                   alt="@shadcn"
+                  src={`https://robohash.org/${Math.random()}.png`}
                 />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
@@ -183,17 +189,18 @@ export default function ProjectActivities() {
         <h3 className="font-lexend font-medium text-xl">This Year</h3>
         <div className="flex flex-col gap-3 relative ml-4 after:content-[''] after:absolute after:left-[11px] after:z-[-1] after:top-2.5 after:bottom-2.5 after:w-0.5 after:bg-primary/50">
           <div className="flex items-center gap-3">
-            <span className="flex items-center justify-center h-6 w-6 rounded-full bg-primary text-primary-foreground">
+            <span className="flex items-center justify-center h-6 w-6 rounded-full bg-primary text-primary-foreground scale-90">
               <LayoutDashboard
                 className="w-[14px] h-[14px]"
                 strokeWidth={2.5}
               />
             </span>
             <div className="flex gap-3 items-center">
-              <Avatar className="w-7 h-7">
+              <Avatar className="w-7 h-7 border">
                 <AvatarImage
-                  src="https://github.com/shadcn.png"
+                  // src="https://github.com/shadcn.png"
                   alt="@shadcn"
+                  src={`https://robohash.org/${Math.random()}.png`}
                 />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
@@ -211,14 +218,15 @@ export default function ProjectActivities() {
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <span className="flex items-center justify-center h-6 w-6 rounded-full bg-primary text-primary-foreground">
+            <span className="flex items-center justify-center h-6 w-6 rounded-full bg-primary text-primary-foreground scale-90">
               <Plus className="w-[14px] h-[14px]" strokeWidth={2.5} />
             </span>
             <div className="flex gap-3 items-center">
-              <Avatar className="w-7 h-7">
+              <Avatar className="w-7 h-7 border">
                 <AvatarImage
-                  src="https://github.com/shadcn.png"
+                  // src="https://github.com/shadcn.png"
                   alt="@shadcn"
+                  src={`https://robohash.org/${Math.random()}.png`}
                 />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
@@ -236,17 +244,18 @@ export default function ProjectActivities() {
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <span className="flex items-center justify-center h-6 w-6 rounded-full bg-primary text-primary-foreground">
+            <span className="flex items-center justify-center h-6 w-6 rounded-full bg-primary text-primary-foreground scale-90">
               <LayoutDashboard
                 className="w-[14px] h-[14px]"
                 strokeWidth={2.5}
               />
             </span>
             <div className="flex gap-3 items-center">
-              <Avatar className="w-7 h-7">
+              <Avatar className="w-7 h-7 border">
                 <AvatarImage
-                  src="https://github.com/shadcn.png"
+                  // src="https://github.com/shadcn.png"
                   alt="@shadcn"
+                  src={`https://robohash.org/${Math.random()}.png`}
                 />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
