@@ -52,7 +52,7 @@ export default function CustomRadio({
                     </FormControl>
                     <FormLabel
                       className={cn(
-                        "relative border w-full rounded-md h-12 flex items-center justify-center cursor-pointer hover:border-ring font-lexend text-muted-foreground focus-visible:border-ring",
+                        "relative border border-ring/20 w-full rounded-md h-12 flex items-center justify-center cursor-pointer hover:border-ring font-lexend text-muted-foreground focus-visible:border-ring",
                         selected === option?.value
                           ? "border-2 border-ring text-foreground"
                           : ""

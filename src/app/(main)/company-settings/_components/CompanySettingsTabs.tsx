@@ -3,7 +3,7 @@
 import { FramerLayout } from "@/components/shared/tabs/framer-layout";
 import { routes } from "@/config/routes";
 import { useTabs } from "@/hooks/useTabs";
-import { Building2, ImageUp } from "lucide-react";
+import { BookCheck, Building2, ImageUp, MailPlus } from "lucide-react";
 import { useState } from "react";
 
 export default function CompanySettingsTabs() {
@@ -16,10 +16,28 @@ export default function CompanySettingsTabs() {
         href: routes?.companySettings?.myCompany,
       },
       {
+        label: "Daily Catch-Up",
+        icon: <MailPlus className="h-4 w-4 mr-1.5" />,
+        id: "Catch-Up",
+        href: routes?.companySettings?.catchUp,
+      },
+      {
         label: "Imports & Exports",
         icon: <ImageUp className="h-4 w-4 mr-1.5" />,
         id: "ImportsExports",
         href: routes?.companySettings?.importsExports,
+      },
+      {
+        label: "Task Type",
+        icon: <BookCheck className="h-4 w-4 mr-1.5" />,
+        id: "Task-Type",
+        href: routes?.companySettings?.taskType,
+      },
+      {
+        label: "Take Backup",
+        icon: <BookCheck className="h-4 w-4 mr-1.5" />,
+        id: "Take-Backup",
+        href: routes?.companySettings?.takeBackup,
       },
     ],
     initialTabId: "Company",

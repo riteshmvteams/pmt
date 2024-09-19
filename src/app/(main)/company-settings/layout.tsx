@@ -13,7 +13,7 @@ export default function CompanySettingsLayout({
         <SettingsBreadCrumb />
         <CheckInButton />
       </div>
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-4">
         <CompanySettingsTabs />
         {children}
       </div>

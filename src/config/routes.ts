@@ -28,8 +28,9 @@ export const routes = {
 
   companySettings: {
     myCompany: "/company-settings/my-company",
-    importsExports: "/company-settings/imports-exports",
+    importsExports: "/company-settings/import-export",
     taskType: "/company-settings/task-type",
     takeBackup: "/company-settings/take-backup",
+    catchUp: "/company-settings/catch-up",
   },
 };

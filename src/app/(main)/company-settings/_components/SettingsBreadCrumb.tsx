@@ -15,8 +15,8 @@ let path = [
   },
   {
     id: 2,
-    title: "Personal Settings",
-    href: "/personal-settings",
+    title: "Company Settings",
+    href: "/company-settings",
   },
   {
     id: 3,
@@ -29,9 +29,9 @@ export default function SettingsBreadCrumb() {
   const splittedPath = pathname?.split("/");
   const pathSegment = splittedPath?.at(-1);
 
-  //   if (pathSegment !== "personal-settings") {
-  //     path[2].title = pathSegment ? capitalizeText(pathSegment) : "";
-  //   }
+  if (pathSegment !== "company-settings") {
+    path[2].title = pathSegment ? capitalizeText(pathSegment) : "";
+  }
 
   return <CustomBreadcrumb paths={path} />;
 }
