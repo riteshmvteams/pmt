@@ -1,22 +1,7 @@
 "use client";
 
 import * as React from "react";
-import {
-  Archive,
-  ArchiveX,
-  CircleUserRound,
-  Clock,
-  Forward,
-  Inbox,
-  MoreVertical,
-  Pencil,
-  Reply,
-  ReplyAll,
-  Trash2,
-  User,
-  Users,
-  X,
-} from "lucide-react";
+import { CircleUserRound, Clock, MoreVertical, Users, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -33,8 +18,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { formatDateWithWeekday, trimText } from "@/lib/helpers";
 import Title from "@/components/shared/Title";
+import { formatDateWithWeekday, trimText } from "@/lib/helpers";
 
 const emails = [
   {
@@ -120,7 +105,7 @@ export default function AnnouncementListing() {
   return (
     <div className="flex max-h-[650px] border">
       {/* Email list */}
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col w-1/2 ">
         <div className="p-4 border-b bg-background">
           <div className="flex items-center">
             <Input placeholder="Search Announcements..." className="mr-2" />
@@ -136,7 +121,7 @@ export default function AnnouncementListing() {
             </Select>
           </div>
         </div>
-        <div className="flex-1 overflow-auto scrollbar">
+        <div className="overflow-auto scrollbar">
           {emails.map((email) => (
             <div
               key={email.id}

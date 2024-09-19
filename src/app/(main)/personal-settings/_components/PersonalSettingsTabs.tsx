@@ -11,9 +11,11 @@ import {
   Timer,
   UserPen,
 } from "lucide-react";
-import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function PersonalSettingsTabs() {
+  const path = usePathname();
   const [hookProps] = useState({
     tabs: [
       {
@@ -56,6 +58,14 @@ export default function PersonalSettingsTabs() {
     initialTabId: "Profile",
   });
   const framer = useTabs(hookProps);
+
+  useEffect(() => {
+    if (path && framer?.tabProps) {
+      const index = framer.tabProps.tabs?.findIndex((el) => el?.href === path);
+      framer.tabProps.setSelectedTab([index, 0]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [path]);
 
   return (
     <div className="flex-1 border-b">
