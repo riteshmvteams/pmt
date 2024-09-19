@@ -3,7 +3,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
-import { login } from "@/actions/login";
 import { user } from "@/config/site";
 import { Form } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
@@ -23,7 +22,6 @@ export default function MyCompany() {
 
   function onSubmit(values: LoginInputType) {
     console.log(values, "values==>");
-    login();
   }
   return (
     <div className="w-1/2">
