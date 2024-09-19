@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import ExcelIcon from "@/components/icons/ExcelIcon";
 import Title from "@/components/shared/Title";
+import PanelWithBorder from "./_components/PanelWithBorder";
 
 export default function page() {
   return (
@@ -16,8 +17,10 @@ export default function page() {
             <ExcelIcon height="20px" width="20px" /> <Title>Export Task</Title>
           </Button>
         </CardHeader>
-        <CardContent className="flex flex-col gap-4 bg-muted/10 p-x-4 py-2.5">
-          j
+        <CardContent className="flex flex-col gap-4 bg-muted/10 p-0">
+          <PanelWithBorder />
+
+          <div className="py-2.5 px-4">dddd</div>
         </CardContent>
       </Card>
     </div>
