@@ -135,13 +135,15 @@ export default function AnnouncementListing() {
               <div className="flex justify-between items-center mb-1">
                 <div className="flex gap-1 items-center">
                   <CircleUserRound className="h-[14px] w-[14px]" />
-                  <Title className="text-xs ">{email.from}</Title>
+                  <Title className="text-xs">{email.from}</Title>
                 </div>
                 <span className="text-xs text-muted-foreground">
                   {formatDateWithWeekday(email.date)}
                 </span>
               </div>
-              <Title>{trimText(email.subject, 50)}</Title>
+              <Title className="font-light text-base">
+                {trimText(email.subject, 50)}
+              </Title>
               <div className="text-sm text-muted-foreground/60 truncate">
                 {trimText(email.preview, 100)}
               </div>
