@@ -3,11 +3,9 @@
 import * as React from "react";
 import {
   CalendarIcon,
-  EnvelopeClosedIcon,
   FaceIcon,
   FilePlusIcon,
   GearIcon,
-  PersonIcon,
   RocketIcon,
 } from "@radix-ui/react-icons";
 
@@ -19,7 +17,6 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-  CommandShortcut,
 } from "@/components/ui/command";
 import { Search } from "lucide-react";
 import { Input } from "../ui/input";

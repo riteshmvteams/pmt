@@ -22,14 +22,20 @@ import { format } from "date-fns";
 let currentDate = new Date();
 // currentDate.setDate(currentDate.getDate() + 2);
 
-export default function CustomCalenderField({ form }: { form: any }) {
+export default function CustomCalenderField({
+  form,
+  className,
+}: {
+  form: any;
+  className?: string;
+}) {
   return (
     <FormField
       control={form.control}
       name="date"
       render={({ field }) => (
-        <FormItem className="flex flex-col">
-          <FormLabel className="font-lexend">Due Date</FormLabel>
+        <FormItem className={cn("flex flex-col", className)}>
+          <FormLabel className="">Due Date</FormLabel>
           <Popover>
             <PopoverTrigger asChild>
               <FormControl>
