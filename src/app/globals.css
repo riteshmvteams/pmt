@@ -83,6 +83,14 @@
   }
 }
 
+::-moz-selection {
+  @apply bg-primary text-primary-foreground;
+}
+
+::selection {
+  @apply bg-primary text-primary-foreground;
+}
+
 html {
   scrollbar-width: thin;
 }

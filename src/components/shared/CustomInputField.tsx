@@ -80,7 +80,7 @@ export default function CustomInputField({
               <FormControl>
                 <Textarea
                   placeholder={placeholder}
-                  className="resize-none min-h-36"
+                  className="min-h-36"
                   {...field}
                 />
               </FormControl>
