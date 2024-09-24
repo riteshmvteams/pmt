@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/providers/theme-provider";
 import { siteConfig } from "@/config/site";
 import TopLoader from "@/components/shared/TopLoader";
 import InitialLoad from "@/components/providers/initial-load";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: siteConfig.title,
@@ -38,6 +39,18 @@ export default function RootLayout({
             <TopLoader />
             {children}
           </InitialLoad>
+          <Toaster
+            position="top-center"
+            toastOptions={{
+              unstyled: false,
+              classNames: {
+                error: "bg-red-400",
+                success: "text-green-600 bg-green-50",
+                warning: "text-yellow-400",
+                info: "bg-blue-400",
+              },
+            }}
+          />
         </ThemeProvider>
       </body>
     </html>

@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import CustomInputField from "../CustomInputField";
 import { Button } from "@/components/ui/button";
 import { AlertDialogCancel } from "@/components/ui/alert-dialog";
+import { toast } from "sonner";
 
 const AddTime = () => {
   const form = useForm<LoginInputType>({
@@ -14,6 +15,10 @@ const AddTime = () => {
   function onSubmit(data: LoginInputType) {
     console.log(data, "data==>");
   }
+
+  const makeToast = () => {
+    toast.success("Time Logged Successfully");
+  };
 
   return (
     <div className="p-4">
@@ -101,6 +106,14 @@ const AddTime = () => {
               </AlertDialogCancel>
               <Button type="submit" className="px-10">
                 Submit
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                className="px-10"
+                onClick={makeToast}
+              >
+                Toast
               </Button>
             </div>
           </div>
