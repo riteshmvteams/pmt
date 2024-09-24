@@ -14,6 +14,7 @@ import { loginFormSchema, LoginInputType } from "@/lib/schemas/login.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import CustomInputField from "../CustomInputField";
 import { Textarea } from "@/components/ui/textarea";
+import { getRoleBadge } from "../userTable/columns";
 
 export default function AddProjects() {
   const [hookProps] = useState({
@@ -109,7 +110,7 @@ const ExistingUsers = () => {
               <label
                 tabIndex={0}
                 key={i}
-                className="px-4 py-3 hover:bg-primary/10 cursor-pointer border-b last:border-b-0"
+                className="px-4 py-3 hover:bg-primary/10 cursor-pointer border-b last:border-b-0 flex justify-between items-center"
               >
                 <div className="flex items-center gap-2">
                   <Checkbox />
@@ -117,6 +118,11 @@ const ExistingUsers = () => {
                     title="Super Admin"
                     subTitle="super@admin.com"
                   />
+                </div>
+                <div>
+                  {getRoleBadge(
+                    i === 0 ? "owner" : i === 2 ? "super-admin" : "user"
+                  )}
                 </div>
               </label>
             );
