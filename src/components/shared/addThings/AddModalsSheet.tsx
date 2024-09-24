@@ -42,8 +42,8 @@ const AddModalsSheet = () => {
       return (
         <CustomAlertDialog
           trigger={""}
-          title={<Title Icon={Users} title="Add Users" />}
-          className="max-w-[1100px]"
+          title={<Title Icon={Users} title="Invite New Users" />}
+          className="max-w-[700px]"
           open={open}
           setOpen={setOpen}
         >
