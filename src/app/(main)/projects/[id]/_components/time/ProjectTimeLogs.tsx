@@ -8,6 +8,7 @@ import TimeListTable from "@/components/shared/timelog/table";
 import TimeLogListing from "@/components/shared/timelog/TimeLogListing";
 import Title from "@/components/shared/Title";
 import { Button } from "@/components/ui/button";
+import { useAddThing } from "@/store/addThings";
 import {
   AlarmClockPlus,
   Ban,
@@ -108,6 +109,14 @@ const timlogData = [
 
 export default function ProjectTimeLogs() {
   const [task] = useState(true);
+  const { open, setOpen, target, updateAddThing } = useAddThing(
+    (state) => state
+  );
+
+  const handleAddTimeLog = () => {
+    updateAddThing("add_time", true);
+  };
+
   return task ? (
     <div className="flex flex-col gap-4">
       <div className="px-4 py-2 rounded-md bg-muted/50 flex justify-between items-center border">
@@ -144,18 +153,13 @@ export default function ProjectTimeLogs() {
             Filter Here
           </CustomSheet>
 
-          <CustomAlertDialog
-            trigger={
-              <Button className="font-lexend gap-1 active:scale-95">
-                <AlarmClockPlus className="h-4 w-4 text-primary-foreground" />{" "}
-                Add Time
-              </Button>
-            }
-            title="Log Your Time"
-            className="max-w-[1100px]"
+          <Button
+            className="font-lexend gap-1 active:scale-95"
+            onClick={() => updateAddThing("add_time", true)}
           >
-            <AddTime />
-          </CustomAlertDialog>
+            <AlarmClockPlus className="h-4 w-4 text-primary-foreground" /> Add
+            Time
+          </Button>
         </div>
       </div>
       <TimeListTable data={timlogData} />

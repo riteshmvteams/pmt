@@ -1,3 +1,5 @@
+"use client";
+
 import {
   PlusCircle,
   FolderOpenDot,
@@ -15,36 +17,44 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
+import { useAddThing } from "@/store/addThings";
 
 const createOptions = [
   {
     title: "Project",
-    target: "project",
+    target: "add_project",
     icon: FolderOpenDot,
   },
   {
     title: "Users",
-    target: "users",
+    target: "add_users",
     icon: UserPlus,
   },
   {
     title: "Tasks",
-    target: "tasks",
+    target: "add_tasks",
     icon: FileCheck2,
   },
   {
     title: "Milestones",
-    target: "milestones",
+    target: "add_milestones",
     icon: Milestone,
   },
   {
     title: "Time",
-    target: "time",
+    target: "add_time",
     icon: Timer,
   },
 ];
 
 export default function CreateNew() {
+  const { updateAddThing, target } = useAddThing((state) => state);
+  const handleClick = (target: string) => {
+    updateAddThing(target, true);
+  };
+
+  console.log(target, "target===");
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -63,6 +73,7 @@ export default function CreateNew() {
               <DropdownMenuItem
                 key={option?.target}
                 className="py-3 cursor-pointer text-muted-foreground"
+                onClick={() => handleClick(option?.target)}
               >
                 <option.icon className="mr-3 h-5 w-5" />
                 <span>{option?.title}</span>

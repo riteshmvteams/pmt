@@ -2,6 +2,7 @@ import {
   AlertDialog,
   AlertDialogCancel,
   AlertDialogContent,
+  AlertDialogDescription,
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
@@ -15,6 +16,8 @@ type Props = {
   children?: React.ReactNode;
   title?: string;
   className?: string;
+  open?: boolean;
+  setOpen?: (open: boolean) => void;
 };
 
 export function CustomAlertDialog({
@@ -22,9 +25,11 @@ export function CustomAlertDialog({
   children,
   title,
   className,
+  open = false,
+  setOpen,
 }: Props) {
   return (
-    <AlertDialog>
+    <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogTrigger asChild>{trigger}</AlertDialogTrigger>
       <AlertDialogContent
         className={cn(
@@ -46,6 +51,7 @@ export function CustomAlertDialog({
             </Button>
           </AlertDialogCancel>
         </AlertDialogHeader>
+        <AlertDialogDescription className="p-0"></AlertDialogDescription>
         {children}
       </AlertDialogContent>
     </AlertDialog>

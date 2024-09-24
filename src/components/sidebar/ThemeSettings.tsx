@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -25,6 +26,7 @@ export default function ThemeSettings() {
         <SheetHeader>
           <SheetTitle>Configure Theme</SheetTitle>
         </SheetHeader>
+        <SheetDescription></SheetDescription>
         <div className="grid gap-10 py-4">
           <ThemeToggle />
           <ColorSettings />

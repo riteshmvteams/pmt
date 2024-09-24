@@ -1,5 +1,6 @@
-import { Suspense } from "react";
+"use client";
 
+import { Suspense } from "react";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import ViewSetting from "@/components/shared/ViewSetting";
@@ -7,6 +8,8 @@ import CustomTabTrigger from "@/components/shared/CustomTabTrigger";
 import Table from "./table";
 import ProjectFilters from "./ProjectFilters";
 import ProjectSort from "./ProjectSort";
+import { AlarmClockPlus } from "lucide-react";
+import { useAddThing } from "@/store/addThings";
 
 const tabList = [
   {
@@ -24,10 +27,18 @@ const tabList = [
 ];
 
 const ProjectTabs = () => {
+  const { updateAddThing } = useAddThing((state) => state);
+
   return (
     <Tabs defaultValue="active" className="">
       <CustomTabTrigger tabs={tabList}>
-        <Button>Add Project</Button>
+        <Button
+          className="font-lexend gap-1 active:scale-95"
+          onClick={() => updateAddThing("add_project", true)}
+        >
+          <AlarmClockPlus className="h-4 w-4 text-primary-foreground" /> Add
+          Project
+        </Button>
         <ProjectSort />
         <ProjectFilters />
         <ViewSetting />
