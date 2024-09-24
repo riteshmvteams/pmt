@@ -8,6 +8,7 @@ import AddTasks from "./AddTasks";
 import AddMilestones from "./AddMilestones";
 import AddTime from "./AddTime";
 import { CustomSheet } from "../CustomSheet";
+import { AlarmClockPlus, FolderClosed, Users } from "lucide-react";
 
 const AddModalsSheet = () => {
   const { open, setOpen, target } = useAddThing((state) => state);
@@ -17,7 +18,7 @@ const AddModalsSheet = () => {
       return (
         <CustomAlertDialog
           trigger={""}
-          title="Add Project"
+          title={<Title Icon={FolderClosed} title="Create Project" />}
           className="max-w-[800px]"
           open={open}
           setOpen={setOpen}
@@ -29,7 +30,7 @@ const AddModalsSheet = () => {
       return (
         <CustomAlertDialog
           trigger={""}
-          title="Log Your Time"
+          title={<Title Icon={AlarmClockPlus} title="Log Your Time" />}
           className="max-w-[1100px]"
           open={open}
           setOpen={setOpen}
@@ -41,7 +42,7 @@ const AddModalsSheet = () => {
       return (
         <CustomAlertDialog
           trigger={""}
-          title="Add Users"
+          title={<Title Icon={Users} title="Add Users" />}
           className="max-w-[1100px]"
           open={open}
           setOpen={setOpen}
@@ -81,3 +82,12 @@ const AddModalsSheet = () => {
 };
 
 export default AddModalsSheet;
+
+const Title = ({ Icon, title }: { Icon: any; title: string }) => {
+  return (
+    <div className="flex items-center gap-3">
+      <Icon className="h-5 w-5" />
+      {title}
+    </div>
+  );
+};

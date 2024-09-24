@@ -1,3 +1,5 @@
+"use client";
+
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -10,11 +12,12 @@ import {
 import { Button } from "../ui/button";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
 
 type Props = {
   trigger: React.ReactNode;
   children?: React.ReactNode;
-  title?: string;
+  title?: React.ReactNode;
   className?: string;
   open?: boolean;
   setOpen?: (open: boolean) => void;
@@ -25,15 +28,20 @@ export function CustomAlertDialog({
   children,
   title,
   className,
-  open = false,
+  open,
   setOpen,
 }: Props) {
+  const [customOpen, setCustomOpen] = useState(false);
+
   return (
-    <AlertDialog open={open} onOpenChange={setOpen}>
+    <AlertDialog
+      open={open ? open : customOpen}
+      onOpenChange={setOpen ? setOpen : setCustomOpen}
+    >
       <AlertDialogTrigger asChild>{trigger}</AlertDialogTrigger>
       <AlertDialogContent
         className={cn(
-          "p-0 max-w-[600px] gap-0 max-h-[90vh] overflow-auto scrollbar",
+          "p-0 max-w-[600px] gap-0 max-h-[90vh] overflow-x-hidden overflow-y-auto scrollbar",
           className
         )}
       >
