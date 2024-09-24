@@ -10,7 +10,7 @@ import { useTaskView } from "@/store/dataView";
 import TaskTable from "./table";
 import TaskKanban from "./kanban";
 import TaskViewOptions from "./TaskViewOptions";
-import TaskCreate from "./create/TaskCreate";
+import { useAddThing } from "@/store/addThings";
 
 const tabList = [
   {
@@ -28,11 +28,14 @@ const tabList = [
 
 const TaskTabs = () => {
   const taskView = useTaskView((state) => state?.taskView);
+  const { updateAddThing } = useAddThing((state) => state);
 
   return (
     <Tabs defaultValue="tasks" className="">
       <CustomTabTrigger tabs={tabList}>
-        <TaskCreate />
+        <Button onClick={() => updateAddThing("add_tasks", true)}>
+          Create Task
+        </Button>
         <TaskViewOptions />
       </CustomTabTrigger>
       <TabsContent value="overview">Overview</TabsContent>

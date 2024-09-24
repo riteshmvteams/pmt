@@ -53,8 +53,6 @@ export default function CreateNew() {
     updateAddThing(target, true);
   };
 
-  console.log(target, "target===");
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

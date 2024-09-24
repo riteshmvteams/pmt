@@ -1,3 +1,3 @@
 export default function AddMilestones() {
-  return <div>AddMilestones</div>;
+  return <div className="p-4">AddMilestones</div>;
 }

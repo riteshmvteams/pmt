@@ -7,6 +7,7 @@ import AddUsers from "./AddUsers";
 import AddTasks from "./AddTasks";
 import AddMilestones from "./AddMilestones";
 import AddTime from "./AddTime";
+import { CustomSheet } from "../CustomSheet";
 
 const AddModalsSheet = () => {
   const { open, setOpen, target } = useAddThing((state) => state);
@@ -17,7 +18,7 @@ const AddModalsSheet = () => {
         <CustomAlertDialog
           trigger={""}
           title="Add Project"
-          className="max-w-[1100px]"
+          className="max-w-[800px]"
           open={open}
           setOpen={setOpen}
         >
@@ -50,15 +51,17 @@ const AddModalsSheet = () => {
       );
     case "add_tasks":
       return (
-        <CustomAlertDialog
-          trigger={""}
-          title="Add Tasks"
-          className="max-w-[1100px]"
+        <CustomSheet
+          title="Create Task"
+          btnLabel="Add Task"
+          side="right"
+          className="sm:max-w-[1000px]"
           open={open}
           setOpen={setOpen}
+          trigger={"<div></div>"}
         >
           <AddTasks />
-        </CustomAlertDialog>
+        </CustomSheet>
       );
     case "add_milestones":
       return (
