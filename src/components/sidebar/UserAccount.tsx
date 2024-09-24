@@ -1,20 +1,4 @@
-import {
-  CircleUser,
-  Cloud,
-  CreditCard,
-  Github,
-  Keyboard,
-  LifeBuoy,
-  LogOut,
-  Mail,
-  MessageSquare,
-  Plus,
-  PlusCircle,
-  Settings,
-  User,
-  UserPlus,
-  Users,
-} from "lucide-react";
+import { CircleUser } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {

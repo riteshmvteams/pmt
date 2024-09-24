@@ -1,6 +1,7 @@
 "use client";
 
-import { useAddThing } from "@/store/addThings";
+import { AlarmClockPlus, FolderClosed, Milestone, Users } from "lucide-react";
+
 import { CustomAlertDialog } from "../CustomAlertDialog";
 import AddProjects from "./AddProjects";
 import AddUsers from "./AddUsers";
@@ -8,7 +9,8 @@ import AddTasks from "./AddTasks";
 import AddMilestones from "./AddMilestones";
 import AddTime from "./AddTime";
 import { CustomSheet } from "../CustomSheet";
-import { AlarmClockPlus, FolderClosed, Milestone, Users } from "lucide-react";
+
+import { useAddThing } from "@/store/addThings";
 
 const AddModalsSheet = () => {
   const { open, setOpen, target } = useAddThing((state) => state);

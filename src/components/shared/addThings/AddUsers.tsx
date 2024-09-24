@@ -7,8 +7,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
-import CustomUserAvatar from "../CustomUserAvatar";
-import { getRoleBadge } from "../userTable/columns";
 import Title from "../Title";
 
 export default function AddUsers() {
