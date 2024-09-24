@@ -8,7 +8,7 @@ import AddTasks from "./AddTasks";
 import AddMilestones from "./AddMilestones";
 import AddTime from "./AddTime";
 import { CustomSheet } from "../CustomSheet";
-import { AlarmClockPlus, FolderClosed, Users } from "lucide-react";
+import { AlarmClockPlus, FolderClosed, Milestone, Users } from "lucide-react";
 
 const AddModalsSheet = () => {
   const { open, setOpen, target } = useAddThing((state) => state);
@@ -68,8 +68,8 @@ const AddModalsSheet = () => {
       return (
         <CustomAlertDialog
           trigger={""}
-          title="Add MileStones"
-          className="max-w-[1100px]"
+          title={<Title Icon={Milestone} title="Add Milestones" />}
+          className="max-w-[700px]"
           open={open}
           setOpen={setOpen}
         >

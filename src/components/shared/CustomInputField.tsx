@@ -75,9 +75,9 @@ export default function CustomInputField({
       return (
         <FormField
           control={form.control}
-          name="bio"
+          name={name}
           render={({ field }) => (
-            <FormItem>
+            <FormItem className={className}>
               <FormLabel>{label}</FormLabel>
               <FormControl>
                 <Textarea

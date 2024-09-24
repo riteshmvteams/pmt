@@ -44,8 +44,6 @@ export default function AddProjects() {
     console.log(data, "data==>");
   }
 
-  console.log(framer.selectedTab, "framer.selectedTab==>");
-
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
