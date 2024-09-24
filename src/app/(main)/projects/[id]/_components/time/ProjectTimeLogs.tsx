@@ -1,9 +1,7 @@
 "use client";
 
-import { CustomAlertDialog } from "@/components/shared/CustomAlertDialog";
 import { CustomSheet } from "@/components/shared/CustomSheet";
 import NoItems from "@/components/shared/NoItems";
-import AddTime from "@/components/shared/timelog/AddTime";
 import TimeListTable from "@/components/shared/timelog/table";
 import TimeLogListing from "@/components/shared/timelog/TimeLogListing";
 import Title from "@/components/shared/Title";
@@ -112,10 +110,6 @@ export default function ProjectTimeLogs() {
   const { open, setOpen, target, updateAddThing } = useAddThing(
     (state) => state
   );
-
-  const handleAddTimeLog = () => {
-    updateAddThing("add_time", true);
-  };
 
   return task ? (
     <div className="flex flex-col gap-4">

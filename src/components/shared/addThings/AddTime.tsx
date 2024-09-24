@@ -1,3 +1,5 @@
+"use client";
+
 import { Form } from "@/components/ui/form";
 import { loginFormSchema, LoginInputType } from "@/lib/schemas/login.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
