@@ -13,8 +13,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import RowDragAndDrop from "../shared/dnd/Example";
-import { useSortable } from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
 
 interface MenuObject {
   id: number;
@@ -25,8 +23,6 @@ interface MenuObject {
 }
 
 export default function DesktopMenu() {
-  const pathname = usePathname();
-
   return (
     <div className="flex-1">
       <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
@@ -44,8 +40,6 @@ export default function DesktopMenu() {
                 <AccordionTrigger
                   className={cn(
                     "flex items-center gap-3 rounded-lg px-3 py-2.5 text-muted-foreground transition-all hover:text-primary hover:no-underline"
-                    // (pathname === "/analytics" || pathname === "/archive") &&
-                    //   "bg-primary/10 text-foreground"
                   )}
                 >
                   <div className="flex gap-3 items-center">
@@ -92,9 +86,6 @@ export const NavigationLink = ({
         "flex items-center gap-3 rounded-lg px-3 py-2.5 text-muted-foreground transition-all hover:text-foreground",
         pathname?.startsWith(menu.href) && "bg-primary/10 text-foreground",
         isChild && "ml-8"
-        // isChild &&
-        //   pathname?.startsWith(menu.href) &&
-        //   "text-primary bg-transparent"
       )}
     >
       <menu.icon className="h-[18px] w-[18px]" />
@@ -105,39 +96,5 @@ export const NavigationLink = ({
         </Badge>
       )}
     </Link>
-  );
-};
-
-export type SingleRow = {
-  id: number;
-  title: string;
-  href: string;
-  icon: any;
-};
-
-const DraggableRow = ({ id, title }: SingleRow) => {
-  const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({ id });
-
-  const style = {
-    transform: CSS.Transform.toString(transform),
-    transition,
-  };
-
-  return (
-    <div
-      ref={setNodeRef}
-      style={{
-        ...style,
-        padding: "10px",
-        border: "1px solid #ccc",
-        marginBottom: "5px",
-        backgroundColor: "#fff",
-      }}
-      {...attributes}
-    >
-      <span {...listeners}>handle</span>
-      {title}
-    </div>
   );
 };

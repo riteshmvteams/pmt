@@ -16,7 +16,6 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import {
-  Cross1Icon,
   Cross2Icon,
   CubeIcon,
   DragHandleDots2Icon,
