@@ -31,7 +31,13 @@ type Row = {
   name: string;
 };
 
-const DraggableRow = ({ id, name }: Row) => {
+type Props = {
+  id: number;
+  name: string;
+  handleRemove: (id: number) => void;
+};
+
+const DraggableRow = ({ id, name, handleRemove }: Props) => {
   const pathname = usePathname();
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id });
@@ -68,7 +74,10 @@ const DraggableRow = ({ id, name }: Row) => {
         {name}
       </Link>
 
-      <button className="absolute right-2 opacity-0 group-hover:opacity-100">
+      <button
+        className="absolute right-2 opacity-0 group-hover:opacity-100"
+        onClick={() => handleRemove(id)}
+      >
         <Cross2Icon className="text-muted-foreground hover:text-foreground" />
       </button>
     </div>
@@ -99,6 +108,10 @@ const RowDragAndDrop = () => {
     }
   };
 
+  const handleRemove = (id: number) => {
+    setRows((prevRows) => prevRows.filter((row) => row.id !== id));
+  };
+
   return (
     <DndContext
       sensors={sensors}
@@ -107,7 +120,12 @@ const RowDragAndDrop = () => {
     >
       <SortableContext items={rows} strategy={verticalListSortingStrategy}>
         {rows.map((row) => (
-          <DraggableRow key={row.id} id={row.id} name={row.name} />
+          <DraggableRow
+            key={row.id}
+            id={row.id}
+            name={row.name}
+            handleRemove={handleRemove}
+          />
         ))}
       </SortableContext>
     </DndContext>
