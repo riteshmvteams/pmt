@@ -23,6 +23,7 @@ const IconSidebar = () => {
         <nav className="flex flex-col gap-0.5 items-center">
           {NAVIGATION_MENUS?.map((menu) => {
             return (
+              menu?.href &&
               menu?.icon && (
                 <TooltipProvider key={menu.id} delayDuration={0}>
                   <Tooltip>

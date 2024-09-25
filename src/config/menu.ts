@@ -4,6 +4,7 @@ import {
   FileCheck2,
   FolderOpenDot,
   Home,
+  ListCollapse,
   Milestone,
   Star,
   Users,
@@ -46,6 +47,7 @@ export const NAVIGATION_MENUS = [
   {
     id: 6,
     title: "More",
+    icon: ListCollapse,
     children: [
       {
         id: 1,
@@ -64,8 +66,22 @@ export const NAVIGATION_MENUS = [
   {
     id: 7,
     title: "Starred",
-    href: `${routes.projects}?star=true`,
+    // href: `${routes.projects}?star=true`,
     icon: Star,
+    children: [
+      {
+        id: 1,
+        title: "Analytics",
+        href: routes.analytics,
+        icon: ChartNoAxesCombined,
+      },
+      {
+        id: 2,
+        title: "Archives",
+        href: routes.archive,
+        icon: ArchiveRestore,
+      },
+    ],
   },
 ];
 
