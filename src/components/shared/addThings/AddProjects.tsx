@@ -17,25 +17,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { getRoleBadge } from "../userTable/columns";
 
 export default function AddProjects() {
-  const [hookProps] = useState({
-    tabs: [
-      {
-        label: "Existing Users",
-        icon: <UserPen className="h-4 w-4 mr-1.5" />,
-        id: "Existing",
-        children: <ExistingUsers />,
-      },
-      {
-        label: "New Users",
-        icon: <UserPen className="h-4 w-4 mr-1.5" />,
-        id: "New",
-        children: <NewUsers />,
-      },
-    ],
-    initialTabId: "Profile",
-  });
-  const framer = useTabs(hookProps);
-
   const form = useForm<LoginInputType>({
     resolver: zodResolver(loginFormSchema),
   });
@@ -67,14 +48,7 @@ export default function AddProjects() {
             />
           </div>
 
-          <div className="flex-1 border-b">
-            <FramerLayout.Tabs {...framer.tabProps} className="justify-start" />
-          </div>
-          <div className="flex-1 mt-4">
-            <FramerLayout.Content {...framer.contentProps}>
-              {framer.selectedTab.children}
-            </FramerLayout.Content>
-          </div>
+          <AddUserInProjectTabs />
 
           <div className="flex justify-center gap-3 items-center mt-6">
             <Button
@@ -94,12 +68,45 @@ export default function AddProjects() {
   );
 }
 
-const ExistingUsers = () => {
+export const AddUserInProjectTabs = () => {
+  const [hookProps] = useState({
+    tabs: [
+      {
+        label: "Existing Users",
+        icon: <UserPen className="h-4 w-4 mr-1.5" />,
+        id: "Existing",
+        children: <ExistingUsers />,
+      },
+      {
+        label: "New Users",
+        icon: <UserPen className="h-4 w-4 mr-1.5" />,
+        id: "New",
+        children: <NewUsers />,
+      },
+    ],
+    initialTabId: "Profile",
+  });
+  const framer = useTabs(hookProps);
+  return (
+    <>
+      <div className="flex-1 border-b">
+        <FramerLayout.Tabs {...framer.tabProps} className="justify-start" />
+      </div>
+      <div className="flex-1 mt-4">
+        <FramerLayout.Content {...framer.contentProps}>
+          {framer.selectedTab.children}
+        </FramerLayout.Content>
+      </div>
+    </>
+  );
+};
+
+export const ExistingUsers = () => {
   return (
     <div className="">
       <div className="bg-background flex flex-col gap-3">
         <div className="flex items-center">
-          <Input placeholder="Search Users..." className="mr-2" />
+          <Input placeholder="Search Users..." />
         </div>
 
         <div className="flex flex-col border rounded-md scrollbar overflow-y-auto">

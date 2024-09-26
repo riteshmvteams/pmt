@@ -24,6 +24,7 @@ import { formatDate, trimText } from "@/lib/helpers";
 import Text from "@/components/shared/Text";
 import Title from "@/components/shared/Title";
 import { useModal } from "@/store/useModal";
+import AddUserInProject from "./AddUserInProject";
 
 export type TProject = {
   id: number;
@@ -152,37 +153,60 @@ export const getColumns = ({
 };
 
 const ProjectActionDropDowns = () => {
-  const { setChildren, setTitle, setOpen } = useModal((state) => state);
+  const { setChildren, setTitle, setOpen, setClassName } = useModal(
+    (state) => state
+  );
 
   return (
     <DropdownMenuContent align="start" side="left" className="w-36">
       <DropdownMenuItem
         className="py-1.5 cursor-pointer"
         onClick={() => {
-          setTitle("Add User");
+          setTitle("Add User > Project Title");
           setChildren(<AddUserInProject />);
           setOpen(true);
+          setClassName("max-w-[1000px]");
         }}
       >
         <UserPlus className="mr-3 h-[14px] w-[14px]" />
         <span className="text-[13px]">Add User</span>
       </DropdownMenuItem>
-      <DropdownMenuItem className="py-1.5 cursor-pointer">
+      <DropdownMenuItem
+        className="py-1.5 cursor-pointer"
+        onClick={() => {
+          setTitle("Remove User");
+          setChildren(<AddUserInProject />);
+          setOpen(true);
+          setClassName("max-w-[800px]");
+        }}
+      >
         <UserMinus className="mr-3 h-[14px] w-[14px]" />
         <span className="text-[13px]">Remove User</span>
       </DropdownMenuItem>
-      <DropdownMenuItem className="py-1.5 cursor-pointer">
+      <DropdownMenuItem
+        className="py-1.5 cursor-pointer"
+        onClick={() => {
+          setTitle("Edit");
+          setChildren(<AddUserInProject />);
+          setOpen(true);
+          setClassName("max-w-[800px]");
+        }}
+      >
         <Edit className="mr-3 h-[14px] w-[14px]" />
         <span className="text-[13px]">Edit</span>
       </DropdownMenuItem>
-      <DropdownMenuItem className="py-1.5 cursor-pointer">
+      <DropdownMenuItem
+        className="py-1.5 cursor-pointer"
+        onClick={() => {
+          setTitle("Confirmation");
+          setChildren(<AddUserInProject />);
+          setOpen(true);
+          setClassName("max-w-[800px]");
+        }}
+      >
         <Ban className="mr-3 h-[14px] w-[14px]" />
         <span className="text-[13px]">Disabled</span>
       </DropdownMenuItem>
     </DropdownMenuContent>
   );
-};
-
-const AddUserInProject = () => {
-  return <div>Add user in project</div>;
 };
