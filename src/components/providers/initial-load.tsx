@@ -4,6 +4,8 @@ import { getLocalStorageValue } from "@/lib/helpers";
 import { useColorSetting } from "@/store/colorSetting";
 import { useTheme } from "next-themes";
 import { useEffect } from "react";
+import { CustomAlertDialog } from "../shared/CustomAlertDialog";
+import { CustomSheet } from "../shared/CustomSheet";
 
 export default function InitialLoad({
   children,
@@ -21,5 +23,11 @@ export default function InitialLoad({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [theme]);
 
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <CustomAlertDialog />
+      <CustomSheet />
+    </>
+  );
 }

@@ -12,33 +12,16 @@ import {
 import { Button } from "../ui/button";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useModal } from "@/store/useModal";
 
-type Props = {
-  trigger: React.ReactNode;
-  children?: React.ReactNode;
-  title?: React.ReactNode;
-  className?: string;
-  open?: boolean;
-  setOpen?: (open: boolean) => void;
-};
-
-export function CustomAlertDialog({
-  trigger,
-  children,
-  title,
-  className,
-  open,
-  setOpen,
-}: Props) {
-  const [customOpen, setCustomOpen] = useState(false);
+export function CustomAlertDialog() {
+  const { children, title, isOpen, setOpen, className } = useModal(
+    (state) => state
+  );
 
   return (
-    <AlertDialog
-      open={open ? open : customOpen}
-      onOpenChange={setOpen ? setOpen : setCustomOpen}
-    >
-      <AlertDialogTrigger asChild>{trigger}</AlertDialogTrigger>
+    <AlertDialog open={isOpen} onOpenChange={setOpen}>
+      <AlertDialogTrigger asChild></AlertDialogTrigger>
       <AlertDialogContent
         className={cn(
           "p-0 max-w-[600px] gap-0 max-h-[90vh] overflow-x-hidden overflow-y-auto scrollbar",

@@ -8,8 +8,10 @@ import CustomTabTrigger from "@/components/shared/CustomTabTrigger";
 import Table from "./table";
 import ProjectFilters from "./ProjectFilters";
 import ProjectSort from "./ProjectSort";
-import { AlarmClockPlus } from "lucide-react";
-import { useAddThing } from "@/store/addThings";
+import { AlarmClockPlus, FolderClosed } from "lucide-react";
+import { useModal } from "@/store/useModal";
+import { ModalTitle } from "@/components/sidebar/CreateNew";
+import AddProjects from "@/components/shared/addThings/AddProjects";
 
 const tabList = [
   {
@@ -27,14 +29,21 @@ const tabList = [
 ];
 
 const ProjectTabs = () => {
-  const { updateAddThing } = useAddThing((state) => state);
+  const { setChildren, setClassName, setOpen, setTitle } = useModal(
+    (state) => state
+  );
 
   return (
     <Tabs defaultValue="active" className="">
       <CustomTabTrigger tabs={tabList}>
         <Button
           className="font-lexend gap-1 active:scale-95"
-          onClick={() => updateAddThing("add_project", true)}
+          onClick={() => {
+            setTitle(<ModalTitle Icon={FolderClosed} title="Create Project" />);
+            setChildren(<AddProjects />);
+            setClassName("max-w-[800px]");
+            setOpen(true);
+          }}
         >
           <AlarmClockPlus className="h-4 w-4 text-primary-foreground" /> Add
           Project

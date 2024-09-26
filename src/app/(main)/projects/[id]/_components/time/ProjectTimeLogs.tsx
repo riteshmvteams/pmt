@@ -1,19 +1,20 @@
 "use client";
 
-import { CustomSheet } from "@/components/shared/CustomSheet";
+import AddTime from "@/components/shared/addThings/AddTime";
 import NoItems from "@/components/shared/NoItems";
 import TimeListTable from "@/components/shared/timelog/table";
 import TimeLogListing from "@/components/shared/timelog/TimeLogListing";
 import Title from "@/components/shared/Title";
+import { ModalTitle } from "@/components/sidebar/CreateNew";
 import { Button } from "@/components/ui/button";
-import { useAddThing } from "@/store/addThings";
+import { useDrawer } from "@/store/useDrawer";
+import { useModal } from "@/store/useModal";
 import {
   AlarmClockPlus,
   Ban,
   CalendarCheck,
   DollarSign,
   Filter,
-  Landmark,
   Timer,
 } from "lucide-react";
 import React, { useState } from "react";
@@ -107,9 +108,15 @@ const timlogData = [
 
 export default function ProjectTimeLogs() {
   const [task] = useState(true);
-  const { open, setOpen, target, updateAddThing } = useAddThing(
-    (state) => state
-  );
+
+  const {
+    setDrawerChildren,
+    setDrawerClassName,
+    setDrawerOpen,
+    setDrawerTitle,
+    setSide,
+  } = useDrawer((state) => state);
+  const { setChildren, setClassName, setOpen, setTitle } = useModal();
 
   return task ? (
     <div className="flex flex-col gap-4">
@@ -136,20 +143,30 @@ export default function ProjectTimeLogs() {
           </div>
         </div>
         <div className="flex gap-2 items-center">
-          <CustomSheet
-            trigger={
-              <Button variant="outline" className="gap-2 font-lexend">
-                <Filter className="h-4 w-4 text-muted-foreground" /> Filter
-              </Button>
-            }
-            title="Filter"
+          <Button
+            variant="outline"
+            className="gap-2 font-lexend"
+            onClick={() => {
+              setDrawerTitle("Filter");
+              setDrawerChildren("Filter Here...F");
+              setDrawerOpen(true);
+              setSide("right");
+              setDrawerClassName("");
+            }}
           >
-            Filter Here
-          </CustomSheet>
+            <Filter className="h-4 w-4 text-muted-foreground" /> Filter
+          </Button>
 
           <Button
             className="font-lexend gap-1 active:scale-95"
-            onClick={() => updateAddThing("add_time", true)}
+            onClick={() => {
+              setTitle(
+                <ModalTitle Icon={AlarmClockPlus} title="Log Your Time" />
+              );
+              setChildren(<AddTime />);
+              setClassName("max-w-[1100px]");
+              setOpen(true);
+            }}
           >
             <AlarmClockPlus className="h-4 w-4 text-primary-foreground" /> Add
             Time

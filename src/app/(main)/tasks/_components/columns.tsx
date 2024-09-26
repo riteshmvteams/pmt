@@ -26,7 +26,6 @@ import {
 import Title from "@/components/shared/Title";
 import CustomTooltip from "@/components/shared/CustomTooltip";
 import { Checkbox } from "@/components/ui/checkbox";
-import { CustomSheet } from "@/components/shared/CustomSheet";
 import TaskDetailSidePanel from "./TaskDetailSidePanel";
 
 type User = {

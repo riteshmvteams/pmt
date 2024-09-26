@@ -4,7 +4,6 @@ import CreateNew from "./CreateNew";
 import ThemeSettings from "./ThemeSettings";
 import SidebarToogle from "./SidebarToogle";
 import { CommandDialogMenu } from "../shared/CommandDialogMenu";
-import AddModalsSheet from "../shared/addThings/AddModalsSheet";
 
 export default function Header() {
   return (
@@ -17,7 +16,6 @@ export default function Header() {
       <CreateNew />
       <ThemeSettings />
       <UserAccount />
-      <AddModalsSheet />
     </header>
   );
 }

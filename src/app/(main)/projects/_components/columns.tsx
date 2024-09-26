@@ -23,6 +23,7 @@ import { routes } from "@/config/routes";
 import { formatDate, trimText } from "@/lib/helpers";
 import Text from "@/components/shared/Text";
 import Title from "@/components/shared/Title";
+import { useModal } from "@/store/useModal";
 
 export type TProject = {
   id: number;
@@ -142,22 +143,46 @@ export const getColumns = ({
                 <EllipsisVertical className="h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" side="left" className="w-36">
-              {projectActions?.map((action) => {
-                return (
-                  <DropdownMenuItem
-                    key={action.target}
-                    className="py-1.5 cursor-pointer"
-                  >
-                    <action.icon className="mr-3 h-[14px] w-[14px]" />
-                    <span className="text-[13px]">{action.title}</span>
-                  </DropdownMenuItem>
-                );
-              })}
-            </DropdownMenuContent>
+            <ProjectActionDropDowns />
           </DropdownMenu>
         );
       },
     },
   ];
+};
+
+const ProjectActionDropDowns = () => {
+  const { setChildren, setTitle, setOpen } = useModal((state) => state);
+
+  return (
+    <DropdownMenuContent align="start" side="left" className="w-36">
+      <DropdownMenuItem
+        className="py-1.5 cursor-pointer"
+        onClick={() => {
+          setTitle("Add User");
+          setChildren(<AddUserInProject />);
+          setOpen(true);
+        }}
+      >
+        <UserPlus className="mr-3 h-[14px] w-[14px]" />
+        <span className="text-[13px]">Add User</span>
+      </DropdownMenuItem>
+      <DropdownMenuItem className="py-1.5 cursor-pointer">
+        <UserMinus className="mr-3 h-[14px] w-[14px]" />
+        <span className="text-[13px]">Remove User</span>
+      </DropdownMenuItem>
+      <DropdownMenuItem className="py-1.5 cursor-pointer">
+        <Edit className="mr-3 h-[14px] w-[14px]" />
+        <span className="text-[13px]">Edit</span>
+      </DropdownMenuItem>
+      <DropdownMenuItem className="py-1.5 cursor-pointer">
+        <Ban className="mr-3 h-[14px] w-[14px]" />
+        <span className="text-[13px]">Disabled</span>
+      </DropdownMenuItem>
+    </DropdownMenuContent>
+  );
+};
+
+const AddUserInProject = () => {
+  return <div>Add user in project</div>;
 };

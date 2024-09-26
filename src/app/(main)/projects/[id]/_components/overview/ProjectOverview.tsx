@@ -25,11 +25,19 @@ import CustomTooltip from "@/components/shared/CustomTooltip";
 import AddProjectDetails from "./AddProjectDetails";
 import PrivateTag from "@/components/shared/PrivateTag";
 import Comment from "@/components/shared/Comment";
+import { useDrawer } from "@/store/useDrawer";
 
 const htmlString = `<p>This project is a good choice for beginners because it is relatively simple to implement, but it still requires you to learn some important web development concepts, such as HTML, CSS, and JavaScript.</p><br /><br /><p>To create a <b>quiz app</b>, you will need to:</p><br /><p>1. Design the quiz questions. This includes coming up with the questions themselves, as well as the possible answers for each question. You may also want to decide on a scoring system for the quiz.</br>`;
 
 export default function ProjectOverview() {
   const [overview] = useState(true);
+  const {
+    setDrawerChildren,
+    setDrawerClassName,
+    setDrawerOpen,
+    setDrawerTitle,
+    setSide,
+  } = useDrawer((state) => state);
 
   return overview ? (
     <div className="grid grid-cols-12 gap-x-10">
@@ -67,7 +75,17 @@ export default function ProjectOverview() {
             </CardContent>
           </Card>
           <div className="flex justify-end my-2">
-            <AddProjectDetails title="Add Project Details" />
+            <Button
+              onClick={() => {
+                setDrawerChildren(<AddProjectDetails />),
+                  setDrawerTitle("Add Project Details"),
+                  setDrawerOpen(true),
+                  setDrawerClassName("sm:max-w-[900px] flex flex-col gap-10"),
+                  setSide("right");
+              }}
+            >
+              Add Project Details
+            </Button>
           </div>
         </div>
 
@@ -141,7 +159,17 @@ export default function ProjectOverview() {
         />
       }
     >
-      <AddProjectDetails title="Add Project Overview" btnLabel="Add Overview" />
+      <Button
+        onClick={() => {
+          setDrawerChildren(<AddProjectDetails />),
+            setDrawerTitle("Add Project Overview"),
+            setDrawerOpen(true),
+            setDrawerClassName("sm:max-w-[900px] flex flex-col gap-10"),
+            setSide("right");
+        }}
+      >
+        Add Overview
+      </Button>
     </NoItems>
   );
 }

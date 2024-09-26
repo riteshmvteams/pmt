@@ -64,7 +64,7 @@ export default function NotesDetail() {
             </CardContent>
           </Card>
           <div className="flex justify-end my-2">
-            <AddProjectNotes title="Add Comment" />
+            <AddProjectNotes />
           </div>
         </div>
 

@@ -8,9 +8,18 @@ import AddProjectNotes from "./AddProjectNotes";
 import NotesListing from "./NotesListing";
 import { useSearchParams } from "next/navigation";
 import NotesDetail from "./NotesDetail";
+import { Button } from "@/components/ui/button";
+import { useDrawer } from "@/store/useDrawer";
 
 export default function ProjectNotes() {
-  const [task] = useState(true);
+  const [task] = useState(false);
+  const {
+    setDrawerChildren,
+    setDrawerClassName,
+    setDrawerOpen,
+    setDrawerTitle,
+    setSide,
+  } = useDrawer((state) => state);
   const searchParams = useSearchParams();
   const note = searchParams.get("note") || "";
 
@@ -26,7 +35,17 @@ export default function ProjectNotes() {
       }
       title="No Tasks Added to this project"
     >
-      <AddProjectNotes title="Add Notes" btnLabel="Add Note" />
+      <Button
+        onClick={() => {
+          setSide("right");
+          setDrawerTitle("Add Notes");
+          setDrawerChildren(<AddProjectNotes />);
+          setDrawerOpen(true);
+          setDrawerClassName("sm:max-w-[1000px]");
+        }}
+      >
+        Add Note
+      </Button>
     </NoItems>
   );
 }
