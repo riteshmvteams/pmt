@@ -18,10 +18,7 @@ const ProjectDisableConfirmation = () => {
             Cancel
           </Button>
         </AlertDialogCancel>
-        <Button
-          type="submit"
-          className="px-10 font-lexend bg-red-600 hover:bg-red-500 dark:text-white"
-        >
+        <Button type="submit" className="px-10 font-lexend">
           Disable
         </Button>
       </div>

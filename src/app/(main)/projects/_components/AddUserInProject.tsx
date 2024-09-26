@@ -26,7 +26,7 @@ export default function AddUserInProject() {
               return (
                 <li
                   key={ind}
-                  className="p-2 border border-b-0 last:border-b cursor-pointer hover:bg-primary/10 flex justify-between items-center"
+                  className="p-2 border border-b-0 last:border-b cursor-pointer hover:bg-primary/5 flex justify-between items-center"
                 >
                   <CustomUserAvatar
                     title="Super Admin"
