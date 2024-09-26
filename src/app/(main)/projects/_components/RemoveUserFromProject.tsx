@@ -21,13 +21,13 @@ export default function RemoveUserFromProject() {
             <Title className="justify-self-center font-normal">
               Short Name
             </Title>
-            <Title className="justify-self-end font-normal">SRK</Title>
+            <Title className="justify-self-end font-normal">Role</Title>
           </li>
           {Array.from({ length: 10 })?.map((_, ind) => {
             return (
               <li
                 key={ind}
-                className="p-2 border border-b-0 last:border-b hover:bg-primary/5 grid grid-cols-3 items-center"
+                className="p-2.5 border border-b-0 last:border-b hover:bg-primary/5 grid grid-cols-3 items-center"
               >
                 <label className="flex items-center gap-2 cursor-pointer">
                   <Checkbox />
