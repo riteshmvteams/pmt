@@ -5,7 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { projectActions, TProject } from "./columns";
+import { ProjectActionDropDowns, projectActions, TProject } from "./columns";
 import {
   DatabaseZap,
   FolderOpenDot,
@@ -38,7 +38,7 @@ export default function ProjectGridView({ data }: Props) {
                     {trimText(project?.title, 25)}
                   </Link>
                 </CardTitle>
-                <CustomDropDown actions={projectActions} className="w-40" />
+                <ProjectActionDropDowns />
               </div>
             </CardHeader>
             <CardContent className="p-4 flex flex-col gap-4">

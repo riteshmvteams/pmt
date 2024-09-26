@@ -25,6 +25,9 @@ import Text from "@/components/shared/Text";
 import Title from "@/components/shared/Title";
 import { useModal } from "@/store/useModal";
 import AddUserInProject from "./AddUserInProject";
+import ProjectDisableConfirmation from "./ProjectDisableConfirmation";
+import RemoveUserFromProject from "./RemoveUserFromProject";
+import EditProject from "./EditProject";
 
 export type TProject = {
   id: number;
@@ -136,77 +139,75 @@ export const getColumns = ({
     {
       id: "actions",
       cell: () => {
-        return (
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="h-8 w-8 p-0">
-                <span className="sr-only">Open menu</span>
-                <EllipsisVertical className="h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <ProjectActionDropDowns />
-          </DropdownMenu>
-        );
+        return <ProjectActionDropDowns />;
       },
     },
   ];
 };
 
-const ProjectActionDropDowns = () => {
+export const ProjectActionDropDowns = () => {
   const { setChildren, setTitle, setOpen, setClassName } = useModal(
     (state) => state
   );
 
   return (
-    <DropdownMenuContent align="start" side="left" className="w-36">
-      <DropdownMenuItem
-        className="py-1.5 cursor-pointer"
-        onClick={() => {
-          setTitle("Add User > Project Title");
-          setChildren(<AddUserInProject />);
-          setOpen(true);
-          setClassName("max-w-[1000px]");
-        }}
-      >
-        <UserPlus className="mr-3 h-[14px] w-[14px]" />
-        <span className="text-[13px]">Add User</span>
-      </DropdownMenuItem>
-      <DropdownMenuItem
-        className="py-1.5 cursor-pointer"
-        onClick={() => {
-          setTitle("Remove User");
-          setChildren(<AddUserInProject />);
-          setOpen(true);
-          setClassName("max-w-[800px]");
-        }}
-      >
-        <UserMinus className="mr-3 h-[14px] w-[14px]" />
-        <span className="text-[13px]">Remove User</span>
-      </DropdownMenuItem>
-      <DropdownMenuItem
-        className="py-1.5 cursor-pointer"
-        onClick={() => {
-          setTitle("Edit");
-          setChildren(<AddUserInProject />);
-          setOpen(true);
-          setClassName("max-w-[800px]");
-        }}
-      >
-        <Edit className="mr-3 h-[14px] w-[14px]" />
-        <span className="text-[13px]">Edit</span>
-      </DropdownMenuItem>
-      <DropdownMenuItem
-        className="py-1.5 cursor-pointer"
-        onClick={() => {
-          setTitle("Confirmation");
-          setChildren(<AddUserInProject />);
-          setOpen(true);
-          setClassName("max-w-[800px]");
-        }}
-      >
-        <Ban className="mr-3 h-[14px] w-[14px]" />
-        <span className="text-[13px]">Disabled</span>
-      </DropdownMenuItem>
-    </DropdownMenuContent>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" className="h-8 w-8 p-0">
+          <span className="sr-only">Open menu</span>
+          <EllipsisVertical className="h-4 w-4" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="start" side="left" className="w-36">
+        <DropdownMenuItem
+          className="py-1.5 cursor-pointer"
+          onClick={() => {
+            setTitle("Add User > Project Title");
+            setChildren(<AddUserInProject />);
+            setOpen(true);
+            setClassName("max-w-[1000px]");
+          }}
+        >
+          <UserPlus className="mr-3 h-[14px] w-[14px]" />
+          <span className="text-[13px]">Add User</span>
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          className="py-1.5 cursor-pointer"
+          onClick={() => {
+            setTitle("Remove User");
+            setChildren(<RemoveUserFromProject />);
+            setOpen(true);
+            setClassName("max-w-[1000px]");
+          }}
+        >
+          <UserMinus className="mr-3 h-[14px] w-[14px]" />
+          <span className="text-[13px]">Remove User</span>
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          className="py-1.5 cursor-pointer"
+          onClick={() => {
+            setTitle("Edit > Project Title");
+            setChildren(<EditProject />);
+            setOpen(true);
+            setClassName("max-w-[800px]");
+          }}
+        >
+          <Edit className="mr-3 h-[14px] w-[14px]" />
+          <span className="text-[13px]">Edit</span>
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          className="py-1.5 cursor-pointer"
+          onClick={() => {
+            setTitle("Project Title");
+            setChildren(<ProjectDisableConfirmation />);
+            setOpen(true);
+            setClassName("max-w-[500px]");
+          }}
+        >
+          <Ban className="mr-3 h-[14px] w-[14px]" />
+          <span className="text-[13px]">Disabled</span>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 };
