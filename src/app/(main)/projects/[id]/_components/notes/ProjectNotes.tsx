@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import { useDrawer } from "@/store/useDrawer";
 
 export default function ProjectNotes() {
-  const [task] = useState(false);
+  const [task] = useState(true);
   const {
     setDrawerChildren,
     setDrawerClassName,

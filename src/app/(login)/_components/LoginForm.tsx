@@ -10,8 +10,12 @@ import { Form } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { loginFormSchema, LoginInputType } from "@/lib/schemas/login.schema";
 import CustomInputField from "@/components/shared/CustomInputField";
+import { useRouter } from "next/navigation";
+import { routes } from "@/config/routes";
+import { toast } from "sonner";
 
 export default function LoginForm() {
+  const router = useRouter();
   const form = useForm<LoginInputType>({
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
@@ -23,7 +27,10 @@ export default function LoginForm() {
 
   function onSubmit(values: LoginInputType) {
     console.log(values, "values==>");
-    login();
+    const result = login();
+    toast.success("Login Successful");
+    if (!result) return;
+    router.push(routes?.projects);
   }
 
   return (

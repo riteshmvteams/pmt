@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 
 export async function login() {
-  redirect("/projects");
+  return true;
 }
 
 export async function logout() {
