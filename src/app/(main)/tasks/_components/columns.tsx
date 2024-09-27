@@ -30,6 +30,7 @@ import TaskDetailSidePanel from "./TaskDetailSidePanel";
 import { AlertDialogCancel } from "@/components/ui/alert-dialog";
 import { useModal } from "@/store/useModal";
 import TaskMoveToProject from "./TaskMoveToProject";
+import TaskMoveToMilestone from "./TaskMoveToMilestone";
 
 type User = {
   id: number;
@@ -322,7 +323,15 @@ export const TasksTableActions = () => {
           <FolderOpenDot className="mr-3 h-[14px] w-[14px]" />
           <span className="text-[13px]">Move To Project</span>
         </DropdownMenuItem>
-        <DropdownMenuItem className="py-1.5 cursor-pointer">
+        <DropdownMenuItem
+          className="py-1.5 cursor-pointer"
+          onClick={() => {
+            setOpen(true);
+            setTitle("Move To Project > Task Name");
+            setClassName("max-w-[800px]");
+            setChildren(<TaskMoveToMilestone />);
+          }}
+        >
           <Target className="mr-3 h-[14px] w-[14px]" />
           <span className="text-[13px]">Move To Milestone</span>
         </DropdownMenuItem>

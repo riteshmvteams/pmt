@@ -31,14 +31,14 @@ export default function TaskMoveToProject() {
           />
 
           <div className="flex justify-center gap-4 items-center py-4">
+            <Button type="submit" className="px-10 font-lexend">
+              Move Task
+            </Button>
             <AlertDialogCancel asChild>
               <Button variant="outline" className="px-10 font-lexend">
                 Cancel
               </Button>
             </AlertDialogCancel>
-            <Button type="submit" className="px-10 font-lexend">
-              Add
-            </Button>
           </div>
         </form>
       </Form>
