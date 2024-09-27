@@ -1,34 +1,30 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Activity,
-  Aperture,
-  Edit,
-  Lock,
-  Paperclip,
-  RefreshCcwDot,
-  ShipWheel,
-  Trash2,
-  UserRound,
-} from "lucide-react";
+import { Aperture, Edit, RefreshCcwDot, Trash2 } from "lucide-react";
 
-import NoItems from "@/components/shared/NoItems";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatDateWithWeekday } from "@/lib/helpers";
 import { Button } from "@/components/ui/button";
-import { getStatusBadge } from "@/app/(main)/tasks/_components/columns";
 import CustomAvatar from "@/components/shared/CustomAvatar";
 import Title from "@/components/shared/Title";
 import CustomTooltip from "@/components/shared/CustomTooltip";
 import PrivateTag from "@/components/shared/PrivateTag";
 import AddProjectNotes from "./AddProjectNotes";
+import { useDrawer } from "@/store/useDrawer";
 
 const htmlString = `<p>This project is a good choice for beginners because it is relatively simple to implement, but it still requires you to learn some important web development concepts, such as HTML, CSS, and JavaScript.</p><br /><br /><p>To create a <b>quiz app</b>, you will need to:</p><br /><p>1. Design the quiz questions. This includes coming up with the questions themselves, as well as the possible answers for each question. You may also want to decide on a scoring system for the quiz.</br>`;
 
 export default function NotesDetail() {
   const [overview] = useState(true);
+  const {
+    setDrawerChildren,
+    setDrawerClassName,
+    setDrawerOpen,
+    setDrawerTitle,
+    setSide,
+  } = useDrawer((state) => state);
 
   return (
     <div className="grid grid-cols-12 gap-x-10">
@@ -64,7 +60,17 @@ export default function NotesDetail() {
             </CardContent>
           </Card>
           <div className="flex justify-end my-2">
-            <AddProjectNotes />
+            <Button
+              onClick={() => {
+                setDrawerOpen(true);
+                setDrawerTitle("Add Comment");
+                setDrawerChildren(<AddProjectNotes />);
+                setSide("right");
+                setDrawerClassName("sm:max-w-[1000px]");
+              }}
+            >
+              Add Comment
+            </Button>
           </div>
         </div>
 
