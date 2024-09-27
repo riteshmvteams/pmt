@@ -9,9 +9,9 @@ import { CalendarPlus2, FolderOpenDot, IdCard } from "lucide-react";
 import { formatDate, trimText } from "@/lib/helpers";
 import Link from "next/link";
 import { routes } from "@/config/routes";
-import CustomDropDown from "@/components/shared/CustomDropDown";
-import { getRoleBadge, TUser, userActions } from "./columns";
+import { getRoleBadge, TUser } from "./columns";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import UserActions from "./UserActions";
 
 interface Props {
   data: TUser[];
@@ -41,14 +41,13 @@ export default function UsersGridView({ data }: Props) {
                     {user?.email}
                   </span>
                 </CardTitle>
-                <CustomDropDown actions={userActions} className="w-56" />
+                <UserActions />
               </div>
             </CardHeader>
             <CardContent className="p-4 flex flex-col gap-4">
               <div className="flex gap-6 items-start">
                 <Avatar className="w-16 h-16 border">
                   <AvatarImage
-                    // src="https://github.com/shadcn.png"
                     src={`https://robohash.org/cat${user?.id}.png`}
                     alt="@shadcn"
                   />
