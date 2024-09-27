@@ -287,7 +287,7 @@ const UserActions = () => {
           className="py-1.5 cursor-pointer"
           onClick={() => {
             setOpen(true);
-            setTitle("Disable User");
+            setTitle("Confirmation");
             setClassName("max-w-[400px]");
             setChildren(
               <ConfirmationModal
@@ -304,7 +304,7 @@ const UserActions = () => {
           className="py-1.5 cursor-pointer"
           onClick={() => {
             setOpen(true);
-            setTitle("Disable User");
+            setTitle("Confirmation");
             setClassName("max-w-[400px]");
             setChildren(
               <ConfirmationModal
@@ -322,7 +322,7 @@ const UserActions = () => {
           className="py-1.5 cursor-pointer"
           onClick={() => {
             setOpen(true);
-            setTitle("Disable User");
+            setTitle("Confirmation");
             setClassName("max-w-[400px]");
             setChildren(
               <ConfirmationModal
@@ -339,7 +339,7 @@ const UserActions = () => {
           className="py-1.5 cursor-pointer"
           onClick={() => {
             setOpen(true);
-            setTitle("Disable User");
+            setTitle("Confirmation");
             setClassName("max-w-[400px]");
             setChildren(
               <ConfirmationModal
@@ -356,7 +356,7 @@ const UserActions = () => {
           className="py-1.5 cursor-pointer"
           onClick={() => {
             setOpen(true);
-            setTitle("Disable User");
+            setTitle("Confirmation");
             setClassName("max-w-[400px]");
             setChildren(
               <ConfirmationModal
