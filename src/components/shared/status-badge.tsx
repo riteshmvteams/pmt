@@ -4,6 +4,7 @@ export const getStatusBadge = (status: string) => {
   switch (status?.toLowerCase()) {
     case "open":
     case "low":
+    case "inactive":
       return (
         <Badge
           variant="outline"
@@ -28,6 +29,7 @@ export const getStatusBadge = (status: string) => {
     case "closed":
     case "completed":
     case "high":
+    case "active":
       return (
         <Badge
           variant="outline"

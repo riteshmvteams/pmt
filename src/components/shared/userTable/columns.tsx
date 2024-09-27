@@ -9,6 +9,7 @@ import {
   Target,
   Trash2,
   Undo,
+  User2Icon,
 } from "lucide-react";
 
 import Text from "@/components/shared/Text";
@@ -25,6 +26,9 @@ import {
 import { Button } from "@/components/ui/button";
 import Title from "@/components/shared/Title";
 import DataTableColumnHeader from "../DataTable/DataTableColumnHeader";
+import { useModal } from "@/store/useModal";
+import AssignProjectToUser from "./AssignProjectToUser";
+import RemoveProjectFromUser from "./RemoveProjectFromUser";
 
 export type TUser = {
   id: number;
@@ -206,34 +210,99 @@ export const getColumns = (): ColumnDef<TUser>[] => {
       id: "actions",
       cell: () => {
         return (
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="h-8 w-8 p-0">
-                <span className="sr-only">Open menu</span>
-                <EllipsisVertical className="h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" side="left" className="w-56">
-              {userActions?.map((action, index) => {
-                return action.icon ? (
-                  <DropdownMenuItem
-                    key={index}
-                    className="py-1.5 cursor-pointer"
-                  >
-                    <action.icon className="mr-3 h-[14px] w-[14px]" />
-                    <span className="text-[13px]">{action.title}</span>
-                  </DropdownMenuItem>
-                ) : (
-                  <DropdownMenuSeparator
-                    className="my-1 bg-primary/20"
-                    key={index}
-                  />
-                );
-              })}
-            </DropdownMenuContent>
-          </DropdownMenu>
+          // <DropdownMenu>
+          //   <DropdownMenuTrigger asChild>
+          //     <Button variant="ghost" className="h-8 w-8 p-0">
+          //       <span className="sr-only">Open menu</span>
+          //       <EllipsisVertical className="h-4 w-4" />
+          //     </Button>
+          //   </DropdownMenuTrigger>
+          //   <DropdownMenuContent align="start" side="left" className="w-56">
+          //     {userActions?.map((action, index) => {
+          //       return action.icon ? (
+          //         <DropdownMenuItem
+          //           key={index}
+          //           className="py-1.5 cursor-pointer"
+          //         >
+          //           <action.icon className="mr-3 h-[14px] w-[14px]" />
+          //           <span className="text-[13px]">{action.title}</span>
+          //         </DropdownMenuItem>
+          //       ) : (
+          //         <DropdownMenuSeparator
+          //           className="my-1 bg-primary/20"
+          //           key={index}
+          //         />
+          //       );
+          //     })}
+          //   </DropdownMenuContent>
+          // </DropdownMenu>
+
+          <UserActions />
         );
       },
     },
   ];
+};
+
+const UserActions = () => {
+  const { setChildren, setClassName, setOpen, setTitle } = useModal();
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" className="h-8 w-8 p-0">
+          <span className="sr-only">Open menu</span>
+          <EllipsisVertical className="h-4 w-4" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="start" side="left" className="w-56">
+        <DropdownMenuItem
+          className="py-1.5 cursor-pointer"
+          onClick={() => {
+            setOpen(true);
+            setTitle("Assign Project > User Name");
+            setClassName("max-w-[1000px]");
+            setChildren(<AssignProjectToUser />);
+          }}
+        >
+          <CircleCheckBig className="mr-3 h-[14px] w-[14px]" />
+          <span className="text-[13px]">Assign Project</span>
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          className="py-1.5 cursor-pointer"
+          onClick={() => {
+            setOpen(true);
+            setTitle("Remove Project > User Name");
+            setClassName("max-w-[1000px]");
+            setChildren(<RemoveProjectFromUser />);
+          }}
+        >
+          <CheckCheck className="mr-3 h-[14px] w-[14px]" />
+          <span className="text-[13px]">Remove Project</span>
+        </DropdownMenuItem>
+        <DropdownMenuSeparator className="my-1 bg-primary/20" />
+        <DropdownMenuItem className="py-1.5 cursor-pointer">
+          <RefreshCcwDot className="mr-3 h-[14px] w-[14px]" />
+          <span className="text-[13px]">Disable</span>
+        </DropdownMenuItem>
+        <DropdownMenuItem className="py-1.5 cursor-pointer">
+          <Undo className="mr-3 h-[14px] w-[14px]" />
+          <span className="text-[13px]">Enable</span>
+        </DropdownMenuItem>
+        <DropdownMenuItem className="py-1.5 cursor-pointer">
+          <User2Icon className="mr-3 h-[14px] w-[14px]" />
+          <span className="text-[13px]">Edit User</span>
+        </DropdownMenuItem>
+        <DropdownMenuSeparator className="my-1 bg-primary/20" />
+        <DropdownMenuItem className="py-1.5 cursor-pointer">
+          <ArchiveRestore className="mr-3 h-[14px] w-[14px]" />
+          <span className="text-[13px]">Grant HR Role</span>
+        </DropdownMenuItem>
+        <DropdownMenuItem className="py-1.5 cursor-pointer">
+          <Trash2 className="mr-3 h-[14px] w-[14px]" />
+          <span className="text-[13px]">Grant Super-admin Role</span>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
 };
