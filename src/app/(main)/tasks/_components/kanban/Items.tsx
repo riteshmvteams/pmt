@@ -6,7 +6,7 @@ import { DragHandleDots2Icon } from "@radix-ui/react-icons";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { routes } from "@/config/routes";
-import { taskActions } from "../columns";
+import { taskActions, TasksTableActions } from "../columns";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -81,35 +81,9 @@ const Items = ({ id, title }: ItemsType) => {
           </CustomTooltip>
         </div>
         <div className="flex flex-col justify-between">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                variant="ghost"
-                className="h-8 w-8 p-0 opacity-0 group-hover:opacity-100"
-              >
-                <span className="sr-only">Open menu</span>
-                <EllipsisVertical className="h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" side="left" className="w-56">
-              {taskActions?.map((action, index) => {
-                return action.icon ? (
-                  <DropdownMenuItem
-                    key={index}
-                    className="py-1.5 cursor-pointer"
-                  >
-                    <action.icon className="mr-3 h-[14px] w-[14px]" />
-                    <span className="text-[13px]">{action.title}</span>
-                  </DropdownMenuItem>
-                ) : (
-                  <DropdownMenuSeparator
-                    className="my-1 bg-primary/20"
-                    key={index}
-                  />
-                );
-              })}
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <div className="group-hover:opacity-100 opacity-0">
+            <TasksTableActions />
+          </div>
           <CustomTooltip title="Drag and Drop">
             <button
               className="p-1.5 rounded-md bg-muted hover:cursor-move hover:bg-primary hover:text-primary-foreground duration-300 w-max"

@@ -27,6 +27,9 @@ import Title from "@/components/shared/Title";
 import CustomTooltip from "@/components/shared/CustomTooltip";
 import { Checkbox } from "@/components/ui/checkbox";
 import TaskDetailSidePanel from "./TaskDetailSidePanel";
+import { AlertDialogCancel } from "@/components/ui/alert-dialog";
+import { useModal } from "@/store/useModal";
+import TaskMoveToProject from "./TaskMoveToProject";
 
 type User = {
   id: number;
@@ -242,35 +245,150 @@ export const getColumns = (): ColumnDef<TTask>[] => {
     {
       id: "actions",
       cell: () => {
-        return (
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="h-8 w-8 p-0">
-                <span className="sr-only">Open menu</span>
-                <EllipsisVertical className="h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" side="left" className="w-56">
-              {taskActions?.map((action, index) => {
-                return action.icon ? (
-                  <DropdownMenuItem
-                    key={index}
-                    className="py-1.5 cursor-pointer"
-                  >
-                    <action.icon className="mr-3 h-[14px] w-[14px]" />
-                    <span className="text-[13px]">{action.title}</span>
-                  </DropdownMenuItem>
-                ) : (
-                  <DropdownMenuSeparator
-                    className="my-1 bg-primary/20"
-                    key={index}
-                  />
-                );
-              })}
-            </DropdownMenuContent>
-          </DropdownMenu>
-        );
+        return <TasksTableActions />;
       },
     },
   ];
+};
+
+export const TasksTableActions = () => {
+  const { setOpen, setTitle, setClassName, setChildren } = useModal();
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" className="h-8 w-8 p-0">
+          <span className="sr-only">Open menu</span>
+          <EllipsisVertical className="h-4 w-4" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="start" side="left" className="w-56">
+        <DropdownMenuItem
+          className="py-1.5 cursor-pointer"
+          onClick={() => {
+            setOpen(true);
+            setTitle("Confirmation");
+            setClassName("max-w-[500px]");
+            setChildren(
+              <ConfirmationModal
+                title="Are you Sure, You want to Resolve this Task"
+                name="Task Name"
+              />
+            );
+          }}
+        >
+          <CircleCheckBig className="mr-3 h-[14px] w-[14px]" />
+          <span className="text-[13px]">Resolve</span>
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          className="py-1.5 cursor-pointer"
+          onClick={() => {
+            setOpen(true);
+            setTitle("Confirmation");
+            setClassName("max-w-[500px]");
+            setChildren(
+              <ConfirmationModal
+                title="Are you Sure, You want to Close this Task"
+                name="Task Name"
+              />
+            );
+          }}
+        >
+          <CheckCheck className="mr-3 h-[14px] w-[14px]" />
+          <span className="text-[13px]">Close</span>
+        </DropdownMenuItem>
+        <DropdownMenuSeparator className="my-1 bg-primary/20" />
+        <DropdownMenuItem className="py-1.5 cursor-pointer">
+          <RefreshCcwDot className="mr-3 h-[14px] w-[14px]" />
+          <span className="text-[13px]">Re-Open</span>
+        </DropdownMenuItem>
+        <DropdownMenuItem className="py-1.5 cursor-pointer">
+          <Undo className="mr-3 h-[14px] w-[14px]" />
+          <span className="text-[13px]">Reply</span>
+        </DropdownMenuItem>
+        <DropdownMenuItem className="py-1.5 cursor-pointer">
+          <Edit className="mr-3 h-[14px] w-[14px]" />
+          <span className="text-[13px]">Edit</span>
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          className="py-1.5 cursor-pointer"
+          onClick={() => {
+            setOpen(true);
+            setTitle("Move To Project > Task Name");
+            setClassName("max-w-[800px]");
+            setChildren(<TaskMoveToProject />);
+          }}
+        >
+          <FolderOpenDot className="mr-3 h-[14px] w-[14px]" />
+          <span className="text-[13px]">Move To Project</span>
+        </DropdownMenuItem>
+        <DropdownMenuItem className="py-1.5 cursor-pointer">
+          <Target className="mr-3 h-[14px] w-[14px]" />
+          <span className="text-[13px]">Move To Milestone</span>
+        </DropdownMenuItem>
+        <DropdownMenuSeparator className="my-1 bg-primary/20" />
+        <DropdownMenuItem
+          className="py-1.5 cursor-pointer"
+          onClick={() => {
+            setOpen(true);
+            setTitle("Confirmation");
+            setClassName("max-w-[500px]");
+            setChildren(
+              <ConfirmationModal
+                title="Are you Sure, You want to Archieve this Task"
+                name="Task Name"
+              />
+            );
+          }}
+        >
+          <ArchiveRestore className="mr-3 h-[14px] w-[14px]" />
+          <span className="text-[13px]">Archieve</span>
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          className="py-1.5 cursor-pointer"
+          onClick={() => {
+            setOpen(true);
+            setTitle("Confirmation");
+            setClassName("max-w-[500px]");
+            setChildren(
+              <ConfirmationModal
+                title="Are you Sure, You want to Delete this Task"
+                name="Task Name"
+              />
+            );
+          }}
+        >
+          <Trash2 className="mr-3 h-[14px] w-[14px]" />
+          <span className="text-[13px]">Delete</span>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+};
+
+const ConfirmationModal = ({
+  title,
+  name,
+}: {
+  title: string;
+  name: string;
+}) => {
+  return (
+    <div className="p-4 space-y-6">
+      <Title className="font-semibold text-base text-center">
+        <span className="font-normal text-sm">{title}</span> {name} ?
+      </Title>
+
+      <div className="flex justify-center gap-4 items-center ">
+        <AlertDialogCancel asChild>
+          <Button variant="outline" className="px-10 font-lexend">
+            Cancel
+          </Button>
+        </AlertDialogCancel>
+        <Button type="submit" className="px-10 font-lexend">
+          Yes
+        </Button>
+      </div>
+    </div>
+  );
 };
