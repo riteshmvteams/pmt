@@ -1,9 +1,9 @@
-import CustomAreaChart from "@/components/shared/chart/AreaChart";
 import BarChartUI from "@/components/shared/chart/BarChart";
 import MultipleBarChart from "@/components/shared/chart/MultipleBarChart";
 import PieChartUI from "@/components/shared/chart/PieChart";
 import RadicalChartUI from "@/components/shared/chart/RadicalChart";
 import CheckInButton from "@/components/shared/CheckInButton";
+import RecentActivities from "./_components/RecentActivities";
 
 export default function Dashboard() {
   return (
@@ -14,8 +14,11 @@ export default function Dashboard() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <BarChartUI className="sm:col-span-2 lg:col-span-3" />
+        <RecentActivities title="Recent Activities" />
+        <RecentActivities title="Recent Tasks" />
+        <RecentActivities title="Recent Project" />
         <MultipleBarChart className="sm:col-span-2 lg:col-span-3" />
+        <BarChartUI className="sm:col-span-2 lg:col-span-3" />
         <PieChartUI />
         <RadicalChartUI />
         <PieChartUI />
