@@ -11,6 +11,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Button } from "@/components/ui/button";
+import NotificationDialog from "../sidebar/NotificationDialog";
 
 const IconSidebar = () => {
   const pathname = usePathname();
@@ -62,18 +63,20 @@ const IconSidebar = () => {
         <div className="mt-auto flex items-center justify-center py-6">
           <TooltipProvider delayDuration={0}>
             <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className={cn(
-                    "rounded-lg h-12 w-12 text-muted-foreground hover:text-foreground"
-                  )}
-                  aria-label="Models"
-                >
-                  <Bell className="size-6" />
-                </Button>
-              </TooltipTrigger>
+              <NotificationDialog align="start">
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className={cn(
+                      "rounded-lg h-12 w-12 text-muted-foreground hover:text-foreground"
+                    )}
+                    aria-label="Models"
+                  >
+                    <Bell className="size-6" />
+                  </Button>
+                </TooltipTrigger>
+              </NotificationDialog>
               <TooltipContent
                 align="center"
                 side="right"
