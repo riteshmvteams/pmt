@@ -40,14 +40,14 @@ export default function AssignProjectToUser() {
               <Badge
                 key={title}
                 variant="outline"
-                className="gap-1 bg-primary/5 text-primary items-center"
+                className="gap-1 bg-primary/5 text-primary items-center border-primary rounded-md"
               >
                 <span>{title}</span>
                 <button
-                  className="h-5 w-5 rounded-full flex items-center justify-center hover:bg-primary/50"
+                  className="h-4 w-4 rounded-full flex items-center justify-center hover:bg-primary/80 group duration-300"
                   onClick={() => onSelectProject(title)}
                 >
-                  <Cross2Icon className="text-muted-foreground h-3" />
+                  <Cross2Icon className="text-primary h-3 w-3 group-hover:text-primary-foreground" />
                 </button>
               </Badge>
             );

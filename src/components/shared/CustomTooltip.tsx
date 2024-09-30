@@ -5,6 +5,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
+  TooltipArrow,
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
@@ -30,6 +31,7 @@ export default function CustomTooltip({
           className={cn("text-xs font-lexend font-light", className)}
         >
           {title}
+          {/* <TooltipArrow /> */}
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
