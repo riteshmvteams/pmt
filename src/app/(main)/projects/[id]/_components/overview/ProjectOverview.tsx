@@ -5,7 +5,6 @@ import {
   Activity,
   Aperture,
   Edit,
-  Lock,
   Paperclip,
   RefreshCcwDot,
   ShipWheel,

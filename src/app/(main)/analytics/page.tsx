@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+
 export default function Analytics() {
   return (
     <>
@@ -10,6 +12,10 @@ export default function Analytics() {
       >
         <div className="flex flex-col items-center gap-1 text-center">
           <h3 className="text-2xl font-bold tracking-tight">No Analytics</h3>
+
+          <Button className="active:scale-90 transition-all duration-150">
+            Click here
+          </Button>
         </div>
       </div>
     </>

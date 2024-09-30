@@ -31,7 +31,7 @@ export type TTimeLog = {
   date: string;
 };
 
-const timlogData = [
+export const timlogData = [
   {
     id: 1,
     user_name: "Ritesh Kumar",
