@@ -1,5 +1,6 @@
 import Header from "@/components/sidebar/Header";
 import AppLayout from "@/components/layouts/AppLayout";
+import Footer from "@/components/layouts/Footer";
 
 export default function MainLayout({
   children,
@@ -13,6 +14,7 @@ export default function MainLayout({
         <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
           {children}
         </main>
+        <Footer />
       </div>
     </AppLayout>
   );

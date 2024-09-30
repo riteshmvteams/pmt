@@ -5,7 +5,6 @@ import { redirect } from "next/navigation";
 
 export async function login() {
   redirect(routes.projects);
-  // return true;
 }
 
 export async function logout() {
