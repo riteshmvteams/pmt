@@ -27,10 +27,11 @@ export default function LoginForm() {
 
   function onSubmit(values: LoginInputType) {
     console.log(values, "values==>");
-    const result = login();
-    toast.success("Login Successful");
-    if (!result) return;
-    router.push(routes?.projects);
+    login();
+    // const result = login();
+    // toast.success("Login Successful");
+    // if (!result) return;
+    // router.push(routes?.projects);
   }
 
   return (
