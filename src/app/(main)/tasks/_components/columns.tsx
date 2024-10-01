@@ -27,10 +27,10 @@ import Title from "@/components/shared/Title";
 import CustomTooltip from "@/components/shared/CustomTooltip";
 import { Checkbox } from "@/components/ui/checkbox";
 import TaskDetailSidePanel from "./TaskDetailSidePanel";
-import { AlertDialogCancel } from "@/components/ui/alert-dialog";
 import { useModal } from "@/store/useModal";
 import TaskMoveToProject from "./TaskMoveToProject";
 import TaskMoveToMilestone from "./TaskMoveToMilestone";
+import ConfirmationModal from "@/components/shared/ConfirmationModal";
 
 type User = {
   id: number;
@@ -372,32 +372,5 @@ export const TasksTableActions = () => {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  );
-};
-
-const ConfirmationModal = ({
-  title,
-  name,
-}: {
-  title: string;
-  name: string;
-}) => {
-  return (
-    <div className="p-4 space-y-6">
-      <Title className="font-semibold text-base text-center">
-        <span className="font-normal text-sm">{title}</span> {name} ?
-      </Title>
-
-      <div className="flex justify-center gap-4 items-center ">
-        <AlertDialogCancel asChild>
-          <Button variant="outline" className="px-10 font-lexend">
-            Cancel
-          </Button>
-        </AlertDialogCancel>
-        <Button type="submit" className="px-10 font-lexend">
-          Yes
-        </Button>
-      </div>
-    </div>
   );
 };

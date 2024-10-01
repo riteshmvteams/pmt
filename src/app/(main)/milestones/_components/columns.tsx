@@ -1,7 +1,18 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { Ban, Edit, EllipsisVertical, UserMinus, UserPlus } from "lucide-react";
+import {
+  AlarmClockCheck,
+  Ban,
+  CircleCheckBig,
+  ClipboardList,
+  Edit,
+  EllipsisVertical,
+  Pencil,
+  Trash2,
+  UserMinus,
+  UserPlus,
+} from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -17,6 +28,9 @@ import Title from "@/components/shared/Title";
 import React from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { TTask } from "../../tasks/_components/columns";
+import { useModal } from "@/store/useModal";
+import ConfirmationModal from "@/components/shared/ConfirmationModal";
+import AddTasksInMilestone from "./AddTasksInMilestone";
 
 export type TMilestone = {
   id: number;
@@ -119,35 +133,79 @@ export const getColumns = (): ColumnDef<TMilestone>[] => {
     {
       id: "actions",
       cell: () => {
-        return (
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="h-8 w-8 p-0">
-                <span className="sr-only">Open menu</span>
-                <EllipsisVertical className="h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" side="left" className="w-48">
-              {milestonesActions?.map((action, index) => {
-                return action.icon ? (
-                  <DropdownMenuItem
-                    key={index}
-                    className="py-1.5 cursor-pointer"
-                  >
-                    <action.icon className="mr-3 h-[14px] w-[14px]" />
-                    <span className="text-[13px]">{action.title}</span>
-                  </DropdownMenuItem>
-                ) : (
-                  <DropdownMenuSeparator
-                    className="my-1 bg-primary/20"
-                    key={index}
-                  />
-                );
-              })}
-            </DropdownMenuContent>
-          </DropdownMenu>
-        );
+        return <MileStoneTableActions />;
       },
     },
   ];
+};
+
+const MileStoneTableActions = () => {
+  const { setChildren, setClassName, setOpen, setTitle } = useModal();
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" className="h-8 w-8 p-0">
+          <span className="sr-only">Open menu</span>
+          <EllipsisVertical className="h-4 w-4" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="start" side="left" className="w-48">
+        <DropdownMenuItem className="py-1.5 cursor-pointer">
+          <ClipboardList className="mr-3 h-[14px] w-[14px]" />
+          <span className="text-[13px]">Create New Task</span>
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          className="py-1.5 cursor-pointer"
+          onClick={() => {
+            setOpen(true);
+            setTitle("Add Task");
+            setClassName("max-w-[800px]");
+            setChildren(<AddTasksInMilestone />);
+          }}
+        >
+          <AlarmClockCheck className="mr-3 h-[14px] w-[14px]" />
+          <span className="text-[13px]">Add Task</span>
+        </DropdownMenuItem>
+        <DropdownMenuItem className="py-1.5 cursor-pointer">
+          <Pencil className="mr-3 h-[14px] w-[14px]" />
+          <span className="text-[13px]">Edit</span>
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          className="py-1.5 cursor-pointer"
+          onClick={() => {
+            setOpen(true);
+            setTitle("Confirmation");
+            setClassName("max-w-[500px]");
+            setChildren(
+              <ConfirmationModal
+                title="Are you Sure, You want to Delete this MileStone"
+                name="Milestone Name"
+              />
+            );
+          }}
+        >
+          <Trash2 className="mr-3 h-[14px] w-[14px]" />
+          <span className="text-[13px]">Delete</span>
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          className="py-1.5 cursor-pointer"
+          onClick={() => {
+            setOpen(true);
+            setTitle("Confirmation");
+            setClassName("max-w-[500px]");
+            setChildren(
+              <ConfirmationModal
+                title="Are you Sure, You want to Complete this MileStone"
+                name="Milestone Name"
+              />
+            );
+          }}
+        >
+          <CircleCheckBig className="mr-3 h-[14px] w-[14px]" />
+          <span className="text-[13px]">Complete</span>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
 };
