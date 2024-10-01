@@ -184,7 +184,7 @@ export const getColumns = (): ColumnDef<TTask>[] => {
       cell: ({ row }) => {
         const { tag, title, created_at, updated_at, id } = row.original;
         return (
-          <div className="flex items-center gap-1 p-1">
+          <div className="flex items-center gap-1 py-1.5">
             <Badge variant="outline" className="rounded-sm">
               {tag}
             </Badge>

@@ -23,6 +23,7 @@ import { Input } from "../ui/input";
 import Link from "next/link";
 import { routes } from "@/config/routes";
 import { useRouter } from "next/navigation";
+import { DialogTitle } from "../ui/dialog";
 
 export function CommandDialogMenu() {
   const [open, setOpen] = React.useState(false);
@@ -66,6 +67,7 @@ export function CommandDialogMenu() {
         <CommandInput placeholder="Type to search..." />
         <CommandList className="max-h-[400px] scrollbar">
           <CommandEmpty>No results found.</CommandEmpty>
+          <DialogTitle></DialogTitle>
           <CommandGroup heading="Recent Projects">
             {Array.from({ length: 4 }).map((_, i) => (
               <CommandItem

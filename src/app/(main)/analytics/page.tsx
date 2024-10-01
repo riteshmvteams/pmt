@@ -1,3 +1,5 @@
+import { ExpandableCardDemo } from "@/components/shared/animated/ExpandableCardDemo";
+import YoptaEditor from "@/components/shared/YoptaEditor";
 import { Button } from "@/components/ui/button";
 
 export default function Analytics() {
@@ -11,11 +13,11 @@ export default function Analytics() {
         x-chunk="dashboard-02-chunk-1"
       >
         <div className="flex flex-col items-center gap-1 text-center">
-          <h3 className="text-2xl font-bold tracking-tight">No Analytics</h3>
+          {/* <h3 className="text-2xl font-bold tracking-tight">No Analytics</h3> */}
 
-          <Button className="active:scale-90 transition-all duration-150">
-            Click here
-          </Button>
+          <ExpandableCardDemo />
+
+          <YoptaEditor />
         </div>
       </div>
     </>
