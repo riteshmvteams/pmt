@@ -22,19 +22,19 @@ export default function ProjectSort() {
         <DropdownMenuGroup>
           <DropdownMenuItem>
             <User className="mr-2 h-4 w-4" />
-            <span>Profile</span>
+            <span>Date Created</span>
           </DropdownMenuItem>
           <DropdownMenuItem>
             <CreditCard className="mr-2 h-4 w-4" />
-            <span>Billing</span>
+            <span>Name (Ascending)</span>
           </DropdownMenuItem>
           <DropdownMenuItem>
             <Settings className="mr-2 h-4 w-4" />
-            <span>Settings</span>
+            <span>Name (Descending)</span>
           </DropdownMenuItem>
           <DropdownMenuItem>
             <Keyboard className="mr-2 h-4 w-4" />
-            <span>Keyboard shortcuts</span>
+            <span>Recent Activity</span>
           </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
