@@ -17,11 +17,15 @@ export default function TimeLogListing({ data }: { data: TTimeLog[] }) {
 
   return (
     <div className="flex flex-col gap-10 min-w-[1200px] overflow-y-auto">
-      {Array.from({ length: 3 })?.map((_, index) => {
+      {Array.from({ length: 5 })?.map((_, index) => {
         return (
           <div key={index} className="flex flex-col gap-2">
-            <Title className="font-normal text-sm tracking-tight">
-              {formatDateWithWeekday(new Date())}
+            <Title className="font-medium tracking-tight font-sans text-base">
+              {index === 0
+                ? "Today"
+                : index === 1
+                ? "Yesterday"
+                : formatDateWithWeekday(new Date())}
             </Title>
             <ul className="border rounded-md">
               <li className="grid grid-cols-12">
@@ -80,10 +84,26 @@ export default function TimeLogListing({ data }: { data: TTimeLog[] }) {
                       )}
                     </Text>
                     <div className="p-4 flex gap-4 items-center">
-                      <button className="text-muted-foreground hover:text-foreground">
+                      <button
+                        className="text-muted-foreground hover:text-foreground"
+                        onClick={() => {
+                          setTitle("Complete Log Details");
+                          setOpen(true);
+                          setClassName("max-w-[800px]");
+                          setChildren("Time Log Detail");
+                        }}
+                      >
                         <Eye className="w-4 h-4" />
                       </button>
-                      <button className="text-muted-foreground hover:text-foreground">
+                      <button
+                        className="text-muted-foreground hover:text-foreground"
+                        onClick={() => {
+                          setTitle("Edit Log");
+                          setOpen(true);
+                          setClassName("max-w-[800px]");
+                          setChildren("Edit Log");
+                        }}
+                      >
                         <Pencil className="w-4 h-4" />
                       </button>
                       <button
@@ -91,7 +111,7 @@ export default function TimeLogListing({ data }: { data: TTimeLog[] }) {
                         onClick={() => {
                           setTitle("Confirmation");
                           setOpen(true);
-                          setClassName("w-96");
+                          setClassName("max-w-[400px]");
                           setChildren(
                             <ConfirmationModal
                               name=""
