@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 
 import { CircleCheckBig, CircleX, Eye, Pencil, Trash2 } from "lucide-react";
