@@ -10,11 +10,11 @@ import { Form } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { loginFormSchema, LoginInputType } from "@/lib/schemas/login.schema";
 import CustomInputField from "@/components/shared/CustomInputField";
-import { useRouter } from "next/navigation";
-import { toast } from "sonner";
+import { useState } from "react";
+import { Loader, Loader2 } from "lucide-react";
 
 export default function LoginForm() {
-  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
   const form = useForm<LoginInputType>({
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
@@ -26,7 +26,7 @@ export default function LoginForm() {
 
   function onSubmit(values: LoginInputType) {
     console.log(values, "values==>");
-    toast.success("Login Successful");
+    setIsLoading(true);
     login();
   }
 
@@ -61,8 +61,16 @@ export default function LoginForm() {
             Forgot your password?
           </Link>
         </div>
-        <Button type="submit" className="w-full tracking-wider">
-          LOGIN
+        <Button
+          type="submit"
+          className="w-full tracking-wider"
+          disabled={isLoading}
+        >
+          {isLoading ? (
+            <Loader className="w-5 h-5 animate-spin text-primary-foreground" />
+          ) : (
+            "LOGIN"
+          )}
         </Button>
       </form>
     </Form>
