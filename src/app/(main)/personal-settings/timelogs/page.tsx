@@ -6,7 +6,7 @@ export default function page() {
   return (
     <>
       <TimeListTable data={timlogData} />
-      <TimeLogListing />
+      <TimeLogListing data={timlogData} />
     </>
   );
 }
