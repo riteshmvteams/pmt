@@ -5,7 +5,7 @@ import { timlogData } from "../../projects/[id]/_components/time/ProjectTimeLogs
 export default function page() {
   return (
     <>
-      <TimeListTable data={timlogData} />
+      {/* <TimeListTable data={timlogData} /> */}
       <TimeLogListing data={timlogData} />
     </>
   );

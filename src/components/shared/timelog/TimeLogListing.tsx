@@ -7,8 +7,14 @@ import { formatDateWithWeekday, trimText } from "@/lib/helpers";
 import Title from "../Title";
 import { TTimeLog } from "@/app/(main)/projects/[id]/_components/time/ProjectTimeLogs";
 import Text from "../Text";
+import { useModal } from "@/store/useModal";
+import ConfirmationModal from "../ConfirmationModal";
 
 export default function TimeLogListing({ data }: { data: TTimeLog[] }) {
+  const { setChildren, setClassName, setOpen, setTitle } = useModal(
+    (state) => state
+  );
+
   return (
     <div className="flex flex-col gap-10 min-w-[1200px] overflow-y-auto">
       {Array.from({ length: 3 })?.map((_, index) => {
@@ -80,7 +86,20 @@ export default function TimeLogListing({ data }: { data: TTimeLog[] }) {
                       <button className="text-muted-foreground hover:text-foreground">
                         <Pencil className="w-4 h-4" />
                       </button>
-                      <button className="text-muted-foreground hover:text-foreground">
+                      <button
+                        className="text-muted-foreground hover:text-foreground"
+                        onClick={() => {
+                          setTitle("Confirmation");
+                          setOpen(true);
+                          setClassName("w-96");
+                          setChildren(
+                            <ConfirmationModal
+                              name=""
+                              title="Are you sure, you want to delete this log"
+                            />
+                          );
+                        }}
+                      >
                         <Trash2 className="w-4 h-4" />
                       </button>
                     </div>
