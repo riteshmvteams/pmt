@@ -38,7 +38,7 @@ export function ExpandableCardDemo() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/20 h-full w-full z-10"
+            className="fixed inset-0 bg-black/30 h-full w-full z-50 backdrop-blur-sm"
           />
         )}
       </AnimatePresence>
@@ -65,6 +65,7 @@ export function ExpandableCardDemo() {
             >
               <CloseIcon />
             </motion.button>
+
             <motion.div
               layoutId={`card-${active.title}-${id}`}
               ref={ref}

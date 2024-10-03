@@ -13,8 +13,6 @@ export default function Analytics() {
         x-chunk="dashboard-02-chunk-1"
       >
         <div className="flex flex-col items-center gap-1 text-center">
-          <ExpandableCardDemo />
-
           <YoptaEditor />
         </div>
       </div>

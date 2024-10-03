@@ -173,8 +173,8 @@ export default function ProjectTimeLogs() {
           </Button>
         </div>
       </div>
-      <TimeListTable data={timlogData} />
-      <TimeLogListing />
+      <TimeLogListing data={timlogData} />
+      {/* <TimeListTable data={timlogData} /> */}
     </div>
   ) : (
     <NoItems

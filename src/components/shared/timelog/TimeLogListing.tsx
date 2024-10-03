@@ -1,105 +1,91 @@
 import React from "react";
 
-import { Edit, Trash2 } from "lucide-react";
-import { formatDateWithWeekday } from "@/lib/helpers";
-import { Button } from "@/components/ui/button";
-import CustomTooltip from "../CustomTooltip";
+import { CircleCheckBig, CircleX, Eye, Pencil, Trash2 } from "lucide-react";
+import { formatDateWithWeekday, trimText } from "@/lib/helpers";
 import Title from "../Title";
+import { TTimeLog } from "@/app/(main)/projects/[id]/_components/time/ProjectTimeLogs";
+import Text from "../Text";
 
-export const description =
-  "An products dashboard with a sidebar navigation. The sidebar has icon navigation. The content area has a breadcrumb and search in the header. It displays a list of products in a table with actions.";
-
-export default function TimeLogListing() {
+export default function TimeLogListing({ data }: { data: TTimeLog[] }) {
   return (
     <div className="flex flex-col gap-10 min-w-[1200px] overflow-y-auto">
-      {Array.from({ length: 10 })?.map((_, ind) => {
+      {Array.from({ length: 3 })?.map((_, index) => {
         return (
-          <div key={ind} className="flex flex-col gap-3">
-            <Title className="text-base tracking-tight">
+          <div key={index} className="flex flex-col gap-2">
+            <Title className="font-normal text-sm tracking-tight">
               {formatDateWithWeekday(new Date())}
             </Title>
-
-            <div className="grid grid-cols-12 gap-x-1">
-              <div className="flex flex-col bg-primary/5">
-                <div className="bg-primary/20 p-4 font-lexend text-sm font-semibold tracking-wide">
+            <ul className="border rounded-md">
+              <li className="grid grid-cols-12">
+                <Title className="bg-muted p-2.5 font-normal text-sm border-r">
                   User Name
-                </div>
-                <div className=" p-4 font-lexend text-sm font-light">
-                  Super Admin
-                </div>
-              </div>
-              <div className="flex flex-col bg-primary/5 col-span-3">
-                <div className="bg-primary/20 p-4 font-lexend text-sm font-semibold tracking-wide">
+                </Title>
+                <Title className="bg-muted p-2.5 font-normal text-sm border-r col-span-3">
                   Task Description
-                </div>
-                <div className=" p-4 font-lexend text-sm font-light">
-                  Testing time log
-                </div>
-              </div>
-              <div className="flex flex-col bg-primary/5 col-span-3">
-                <div className="bg-primary/20 p-4 font-lexend text-sm font-semibold tracking-wide">
+                </Title>
+                <Title className="bg-muted p-2.5 font-normal text-sm border-r col-span-3">
                   Task Name
-                </div>
-                <div className=" p-4 font-lexend text-sm font-light">N/A</div>
-              </div>
-              <div className="flex flex-col bg-primary/5">
-                <div className="bg-primary/20 p-4 font-lexend text-sm font-semibold tracking-wide">
+                </Title>
+                <Title className="bg-muted p-2.5 font-normal text-sm border-r">
                   Start Time
-                </div>
-                <div className=" p-4 font-lexend text-sm font-light">
-                  09:00 AM
-                </div>
-              </div>
-              <div className="flex flex-col bg-primary/5">
-                <div className="bg-primary/20 p-4 font-lexend text-sm font-semibold tracking-wide">
+                </Title>
+                <Title className="bg-muted p-2.5 font-normal text-sm border-r">
                   End Time
-                </div>
-                <div className=" p-4 font-lexend text-sm font-light">
-                  06:00 PM
-                </div>
-              </div>
-              <div className="flex flex-col bg-primary/5">
-                <div className="bg-primary/20 p-4 font-lexend text-sm font-semibold tracking-wide">
-                  Spent Time
-                </div>
-                <div className=" p-4 font-lexend text-sm font-light">
-                  09 hrs
-                </div>
-              </div>
-              <div className="flex flex-col bg-primary/5">
-                <div className="bg-primary/20 p-4 font-lexend text-sm font-semibold tracking-wide">
+                </Title>
+                <Title className="bg-muted p-2.5 font-normal text-sm border-r">
+                  Spend Time
+                </Title>
+                <Title className="bg-muted p-2.5 font-normal text-sm border-r">
                   Billable
-                </div>
-                <div className=" p-4 font-lexend text-sm font-light">Yes</div>
-              </div>
-              <div className="flex flex-col bg-primary/5">
-                <div className="bg-primary/20 p-4 font-lexend text-sm font-semibold tracking-wide">
-                  Actions
-                </div>
-                <div className=" p-4 font-lexend text-sm font-light">
-                  <div className="flex items-center gap-2">
-                    <CustomTooltip title="Edit">
-                      <Button
-                        size={"icon"}
-                        variant={"outline"}
-                        className="h-6 w-6"
-                      >
-                        <Edit className="w-[14px] h-[14px]" />
-                      </Button>
-                    </CustomTooltip>
-                    <CustomTooltip title="Delete">
-                      <Button
-                        size={"icon"}
-                        variant={"outline"}
-                        className="h-6 w-6"
-                      >
-                        <Trash2 className="w-[14px] h-[14px]" />
-                      </Button>
-                    </CustomTooltip>
-                  </div>
-                </div>
-              </div>
-            </div>
+                </Title>
+                <div className="p-2.5 bg-muted"></div>
+              </li>
+              {data?.map((logData, ind) => {
+                return (
+                  <li
+                    key={ind}
+                    className="grid grid-cols-12 border-b last:border-0 items-center"
+                  >
+                    <Text className="text-xs p-4 border-r">
+                      {logData?.user_name}
+                    </Text>
+                    <Text className="text-xs p-4 border-r col-span-3">
+                      {trimText(logData?.task_description, 60)}
+                    </Text>
+                    <Text className="text-xs p-4 border-r col-span-3">
+                      {trimText(logData?.task_name, 60)}
+                    </Text>
+                    <Text className="text-xs p-4 border-r">
+                      {logData?.start_time}
+                    </Text>
+                    <Text className="text-xs p-4 border-r">
+                      {logData?.end_time}
+                    </Text>
+                    <Text className="text-xs p-4 border-r">
+                      {logData?.spent_time}
+                    </Text>
+                    <Text className="text-xs p-4 border-r">
+                      {logData?.billable ? (
+                        <CircleCheckBig className="w-5 h-5 text-green-600" />
+                      ) : (
+                        <CircleX className="w-5 h-5 text-destructive" />
+                      )}
+                    </Text>
+                    <div className="p-4 flex gap-4 items-center">
+                      <button className="text-muted-foreground hover:text-foreground">
+                        <Eye className="w-4 h-4" />
+                      </button>
+                      <button className="text-muted-foreground hover:text-foreground">
+                        <Pencil className="w-4 h-4" />
+                      </button>
+                      <button className="text-muted-foreground hover:text-foreground">
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         );
       })}
