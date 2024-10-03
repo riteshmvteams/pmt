@@ -1,27 +1,14 @@
 "use client";
 
 import { useYooptaEditor } from "@yoopta/editor";
-import {
-  List,
-  ListOrdered,
-  BoldIcon,
-  ItalicIcon,
-  StrikethroughIcon,
-  LinkIcon,
-  TextQuoteIcon,
-  CodeIcon,
-  FileCodeIcon,
-} from "lucide-react";
+import { BoldIcon, ItalicIcon, SendHorizontal } from "lucide-react";
 import React from "react";
 
 import { useMemo } from "react";
 import YooptaEditor, { createYooptaEditor } from "@yoopta/editor";
 import Paragraph from "@yoopta/paragraph";
 // IMPORT TOOLS
-import LinkTool, { DefaultLinkToolRender } from "@yoopta/link-tool";
 import Blockquote from "@yoopta/blockquote";
-import ActionMenu, { DefaultActionMenuRender } from "@yoopta/action-menu-list";
-import Toolbar, { DefaultToolbarRender } from "@yoopta/toolbar";
 import Embed from "@yoopta/embed";
 import Image from "@yoopta/image";
 import Link from "@yoopta/link";
@@ -61,7 +48,6 @@ const plugins = [
       async onUpload(file) {
         console.log(file, "file====>");
         const data = await uploadToCloudinary(file, "image");
-
         return {
           src: data.secure_url,
           alt: "cloudinary",
@@ -79,7 +65,7 @@ const ChatYoptaEditor = () => {
   const editor = useMemo(() => createYooptaEditor(), []);
 
   return (
-    <div className="relative border overflow-hidden">
+    <div className="relative border overflow-hidden p-2 rounded-md">
       <YooptaEditor
         placeholder="Type something"
         editor={editor}
@@ -98,75 +84,39 @@ export default ChatYoptaEditor;
 function ChatEditor() {
   const editor = useYooptaEditor();
 
-  console.log(editor, "editor.formats.bold==>");
+  console.log(editor.blocks, "block===>");
 
   return (
-    <div className="w-full absolute bottom-0 left-0 flex p-1 gap-1">
-      <button
-        type="button"
-        className={cn(
-          "w-6 h-6 bg-muted flex items-center justify-center rounded-md",
-          editor.formats.bold.isActive() ? "bg-primary" : ""
-        )}
-        data-state-active={editor.formats.bold?.isActive()}
-        onClick={() => editor.formats.bold.toggle()}
-      >
-        <BoldIcon size={15} strokeWidth={2} />
-      </button>
-      <button
-        className="w-6 h-6 bg-muted flex items-center justify-center rounded-md"
-        data-state-active={editor.formats.italic?.isActive()}
-        onClick={() => editor.formats.italic.toggle()}
-      >
-        <ItalicIcon size={15} strokeWidth={2} />
-      </button>
-      <button
-        className=""
-        data-state-active={editor.formats.strike?.isActive()}
-        onClick={() => editor.formats.strike.toggle()}
-      >
-        <StrikethroughIcon size={15} strokeWidth={1.5} />
-      </button>
-      {/* <span className={s.separator} /> */}
-      <button className="" onClick={() => alert("in progress")}>
-        <LinkIcon size={15} strokeWidth={1.5} />
-      </button>
-      {/* <span className={s.separator} /> */}
-      <button
-        className=""
-        data-state-active={editor.blocks.NumberedList?.isActive()}
-        onClick={() => editor.blocks.NumberedList.toggle({ focus: true })}
-      >
-        <ListOrdered size={15} strokeWidth={1.5} />
-      </button>
-      <button
-        className=""
-        data-state-active={editor.blocks.BulletedList?.isActive()}
-        onClick={() => editor.blocks.BulletedList.toggle({ focus: true })}
-      >
-        <List size={15} strokeWidth={1.5} />
-      </button>
-      {/* <span className={s.separator} /> */}
-      <button
-        className=""
-        data-state-active={editor.blocks.Blockquote?.isActive()}
-        onClick={() => {
-          editor.blocks.Blockquote.toggle({ focus: true });
-        }}
-      >
-        <TextQuoteIcon size={15} strokeWidth={1.5} />
-      </button>
-      {/* <span className={s.separator} /> */}
-      <button className="" onClick={() => editor.formats.code.toggle()}>
-        <CodeIcon size={15} strokeWidth={1.5} />
-      </button>
-      <button
-        className=""
-        onClick={() => {
-          editor.blocks.Code.toggle({ focus: true });
-        }}
-      >
-        <FileCodeIcon size={15} strokeWidth={1.5} />
+    <div className="w-full absolute bottom-0 left-0 flex items-center justify-between p-1 gap-1 bg-primary/5">
+      <div className="flex items-center gap-1">
+        <button
+          className={cn(
+            "w-6 h-6 bg-muted flex items-center justify-center rounded-md",
+            editor.formats.bold.isActive()
+              ? "bg-primary text-primary-foreground"
+              : ""
+          )}
+          data-state-active={editor.formats.bold?.isActive()}
+          onClick={() => editor.formats.bold.toggle()}
+        >
+          <BoldIcon size={15} strokeWidth={2} />
+        </button>
+        <button
+          className={cn(
+            "w-6 h-6 bg-muted flex items-center justify-center rounded-md",
+            editor.formats.italic.isActive()
+              ? "bg-primary text-primary-foreground"
+              : ""
+          )}
+          data-state-active={editor.formats.italic?.isActive()}
+          onClick={() => editor.formats.italic.toggle()}
+        >
+          <ItalicIcon size={15} strokeWidth={2} />
+        </button>
+      </div>
+
+      <button className="p-2 text-muted-foreground hover:text-foreground bg-muted">
+        <SendHorizontal className="" />
       </button>
     </div>
   );

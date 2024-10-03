@@ -17,6 +17,7 @@ import { Users_DATA } from "@/lib/constants";
 import ViewSetting from "@/components/shared/ViewSetting";
 import UserTable from "@/components/shared/userTable/table";
 import { FramerLayout } from "@/components/shared/tabs/framer-layout";
+
 import ProjectOverview from "./overview/ProjectOverview";
 import ProjectTasks from "./tasks/ProjectTasks";
 import ProjectFiles from "./files/ProjectFiles";
@@ -94,7 +95,7 @@ const ProjectDetailTabs = ({ tab }: { tab: string }) => {
   const framer = useTabs(hookProps);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-1">
       <div className="border-b flex justify-between">
         <FramerLayout.Tabs {...framer.tabProps} className="justify-start" />
         <ViewSetting />

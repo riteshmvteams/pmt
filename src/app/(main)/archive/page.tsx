@@ -1,6 +1,4 @@
-import { ExpandableCardDemo } from "@/components/shared/animated/ExpandableCardDemo";
 import ChatYoptaEditor from "@/components/shared/yoptaEditor/ChatEditor";
-import { ArrowBigDown } from "lucide-react";
 
 export default function Archive() {
   return (
