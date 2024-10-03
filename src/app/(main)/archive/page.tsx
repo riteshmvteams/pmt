@@ -1,4 +1,5 @@
 import { ExpandableCardDemo } from "@/components/shared/animated/ExpandableCardDemo";
+import ChatYoptaEditor from "@/components/shared/yoptaEditor/ChatEditor";
 import { ArrowBigDown } from "lucide-react";
 
 export default function Archive() {
@@ -12,7 +13,8 @@ export default function Archive() {
         x-chunk="dashboard-02-chunk-1"
       >
         <div className="flex flex-col items-center gap-1 text-center">
-          <ExpandableCardDemo />
+          <ChatYoptaEditor />
+          {/* <ExpandableCardDemo /> */}
         </div>
       </div>
     </>
