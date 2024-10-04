@@ -2,9 +2,8 @@ import CheckInButton from "@/components/shared/CheckInButton";
 import CustomBreadcrumb from "@/components/shared/CustomBreadcrumb";
 import { routes } from "@/config/routes";
 import { PROJECTS_DATA } from "@/lib/constants";
-import { House } from "lucide-react";
+import { FolderOpenDot, House } from "lucide-react";
 import ProjectDetailTabs from "./_components/ProjectDetailTabs";
-import BackButton from "@/components/shared/BackButton";
 
 export default function ProjectDetail({
   params,
@@ -20,17 +19,12 @@ export default function ProjectDetail({
   const path = [
     {
       id: 1,
-      title: "Dashboard",
-      href: routes.dashboard,
-      icon: <House className="w-4 h-4" />,
+      title: "Projects",
+      href: routes.projects,
+      icon: <FolderOpenDot className="w-4 h-4" />,
     },
     {
       id: 2,
-      title: "Projects",
-      href: routes.projects,
-    },
-    {
-      id: 3,
       title: data?.length ? data[0]?.title : params.id,
     },
   ];
@@ -38,10 +32,12 @@ export default function ProjectDetail({
   return (
     <>
       <div className="flex items-center justify-between">
-        <CustomBreadcrumb paths={path} />
+        <div className="flex flex-col gap-2">
+          <h1 className="text-lg font-semibold md:text-2xl">Projects</h1>
+          <CustomBreadcrumb paths={path} />
+        </div>
         <div className="flex gap-2 items-center">
-          <BackButton />
-          <CheckInButton />
+          <CheckInButton variant="outline" />
         </div>
       </div>
       <ProjectDetailTabs tab={searchParams?.tab} />

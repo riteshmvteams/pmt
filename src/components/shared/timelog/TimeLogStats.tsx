@@ -16,14 +16,6 @@ import { Button } from "@/components/ui/button";
 import { useDrawer } from "@/store/useDrawer";
 
 export default function TimeLogStats() {
-  const { setChildren, setClassName, setOpen, setTitle } = useModal();
-  const {
-    setDrawerChildren,
-    setDrawerClassName,
-    setDrawerOpen,
-    setDrawerTitle,
-    setSide,
-  } = useDrawer();
   return (
     <div className="flex justify-between items-center">
       <div className="flex items-center gap-[15px]">
@@ -46,36 +38,46 @@ export default function TimeLogStats() {
           </Text>
         </Badge>
       </div>
-      <div className="flex gap-2 items-center">
-        <Button
-          variant="outline"
-          className="gap-2 font-lexend"
-          onClick={() => {
-            setDrawerTitle("Filter");
-            setDrawerChildren("Filter Here...F");
-            setDrawerOpen(true);
-            setSide("right");
-            setDrawerClassName("");
-          }}
-        >
-          <Filter className="h-4 w-4 text-muted-foreground" /> Filter
-        </Button>
-
-        <Button
-          className="font-lexend gap-1 active:scale-95"
-          onClick={() => {
-            setTitle(
-              <ModalTitle Icon={AlarmClockPlus} title="Log Your Time" />
-            );
-            setChildren(<AddTime />);
-            setClassName("max-w-[1100px]");
-            setOpen(true);
-          }}
-        >
-          <AlarmClockPlus className="h-4 w-4 text-primary-foreground" /> Add
-          Time
-        </Button>
-      </div>
     </div>
   );
 }
+
+export const TimeLogAddFilter = () => {
+  const { setChildren, setClassName, setOpen, setTitle } = useModal();
+  const {
+    setDrawerChildren,
+    setDrawerClassName,
+    setDrawerOpen,
+    setDrawerTitle,
+    setSide,
+  } = useDrawer();
+  return (
+    <div className="flex gap-2 items-center">
+      <Button
+        variant="outline"
+        className="gap-2 font-lexend"
+        onClick={() => {
+          setDrawerTitle("Filter");
+          setDrawerChildren("Filter Here...F");
+          setDrawerOpen(true);
+          setSide("right");
+          setDrawerClassName("");
+        }}
+      >
+        <Filter className="h-4 w-4 text-muted-foreground" /> Filter
+      </Button>
+
+      <Button
+        className="font-lexend gap-1 active:scale-95"
+        onClick={() => {
+          setTitle(<ModalTitle Icon={AlarmClockPlus} title="Log Your Time" />);
+          setChildren(<AddTime />);
+          setClassName("max-w-[1100px]");
+          setOpen(true);
+        }}
+      >
+        <AlarmClockPlus className="h-4 w-4 text-primary-foreground" /> Add Time
+      </Button>
+    </div>
+  );
+};

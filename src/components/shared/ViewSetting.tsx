@@ -9,27 +9,27 @@ export default function ViewSetting() {
   const { isGrid, updateView } = useView((state) => state);
 
   return (
-    <div className="flex text-muted-foreground border rounded-md self-start h-10">
+    <div className="flex text-muted-foreground border rounded-md h-8">
       <CustomTooltip title="Grid View">
         <button
           className={cn(
-            "px-3 h-10 rounded-md",
+            "flex items-center justify-center h-8 w-8 rounded-md ",
             isGrid ? "text-primary-foreground bg-primary" : ""
           )}
           onClick={() => updateView(true)}
         >
-          <LayoutGrid className="h-5 w-5" />
+          <LayoutGrid className="h-4 w-4" />
         </button>
       </CustomTooltip>
       <CustomTooltip title="Table View">
         <button
           className={cn(
-            "px-3 h-10 rounded-md",
+            "flex items-center justify-center h-8 w-8 rounded-md",
             isGrid ? "" : "text-primary-foreground bg-primary"
           )}
           onClick={() => updateView(false)}
         >
-          <List className="h-5 w-5" />
+          <List className="h-4 w-4" />
         </button>
       </CustomTooltip>
     </div>

@@ -84,8 +84,6 @@ export default ChatYoptaEditor;
 function ChatEditor() {
   const editor = useYooptaEditor();
 
-  console.log(editor.blocks, "block===>");
-
   return (
     <div className="w-full absolute bottom-0 left-0 flex items-center justify-between p-1 gap-1 bg-primary/5">
       <div className="flex items-center gap-1">

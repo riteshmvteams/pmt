@@ -25,6 +25,8 @@ import ProjectNotes from "./notes/ProjectNotes";
 import ProjectMilestones from "./milestones/ProjectMilestones";
 import ProjectTimeLogs from "./time/ProjectTimeLogs";
 import ProjectActivities from "./activities/ProjectActivities";
+import { TimeLogAddFilter } from "@/components/shared/timelog/TimeLogStats";
+import TaskViewOptions from "@/app/(main)/tasks/_components/TaskViewOptions";
 
 const ProjectDetailTabs = ({ tab }: { tab: string }) => {
   const [hookProps] = useState({
@@ -93,12 +95,22 @@ const ProjectDetailTabs = ({ tab }: { tab: string }) => {
     initialTabId: "Tasks",
   });
   const framer = useTabs(hookProps);
+  const currentTabId = framer?.selectedTab?.id;
+
+  console.log(framer?.selectedTab?.label, "framer===>");
 
   return (
-    <div className="space-y-1">
-      <div className="border-b flex justify-between">
+    <div className="space-y-3">
+      <div className="border-b flex justify-between items-center">
         <FramerLayout.Tabs {...framer.tabProps} className="justify-start" />
-        <ViewSetting />
+
+        {currentTabId === "Files" ||
+        currentTabId === "Notes" ||
+        currentTabId === "Users" ? (
+          <ViewSetting />
+        ) : null}
+        {currentTabId === "Tasks" ? <TaskViewOptions /> : null}
+        {currentTabId === "Time" ? <TimeLogAddFilter /> : null}
       </div>
       <FramerLayout.Content {...framer.contentProps} className="">
         {framer.selectedTab.children}
