@@ -2,6 +2,7 @@ import BackButton from "@/components/shared/BackButton";
 import CustomBreadcrumb from "@/components/shared/CustomBreadcrumb";
 import { routes } from "@/config/routes";
 import { House } from "lucide-react";
+import UserDetailTabs from "./_components/UserDetailTabs";
 
 export default function UserDetail({ params }: { params: { id: string } }) {
   const path = [
@@ -29,9 +30,10 @@ export default function UserDetail({ params }: { params: { id: string } }) {
           <BackButton />
         </div>
       </div>
-      <div className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm">
+      <UserDetailTabs />
+      {/* <div className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm">
         <div className="flex flex-col items-center gap-1 text-center"></div>
-      </div>
+      </div> */}
     </>
   );
 }
