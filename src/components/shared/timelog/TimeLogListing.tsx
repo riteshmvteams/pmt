@@ -4,11 +4,12 @@ import React from "react";
 
 import { CircleCheckBig, CircleX, Eye, Pencil, Trash2 } from "lucide-react";
 import { formatDateWithWeekday, trimText } from "@/lib/helpers";
-import Title from "../Title";
-import { TTimeLog } from "@/app/(main)/projects/[id]/_components/time/ProjectTimeLogs";
-import Text from "../Text";
 import { useModal } from "@/store/useModal";
+import Text from "../Text";
+import Title from "../Title";
 import ConfirmationModal from "../ConfirmationModal";
+
+import { TTimeLog } from "@/app/(main)/projects/[id]/_components/time/ProjectTimeLogs";
 
 export default function TimeLogListing({ data }: { data: TTimeLog[] }) {
   const { setChildren, setClassName, setOpen, setTitle } = useModal(

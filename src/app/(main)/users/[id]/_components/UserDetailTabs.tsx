@@ -19,6 +19,7 @@ import { FramerLayout } from "@/components/shared/tabs/framer-layout";
 import UserProfile from "./UserProfile";
 import UserNotifications from "./UserNotifications";
 import CheckedInOut from "./CheckedInOut";
+import UserTimeLogs from "./UserTimeLogs";
 
 const UserDetailTabs = () => {
   const [hookProps] = useState({
@@ -44,7 +45,7 @@ const UserDetailTabs = () => {
       {
         label: "Time",
         icon: <Clock className="h-4 w-4 mr-1.5" />,
-        children: "Time==<>",
+        children: <UserTimeLogs />,
         id: "Time",
       },
       {
