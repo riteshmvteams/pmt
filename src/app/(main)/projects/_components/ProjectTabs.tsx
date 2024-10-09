@@ -5,13 +5,13 @@ import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import ViewSetting from "@/components/shared/ViewSetting";
 import CustomTabTrigger from "@/components/shared/CustomTabTrigger";
-import Table from "./table";
 import ProjectFilters from "./ProjectFilters";
 import ProjectSort from "./ProjectSort";
 import { AlarmClockPlus, FolderClosed } from "lucide-react";
 import { useModal } from "@/store/useModal";
 import { ModalTitle } from "@/components/sidebar/CreateNew";
 import AddProjects from "@/components/shared/addThings/AddProjects";
+import ProjectsTable from "./table";
 
 const tabList = [
   {
@@ -54,12 +54,12 @@ const ProjectTabs = () => {
       </CustomTabTrigger>
       <TabsContent value="active">
         <Suspense fallback="Loading...">
-          <Table />
+          <ProjectsTable />
         </Suspense>
       </TabsContent>
       <TabsContent value="inactive">
         <Suspense fallback="Loading...">
-          <Table />
+          <ProjectsTable />
         </Suspense>
       </TabsContent>
     </Tabs>

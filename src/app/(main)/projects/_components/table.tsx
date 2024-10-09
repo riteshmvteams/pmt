@@ -15,7 +15,7 @@ import { useView } from "@/store/dataView";
 import { getColumns } from "./columns";
 import ProjectGridView from "./ProjectGridView";
 
-export default function Table() {
+export default function ProjectsTable() {
   const isGrid = useView((state) => state?.isGrid);
 
   const searchParams = useSearchParams();
