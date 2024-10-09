@@ -4,6 +4,7 @@ import Title from "@/components/shared/Title";
 import { getRoleBadge } from "@/components/shared/userTable/columns";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { PopoverClose } from "@/components/ui/popover";
 import {
   Check,
   Globe,
@@ -28,7 +29,7 @@ export default function UserProfile() {
             </Avatar>
             <div className="flex flex-col">
               <Title className="text-xl">John Doe</Title>
-              <span className="text-sm font-lexend text-muted-foreground pl-0.5">
+              <span className="font-light text-sm font-lexend text-muted-foreground pl-0.5">
                 johndoe@gmail.com
               </span>
             </div>
@@ -52,21 +53,23 @@ export default function UserProfile() {
                 Are You sure, You want to Delete this User ?
               </Title>
 
-              <div>
+              <div className="flex items-center gap-3">
                 <Button
                   variant="outline"
-                  className="bg-green-500 text-white w-12"
+                  className="bg-green-500 text-white w-12 hover:bg-green-400 hover:text-white"
                   size="icon"
                 >
                   <Check className="h-5 w-5" strokeWidth={2} />
                 </Button>{" "}
-                <Button
-                  variant="outline"
-                  className="bg-red-500 text-white w-12"
-                  size="icon"
-                >
-                  <X className="h-5 w-5" strokeWidth={2} />
-                </Button>{" "}
+                <PopoverClose asChild>
+                  <Button
+                    variant="outline"
+                    className="bg-red-500 text-white w-12 hover:bg-red-400 hover:text-white"
+                    size="icon"
+                  >
+                    <X className="h-5 w-5" strokeWidth={2} />
+                  </Button>
+                </PopoverClose>
               </div>
             </div>
           </ConfirmationPopover>

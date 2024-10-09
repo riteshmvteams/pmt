@@ -13,7 +13,7 @@ export default function ConfirmationPopover({
 }) {
   return (
     <Popover>
-      <PopoverTrigger>{trigger}</PopoverTrigger>
+      <PopoverTrigger asChild>{trigger}</PopoverTrigger>
       <PopoverContent>{children}</PopoverContent>
     </Popover>
   );
