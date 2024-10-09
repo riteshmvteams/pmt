@@ -1,9 +1,11 @@
+import ConfirmationPopover from "@/components/shared/ConfirmationPopover";
 import Text from "@/components/shared/Text";
 import Title from "@/components/shared/Title";
 import { getRoleBadge } from "@/components/shared/userTable/columns";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
+  Check,
   Globe,
   IdCard,
   LockKeyhole,
@@ -11,31 +13,63 @@ import {
   ScanFace,
   Trash2,
   User,
+  X,
 } from "lucide-react";
 
 export default function UserProfile() {
   return (
     <div className="w-1/3 border rounded-lg overflow-hidden">
       <div className="flex flex-col">
-        <div className="flex p-4 gap-4 items-start bg-primary/5 relative">
-          <Avatar className="h-20 w-20 ring ring-ring ring-offset-2 rounded-2xl">
-            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
-          <div className="flex flex-col">
-            <Title className="text-xl">John Doe</Title>
-            <span className="text-sm font-lexend text-muted-foreground pl-0.5">
-              johndoe@gmail.com
-            </span>
+        <div className="flex justify-between bg-primary/5 items-start p-4 ">
+          <div className="flex gap-4 items-start ">
+            <Avatar className="h-20 w-20 ring ring-ring ring-offset-2 rounded-2xl">
+              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+            <div className="flex flex-col">
+              <Title className="text-xl">John Doe</Title>
+              <span className="text-sm font-lexend text-muted-foreground pl-0.5">
+                johndoe@gmail.com
+              </span>
+            </div>
           </div>
-
-          <Button
-            variant="outline"
-            size="icon"
-            className="absolute top-2 right-2 bg-red-500 text-white border-red-500 active:translate-y-0.5"
+          <ConfirmationPopover
+            trigger={
+              <Button
+                variant="outline"
+                size="icon"
+                className="bg-red-500 text-white border-red-500 active:translate-y-0.5"
+              >
+                <Trash2 className="h-4 w-4" />
+              </Button>
+            }
           >
-            <Trash2 className="h-4 w-4" />
-          </Button>
+            <div className="flex flex-col gap-2 items-center">
+              <span className="flex bg-red-100 w-12 h-12 rounded-full items-center justify-center">
+                <Trash2 className="h-5 w-5 text-red-600" />
+              </span>
+              <Title className="font-normal text-center">
+                Are You sure, You want to Delete this User ?
+              </Title>
+
+              <div>
+                <Button
+                  variant="outline"
+                  className="bg-green-500 text-white w-12"
+                  size="icon"
+                >
+                  <Check className="h-5 w-5" strokeWidth={2} />
+                </Button>{" "}
+                <Button
+                  variant="outline"
+                  className="bg-red-500 text-white w-12"
+                  size="icon"
+                >
+                  <X className="h-5 w-5" strokeWidth={2} />
+                </Button>{" "}
+              </div>
+            </div>
+          </ConfirmationPopover>
         </div>
 
         <div className="p-4 flex flex-col gap-4">
