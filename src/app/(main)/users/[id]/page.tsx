@@ -31,9 +31,6 @@ export default function UserDetail({ params }: { params: { id: string } }) {
         </div>
       </div>
       <UserDetailTabs />
-      {/* <div className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm">
-        <div className="flex flex-col items-center gap-1 text-center"></div>
-      </div> */}
     </>
   );
 }

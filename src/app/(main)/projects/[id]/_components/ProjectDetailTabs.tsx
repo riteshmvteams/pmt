@@ -97,8 +97,6 @@ const ProjectDetailTabs = ({ tab }: { tab: string }) => {
   const framer = useTabs(hookProps);
   const currentTabId = framer?.selectedTab?.id;
 
-  console.log(framer?.selectedTab?.label, "framer===>");
-
   return (
     <div className="space-y-3">
       <div className="border-b flex justify-between items-center">
@@ -112,7 +110,7 @@ const ProjectDetailTabs = ({ tab }: { tab: string }) => {
         {currentTabId === "Tasks" ? <TaskViewOptions /> : null}
         {currentTabId === "Time" ? <TimeLogAddFilter /> : null}
       </div>
-      <FramerLayout.Content {...framer.contentProps} className="">
+      <FramerLayout.Content {...framer.contentProps}>
         {framer.selectedTab.children}
       </FramerLayout.Content>
     </div>

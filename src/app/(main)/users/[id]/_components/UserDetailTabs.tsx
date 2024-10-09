@@ -4,13 +4,10 @@ import { useState } from "react";
 import {
   BellRing,
   CalendarCheck2,
-  CircleCheckBig,
   ClipboardList,
   Clock,
-  ContactRound,
   FolderOpenDot,
   SquareUser,
-  TableOfContents,
 } from "lucide-react";
 
 import { useTabs } from "@/hooks/useTabs";
@@ -20,6 +17,8 @@ import UserProfile from "./UserProfile";
 import UserNotifications from "./UserNotifications";
 import CheckedInOut from "./CheckedInOut";
 import UserTimeLogs from "./UserTimeLogs";
+import UserProjects from "./UserProjects";
+import UserTasks from "./UserTasks";
 
 const UserDetailTabs = () => {
   const [hookProps] = useState({
@@ -33,13 +32,13 @@ const UserDetailTabs = () => {
       {
         label: "Projects",
         icon: <FolderOpenDot className="h-4 w-4 mr-1.5" />,
-        children: "Projects==<>",
+        children: <UserProjects />,
         id: "Projects",
       },
       {
         label: "Tasks",
         icon: <ClipboardList className="h-4 w-4 mr-1.5" />,
-        children: "Tasks==<>",
+        children: <UserTasks />,
         id: "Tasks",
       },
       {
@@ -64,7 +63,6 @@ const UserDetailTabs = () => {
     initialTabId: "Projects",
   });
   const framer = useTabs(hookProps);
-  const currentTabId = framer?.selectedTab?.id;
 
   return (
     <div className="space-y-3">
