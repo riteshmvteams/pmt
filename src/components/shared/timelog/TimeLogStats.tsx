@@ -14,6 +14,7 @@ import AddTime from "../addThings/AddTime";
 import { ModalTitle } from "@/components/sidebar/CreateNew";
 import { Button } from "@/components/ui/button";
 import { useDrawer } from "@/store/useDrawer";
+import TimeFiltering from "./TimeFiltering";
 
 export default function TimeLogStats() {
   return (
@@ -58,7 +59,7 @@ export const TimeLogAddFilter = () => {
         className="gap-2 font-lexend"
         onClick={() => {
           setDrawerTitle("Filter");
-          setDrawerChildren("Filter Here...F");
+          setDrawerChildren(<TimeFiltering />);
           setDrawerOpen(true);
           setSide("right");
           setDrawerClassName("");
