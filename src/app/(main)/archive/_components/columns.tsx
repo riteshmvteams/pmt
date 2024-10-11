@@ -1,0 +1,101 @@
+"use client";
+
+import { ColumnDef } from "@tanstack/react-table";
+import { EllipsisVertical, UserPlus } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Checkbox } from "@/components/ui/checkbox";
+import Title from "@/components/shared/Title";
+import Text from "@/components/shared/Text";
+
+export type TProject = {
+  id: number;
+  isStarred: boolean;
+  title: string;
+  users: number;
+  activity: string;
+};
+
+export const getColumns = (): ColumnDef<TProject>[] => {
+  return [
+    {
+      accessorKey: "id",
+      header: ({ table }) => {
+        return (
+          <div className="flex items-center gap-10 w-[100px]">
+            <Checkbox
+              checked={
+                table.getIsAllPageRowsSelected() ||
+                (table.getIsSomePageRowsSelected() && "indeterminate")
+              }
+              onCheckedChange={(value) =>
+                table.toggleAllPageRowsSelected(!!value)
+              }
+              aria-label="Select all"
+            />
+            <Title className="w-[50px]">Task</Title>
+          </div>
+        );
+      },
+      cell: ({ row }) => {
+        return (
+          <div className="flex items-center gap-10 w-[100px]">
+            <Checkbox
+              checked={row.getIsSelected()}
+              onCheckedChange={(value) => row.toggleSelected(!!value)}
+              aria-label="Select row"
+            />
+            <Text className="text-[13px]">{row.original.id}</Text>
+          </div>
+        );
+      },
+    },
+    {
+      id: "title",
+      header: () => {
+        return <Title className="w-[500px]">Title</Title>;
+      },
+      cell: () => {
+        return (
+          <div className="flex flex-col py-1.5">
+            <Text>Title of the Task</Text>
+            <span className="text-xs text-muted-foreground">
+              Archived by SP Today 9:36 am
+            </span>
+          </div>
+        );
+      },
+    },
+    {
+      id: "actions",
+      cell: () => {
+        return <ProjectActionDropDowns />;
+      },
+    },
+  ];
+};
+
+export const ProjectActionDropDowns = () => {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" className="h-8 w-8 p-0">
+          <span className="sr-only">Open menu</span>
+          <EllipsisVertical className="h-4 w-4" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="start" side="left" className="w-36">
+        <DropdownMenuItem className="py-1.5 cursor-pointer">
+          <UserPlus className="mr-3 h-[14px] w-[14px]" />
+          <span className="text-[13px]">Add User</span>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+};
