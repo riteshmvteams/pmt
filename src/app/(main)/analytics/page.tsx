@@ -1,6 +1,5 @@
-import { ExpandableCardDemo } from "@/components/shared/animated/ExpandableCardDemo";
 import YoptaEditor from "@/components/shared/YoptaEditor";
-import { Button } from "@/components/ui/button";
+import ChatYoptaEditor from "@/components/shared/yoptaEditor/ChatEditor";
 
 export default function Analytics() {
   return (
@@ -12,8 +11,10 @@ export default function Analytics() {
         className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm"
         x-chunk="dashboard-02-chunk-1"
       >
-        <div className="flex flex-col items-center gap-1 text-center">
+        <div className="flex flex-col items-center gap-1 text-center w-full">
           <YoptaEditor />
+          <div className="py-4 border-t w-full"></div>
+          <ChatYoptaEditor />
         </div>
       </div>
     </>

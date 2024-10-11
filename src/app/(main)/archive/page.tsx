@@ -1,4 +1,4 @@
-import ChatYoptaEditor from "@/components/shared/yoptaEditor/ChatEditor";
+import Title from "@/components/shared/Title";
 
 export default function Archive() {
   return (
@@ -11,8 +11,7 @@ export default function Archive() {
         x-chunk="dashboard-02-chunk-1"
       >
         <div className="flex flex-col items-center gap-1 text-center">
-          <ChatYoptaEditor />
-          {/* <ExpandableCardDemo /> */}
+          <Title>Archieve List</Title>
         </div>
       </div>
     </>
