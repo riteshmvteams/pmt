@@ -9,8 +9,8 @@ export default function AvatarPlaceholder({
 }) {
   return (
     <svg
-      width="800px"
-      height="800px"
+      width={width}
+      height={height}
       viewBox="0 0 256 256"
       xmlns="http://www.w3.org/2000/svg"
     >

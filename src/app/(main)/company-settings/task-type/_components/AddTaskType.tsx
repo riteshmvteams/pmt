@@ -1,14 +1,16 @@
 "use client";
 
+import { useForm } from "react-hook-form";
+
 import { Button } from "@/components/ui/button";
 import AddIcon from "@/components/icons/AddIcon";
 import Title from "@/components/shared/Title";
+import CustomInputField from "@/components/shared/CustomInputField";
+import { Form } from "@/components/ui/form";
+
 import { useModal } from "@/store/useModal";
 import { loginFormSchema, LoginInputType } from "@/lib/schemas/login.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import CustomInputField from "@/components/shared/CustomInputField";
-import { Form } from "@/components/ui/form";
 
 export default function AddTaskType() {
   const { setChildren, setClassName, setOpen, setTitle } = useModal();
