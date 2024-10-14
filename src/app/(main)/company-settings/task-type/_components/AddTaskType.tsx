@@ -4,10 +4,14 @@ import { Button } from "@/components/ui/button";
 import AddIcon from "@/components/icons/AddIcon";
 import Title from "@/components/shared/Title";
 import { useModal } from "@/store/useModal";
+import { loginFormSchema, LoginInputType } from "@/lib/schemas/login.schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import CustomInputField from "@/components/shared/CustomInputField";
+import { Form } from "@/components/ui/form";
 
 export default function AddTaskType() {
   const { setChildren, setClassName, setOpen, setTitle } = useModal();
-
   return (
     <>
       <Button
@@ -27,5 +31,48 @@ export default function AddTaskType() {
 }
 
 const AddTaskTypeForm = () => {
-  return <div className="p-4">Hello</div>;
+  const form = useForm<LoginInputType>({
+    resolver: zodResolver(loginFormSchema),
+  });
+
+  function onSubmit(values: LoginInputType) {
+    console.log(values, "values==>");
+  }
+
+  return (
+    <div className="p-4">
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <CustomInputField
+            form={form}
+            name="email"
+            type="text"
+            label="Name"
+            placeholder="Design"
+            className="space-y-0.5"
+          />
+          <CustomInputField
+            form={form}
+            name="email"
+            type="text"
+            label="Short Name"
+            placeholder="DSG"
+            className="space-y-0.5"
+          />
+          <div className="flex gap-2 items-center">
+            <Button type="submit" className="w-full tracking-wider">
+              Add
+            </Button>
+            <Button
+              type="button"
+              className="w-full tracking-wider"
+              variant="outline"
+            >
+              Cancel
+            </Button>
+          </div>
+        </form>
+      </Form>
+    </div>
+  );
 };
