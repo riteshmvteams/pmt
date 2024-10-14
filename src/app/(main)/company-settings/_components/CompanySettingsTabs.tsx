@@ -1,12 +1,15 @@
 "use client";
 
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+
 import { FramerLayout } from "@/components/shared/tabs/framer-layout";
 import { routes } from "@/config/routes";
 import { useTabs } from "@/hooks/useTabs";
 import { BookCheck, Building2, ImageUp, MailPlus } from "lucide-react";
-import { useState } from "react";
 
 export default function CompanySettingsTabs() {
+  const path = usePathname();
   const [hookProps] = useState({
     tabs: [
       {
@@ -43,6 +46,14 @@ export default function CompanySettingsTabs() {
     initialTabId: "Company",
   });
   const framer = useTabs(hookProps);
+
+  useEffect(() => {
+    if (path && framer?.tabProps) {
+      const index = framer.tabProps.tabs?.findIndex((el) => el?.href === path);
+      framer.tabProps.setSelectedTab([index, 0]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [path]);
 
   return (
     <div className="flex-1 border-b">

@@ -9,6 +9,8 @@ import {
 import { COMPANY_SETTINGS, PERSONAL_SETTINGS } from "@/config/menu";
 import Link from "next/link";
 import SignOut from "./SignOut";
+import { routes } from "@/config/routes";
+import Title from "../shared/Title";
 
 export default function UserAccount() {
   return (
@@ -20,8 +22,14 @@ export default function UserAccount() {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[600px]">
-        <div className="border-b pb-6">
-          <h3 className="text-lg font-semibold">My Account</h3>
+        <div className="border-b pb-4 flex flex-col">
+          <Title className="text-base">My Account</Title>
+          <Link
+            href={routes?.personalSettings?.profile}
+            className="text-muted-foreground text-sm py-0.5 rounded-md hover:text-primary duration-300"
+          >
+            owner.mvt@gmail.com
+          </Link>
         </div>
         <div className="grid grid-cols-2">
           <div>

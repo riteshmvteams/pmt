@@ -1,7 +1,7 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { EllipsisVertical, RotateCcw, Trash2, UserPlus } from "lucide-react";
+import { EllipsisVertical, RotateCcw, Trash2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
