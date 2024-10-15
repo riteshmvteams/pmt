@@ -7,6 +7,7 @@ import { Users_DATA } from "@/lib/constants";
 import ViewSetting from "@/components/shared/ViewSetting";
 import UsersSort from "./UsersSort";
 import UserTable from "@/components/shared/userTable/table";
+import InviteUsers from "./InviteUsers";
 
 const activeUsers = Users_DATA.filter((user) => user.user_status === "active");
 const invitedUsers = Users_DATA.filter(
@@ -41,7 +42,7 @@ const UserTabs = () => {
   return (
     <Tabs defaultValue="active">
       <CustomTabTrigger tabs={tabList} className="grid-cols-3 max-w-[500px]">
-        <Button>Invite Users</Button>
+        <InviteUsers />
         <UsersSort />
         <ViewSetting />
       </CustomTabTrigger>
