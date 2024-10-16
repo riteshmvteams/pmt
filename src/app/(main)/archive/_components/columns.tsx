@@ -66,7 +66,7 @@ export const getColumns = (): ColumnDef<TProject>[] => {
       },
       cell: () => {
         return (
-          <div className="flex flex-col py-1.5">
+          <div className="flex flex-col py-0.5">
             <Text>Title of the Task</Text>
             <span className="text-xs text-muted-foreground">
               Archived by SP Today 9:36 am

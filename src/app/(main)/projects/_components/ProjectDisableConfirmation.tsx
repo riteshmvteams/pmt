@@ -12,7 +12,7 @@ const ProjectDisableConfirmation = () => {
         Project Title ?
       </Title>
 
-      <div className="flex justify-center gap-4 items-center ">
+      <div className="flex justify-center gap-4 items-center">
         <AlertDialogCancel asChild>
           <Button variant="outline" className="px-10 font-lexend">
             Cancel

@@ -1,3 +1,4 @@
+import { StarHalf } from "lucide-react";
 import ArchieveTaskTable from "./_components/ArchieveTaskTable";
 
 export default function Archive() {
@@ -7,6 +8,12 @@ export default function Archive() {
         <h1 className="text-lg font-semibold md:text-2xl">Archive</h1>
       </div>
       <ArchieveTaskTable />
+
+      {/* <div className="pt-10"></div>
+      <div className="flex items-center">
+        <StarHalf />
+        <StarHalf className="" />
+      </div> */}
     </>
   );
 }
