@@ -1,4 +1,3 @@
-import { trimText } from "@/lib/helpers";
 import Text from "../Text";
 import Title from "../Title";
 

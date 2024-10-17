@@ -61,13 +61,13 @@ export const timlogData = [
     user_name: "Yash Kumar",
     task_name: "Short Task Name",
     task_description: `Today's Update:
-1. Created Home Page Design
- - Banner section
- - About Section
- - Hero Section
-2. Contact Us Page
- - Contect Form
- - Footer`,
+                      1. Created Home Page Design
+                      - Banner section
+                      - About Section
+                      - Hero Section
+                      2. Contact Us Page
+                      - Contect Form
+                      - Footer`,
     start_time: "09:00 AM",
     end_time: "06:00 PM",
     spent_time: "9",
@@ -79,13 +79,13 @@ export const timlogData = [
     user_name: "Alex Roy",
     task_name: "short Task Name",
     task_description: `Today's Update:
-1. Created Home Page Design
- - Banner section
- - About Section
- - Hero Section
-2. Contact Us Page
- - Contect Form
- - Footer`,
+                      1. Created Home Page Design
+                      - Banner section
+                      - About Section
+                      - Hero Section
+                      2. Contact Us Page
+                      - Contect Form
+                      - Footer`,
     start_time: "09:00 AM",
     end_time: "06:00 PM",
     spent_time: "9",
