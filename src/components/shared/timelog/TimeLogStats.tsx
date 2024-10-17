@@ -1,6 +1,5 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
 import {
   AlarmClockPlus,
   CircleX,
@@ -8,12 +7,14 @@ import {
   Filter,
   ReceiptText,
 } from "lucide-react";
-import Text from "../Text";
-import { useModal } from "@/store/useModal";
-import AddTime from "../addThings/AddTime";
+
 import { ModalTitle } from "@/components/sidebar/CreateNew";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { useModal } from "@/store/useModal";
 import { useDrawer } from "@/store/useDrawer";
+import AddTime from "../addThings/AddTime";
+import Text from "../Text";
 import TimeFiltering from "./TimeFiltering";
 
 export default function TimeLogStats() {

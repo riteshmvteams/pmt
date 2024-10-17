@@ -92,7 +92,7 @@ export default function TimeLogListing({ data }: { data: TTimeLog[] }) {
                         onClick={() => {
                           setTitle("Complete Log Details");
                           setOpen(true);
-                          setClassName("max-w-[800px]");
+                          setClassName("max-w-[1000px]");
                           setChildren(<TimeLogDetail />);
                         }}
                       >
