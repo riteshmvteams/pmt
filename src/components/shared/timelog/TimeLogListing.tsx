@@ -10,6 +10,8 @@ import Title from "../Title";
 import ConfirmationModal from "../ConfirmationModal";
 
 import { TTimeLog } from "@/app/(main)/projects/[id]/_components/time/ProjectTimeLogs";
+import TimeLogDetail from "./TimeLogDetail";
+import EditTimeLog from "./EditTimeLog";
 
 export default function TimeLogListing({ data }: { data: TTimeLog[] }) {
   const { setChildren, setClassName, setOpen, setTitle } = useModal(
@@ -91,7 +93,7 @@ export default function TimeLogListing({ data }: { data: TTimeLog[] }) {
                           setTitle("Complete Log Details");
                           setOpen(true);
                           setClassName("max-w-[800px]");
-                          setChildren("Time Log Detail");
+                          setChildren(<TimeLogDetail />);
                         }}
                       >
                         <Eye className="w-4 h-4" />
@@ -102,7 +104,7 @@ export default function TimeLogListing({ data }: { data: TTimeLog[] }) {
                           setTitle("Edit Log");
                           setOpen(true);
                           setClassName("max-w-[800px]");
-                          setChildren("Edit Log");
+                          setChildren(<EditTimeLog />);
                         }}
                       >
                         <Pencil className="w-4 h-4" />
