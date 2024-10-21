@@ -1,7 +1,6 @@
 import { ColumnDef } from "@tanstack/react-table";
 
 import Text from "@/components/shared/Text";
-import { routes } from "@/config/routes";
 import DataTableColumnHeader from "../DataTable/DataTableColumnHeader";
 import { TTimeLog } from "@/app/(main)/projects/[id]/_components/time/ProjectTimeLogs";
 import { Badge } from "@/components/ui/badge";

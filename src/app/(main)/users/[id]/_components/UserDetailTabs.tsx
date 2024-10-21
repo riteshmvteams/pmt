@@ -60,7 +60,7 @@ const UserDetailTabs = () => {
         id: "Notifications",
       },
     ],
-    initialTabId: "Projects",
+    initialTabId: "Profile",
   });
   const framer = useTabs(hookProps);
 
