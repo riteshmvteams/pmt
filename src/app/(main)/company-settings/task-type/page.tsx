@@ -1,11 +1,10 @@
 import React from "react";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import Title from "@/components/shared/Title";
-import AddTaskType from "./_components/AddTaskType";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Pencil } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+import TasktypeListing from "./_components/TasktypeListing";
+import AddTaskType from "./_components/AddTaskType";
 
 const custom_task_types = [
   {
@@ -52,6 +51,69 @@ const custom_task_types = [
   },
 ];
 
+const default_task_types = [
+  {
+    id: 1,
+    name: "Development ",
+    short_name: "DEV",
+    tasks: 69,
+  },
+  {
+    id: 2,
+    name: "Bug Fixing",
+    short_name: "BUG",
+    tasks: 11,
+  },
+  {
+    id: 3,
+    name: "Update",
+    short_name: "UPD",
+    tasks: 3,
+  },
+  {
+    id: 4,
+    name: "Change Request",
+    short_name: "CR",
+    tasks: 42,
+  },
+  {
+    id: 5,
+    name: "Idea",
+    short_name: "IDEA",
+    tasks: 5,
+  },
+  {
+    id: 6,
+    name: "Enhancement",
+    short_name: "ENH",
+    tasks: 3,
+  },
+  {
+    id: 7,
+    name: "Research & Development",
+    short_name: "R & D",
+    tasks: 7,
+  },
+  {
+    id: 8,
+    name: "Maintenance",
+    short_name: "MNT",
+    tasks: 12,
+  },
+  {
+    id: 9,
+    name: "Unit Testing",
+    short_name: "UT",
+    tasks: 3,
+  },
+  {
+    id: 10,
+    name: "Quality Assurance",
+    short_name: "QA",
+    tasks: 22,
+  },
+];
+
 export default function TaskTypePage() {
   return (
     <div>
@@ -69,24 +131,7 @@ export default function TaskTypePage() {
           <CardContent className="grid grid-cols-1 gap-6 bg-muted/10 p-x-4 py-2.5">
             <ul className="grid grid-cols-3 gap-y-1.5">
               {custom_task_types?.map((custom, ind) => {
-                return (
-                  <li
-                    key={custom?.id}
-                    className="flex items-center gap-2 group"
-                  >
-                    <Checkbox id={`${custom?.id}`} />
-                    <label
-                      htmlFor={`${custom?.id}`}
-                      className="text-sm font-lexend text-muted-foreground select-none"
-                    >
-                      {custom?.name} ({custom?.short_name}) -{" "}
-                      <span className="text-primary">{custom?.tasks}</span>
-                    </label>
-                    <button className="text-muted-foreground hover:text-primary opacity-0 group-hover:opacity-100 duration-300">
-                      <Pencil className="w-[14px] h-[14px] " />
-                    </button>
-                  </li>
-                );
+                return <TasktypeListing key={custom?.id} custom={custom} />;
               })}
             </ul>
           </CardContent>
@@ -100,19 +145,8 @@ export default function TaskTypePage() {
           </CardHeader>
           <CardContent className="grid grid-cols-1 gap-6 bg-muted/10 p-x-4 py-2.5">
             <ul className="grid grid-cols-3 gap-y-1.5">
-              {custom_task_types?.map((custom, ind) => {
-                return (
-                  <li key={custom?.id} className="flex items-center gap-2">
-                    <Checkbox id={`${custom?.id}`} />
-                    <label
-                      htmlFor={`${custom?.id}`}
-                      className="text-sm font-lexend text-muted-foreground select-none"
-                    >
-                      {custom?.name} ({custom?.short_name}) -{" "}
-                      <span className="text-primary">{custom?.tasks}</span>
-                    </label>
-                  </li>
-                );
+              {default_task_types?.map((custom, ind) => {
+                return <TasktypeListing key={custom?.id} custom={custom} />;
               })}
             </ul>
           </CardContent>

@@ -11,6 +11,7 @@ import { Form } from "@/components/ui/form";
 import { useModal } from "@/store/useModal";
 import { loginFormSchema, LoginInputType } from "@/lib/schemas/login.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { AlertDialogCancel } from "@/components/ui/alert-dialog";
 
 export default function AddTaskType() {
   const { setChildren, setClassName, setOpen, setTitle } = useModal();
@@ -32,7 +33,7 @@ export default function AddTaskType() {
   );
 }
 
-const AddTaskTypeForm = () => {
+export const AddTaskTypeForm = () => {
   const form = useForm<LoginInputType>({
     resolver: zodResolver(loginFormSchema),
   });
@@ -65,13 +66,15 @@ const AddTaskTypeForm = () => {
             <Button type="submit" className="w-full tracking-wider">
               Add
             </Button>
-            <Button
-              type="button"
-              className="w-full tracking-wider"
-              variant="outline"
-            >
-              Cancel
-            </Button>
+            <AlertDialogCancel asChild>
+              <Button
+                type="button"
+                className="w-full tracking-wider"
+                variant="outline"
+              >
+                Cancel
+              </Button>
+            </AlertDialogCancel>
           </div>
         </form>
       </Form>
