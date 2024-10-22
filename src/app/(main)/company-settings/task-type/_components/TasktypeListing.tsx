@@ -1,9 +1,10 @@
 "use client";
 
+import React from "react";
+import { Pencil } from "lucide-react";
+
 import { Checkbox } from "@/components/ui/checkbox";
 import { useModal } from "@/store/useModal";
-import { Pencil } from "lucide-react";
-import React from "react";
 import { AddTaskTypeForm } from "./AddTaskType";
 
 type Props = {
